@@ -9,7 +9,7 @@ describe "Browsing Items by category" do
 
     visit category_path(category_1)
 
-    expect(page).to have_current_path "/#{category_1.name}"
+    expect(page).to have_current_path "/#{category_1.slug}"
     expect(page).to have_content item_1.title
     expect(page).to have_content item_2.title
     expect(page).not_to have_content item_3.title
