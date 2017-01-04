@@ -13,4 +13,21 @@ describe Item do
   context "associations" do
     it { is_expected.to belong_to(:category) }
   end
+
+  describe "#price_in_dollars" do
+    it "returns the price in dollars" do
+      item = create(:item, price_in_cents: 12_34)
+
+      expect(item.price_in_dollars).to eq 12.34
+    end
+  end
+
+  describe "#category_name" do
+    it "returns the category name" do
+      category = create(:category, name: "Four Dollar Toast")
+      item = create(:item, category: category)
+
+      expect(item.category_name).to eq "Four Dollar Toast"
+    end
+  end
 end

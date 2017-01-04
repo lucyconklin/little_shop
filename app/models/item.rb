@@ -7,4 +7,12 @@ class Item < ApplicationRecord
   validates_uniqueness_of :image_url
 
   belongs_to :category
+
+  def price_in_dollars
+    price_in_cents / 100.to_f
+  end
+
+  def category_name
+    category.name
+  end
 end
