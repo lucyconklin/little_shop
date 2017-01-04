@@ -5,9 +5,11 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.text :description
       t.integer :price_in_cents
       t.text :image_url
-      t.references :categories
+      t.references :category
 
       t.timestamps
     end
+    add_index :items, :title, unique: true
+    add_index :items, :image_url, unique: true
   end
 end
