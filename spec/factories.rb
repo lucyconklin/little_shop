@@ -12,12 +12,11 @@ FactoryGirl.define do
     sequence(:name) { |n| Faker::Commerce.department + " #{n}" }
 
     factory :category_with_items do
-
       transient do
         items_count 5
       end
 
-      after(:create) do |category,evaluator|
+      after(:create) do |category, evaluator|
         create_list(:item, evaluator.items_count, category: category)
       end
     end
