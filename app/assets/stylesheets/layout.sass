@@ -1,3 +1,45 @@
+$jumbotron-height: 500px
+$white: white
+$accent: #6242f4
+
 .jumbotron
   background: url(https://static.pexels.com/photos/1045/wood-forest-stack-stacked.jpg) no-repeat center center
-  min-height: 800px
+  min-height: $jumbotron-height
+  text-align: center
+
+.layer
+  background-color: rgba(60,64,64, 0.25)
+  min-height: $jumbotron-height
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  // border-top: 10px solid $accent
+  // border-bottom: 10px solid $accent
+
+
+.jumbotron-title
+  margin-top: $jumbotron-height / 3
+  color: $white
+  font-size: 6em
+  font-weight: bold
+
+.jumbotron-text
+  color: $white
+  font-size: 3em
+  border-top: 1px solid white
+  width: 40%
+  margin: 0 auto
+  padding-top: 0.25em
+
+.pendant-holder
+  margin-top: 5em
+  
+
+.pendant
+  height: 300px
+  background-color: $accent
+  color: white
+  font-weight: bold
+  text-align: center
+  margin: 20px
