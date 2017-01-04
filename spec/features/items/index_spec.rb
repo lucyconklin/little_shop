@@ -11,4 +11,3 @@ describe "Viewing all items" do
     expect(page).to have_content item_3.title
   end
 end
-
