@@ -1,20 +1,16 @@
 require 'rails_helper'
 
 describe Item do
-  describe "validations" do
-    context 'validations' do
-      it {should validate_presence_of(:description)}
-      it {should validate_presence_of(:title)}
-      it {should validate_presence_of(:price_in_cents)}
-      it {should validate_presence_of(:image_url)}
-      it {should validate_uniqueness_of(:title)}
-      it {should validate_uniqueness_of(:image_url)}
-    end
+  context 'validations' do
+    it {is_expected.to validate_presence_of(:description)}
+    it {is_expected.to validate_presence_of(:title)}
+    it {is_expected.to validate_presence_of(:price_in_cents)}
+    it {is_expected.to validate_presence_of(:image_url)}
+    it {is_expected.to validate_uniqueness_of(:title)}
+    it {is_expected.to validate_uniqueness_of(:image_url)}
   end
 
-  describe "associations" do
-    context 'belongs to a category' do
-      it {should belong_to(:category)}
-    end
+  context "associations" do
+    it {is_expected.to belong_to(:category)}
   end
 end
