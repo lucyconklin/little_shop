@@ -7,10 +7,15 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
+  <header>
+    <%= render partial: 'layouts/nav' %>
+  </header>
   <body>
     <%= render partial: 'shared/notices' %>
     <%= render partial: 'shared/cart' %>
     <%= yield %>
   </body>
+  <footer>
+    <%= render partial: 'layouts/nav' %>
+  </footer>
 </html>
