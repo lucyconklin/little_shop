@@ -47,7 +47,7 @@ feature "When a customer visits the items detail page and adds that item to thei
   before { visit item_path(shoes) }
 
   scenario "the user should see an add to cart button" do
-    expect(page).to have_selector(:button, "Add to cart")
+    expect(page).to have_selector(:link_or_button, "Add to cart")
   end
 
   scenario "the cart counter starts at one when nothing has been previously added to the cart" do
