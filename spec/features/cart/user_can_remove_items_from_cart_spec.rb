@@ -5,7 +5,7 @@ feature "A user can remove an item from the cart" do
     visit cart_path
   end
 
-  context "when the cart is empty"do
+  context "when the cart is empty" do
     it "a user cannot remove anything from the cart" do
       expect(current_path).to eq('/cart')
       expect(page).to have_content("Your cart is currently empty.")
@@ -28,9 +28,9 @@ feature "A user can remove an item from the cart" do
       expect(current_path).to eq("/cart")
       expect(page).not_to have_content(:link_or_button, "Remove")
       expect(page).to have_content("Succesfully removed #{item.title} from your cart.")
-      expect(page).to have_css(".alert", text: item.title )
+      expect(page).to have_css(".alert", text: item.title)
       expect(page).to have_content("Your cart is currently empty.")
-      expect(page).to have_content(:link, item.title )
+      expect(page).to have_content(:link, item.title)
     end
   end
 
@@ -48,7 +48,7 @@ feature "A user can remove an item from the cart" do
 
       expect(page).not_to have_content(item_1.description)
       expect(page).to have_content(item_2.description)
-      expect(page).to have_content(:link, item_1.title )
+      expect(page).to have_content(:link, item_1.title)
     end
   end
 
