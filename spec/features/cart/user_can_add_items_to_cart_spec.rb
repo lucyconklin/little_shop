@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 feature "When a customer visits the items index and adds items to their cart" do
+
   let!(:pants) { create(:item, title: "Rustic Wooden Pants") }
   let!(:computer) { create(:item, title: "Synergistic Silk Computer") }
+
   before { visit items_path }
 
   scenario "the user should see a add to cart button or link" do

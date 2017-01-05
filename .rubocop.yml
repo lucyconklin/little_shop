@@ -4,13 +4,15 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/StringLiterals:
   Enabled: false
-Style/VariableName:
+Style/VariableNum:
   Enabled: false
 Style/EmptyLinesAroundClassBody:
   Enabled: false
 Style/EmptyLinesAroundModuleBody:
   Enabled: false
 Style/SpaceInsideHashLiteralBraces:
+  Enabled: false
+Style/BracesAroundHashParameters:
   Enabled: false
 
 AllCops:
