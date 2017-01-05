@@ -8,6 +8,8 @@ Style/VariableName:
   Enabled: false
 Style/EmptyLinesAroundClassBody:
   Enabled: false
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
 Style/SpaceInsideHashLiteralBraces:
   Enabled: false
 
