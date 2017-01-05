@@ -1,1 +1,25 @@
-This is the nav
+<nav class="navbar navbar-fixed-top navbar-right">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Timber Shop</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+      <li> <%= link_to "Login", "#" %> </li>
+      <li> <%= link_to "Items", items_path %> </li>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Categories
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#">Category 1</a></li>
+          <li><a href="#">Category 2</a></li>
+          <li><a href="#">Category 3</a></li>
+        </ul>
+      </div>
+
+    </ul>
+
+  </div>
+</nav>
