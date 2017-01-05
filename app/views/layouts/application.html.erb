@@ -11,6 +11,7 @@
     <%= render partial: 'layouts/nav' %>
   </header>
   <body>
+    <%= link_to "View cart", cart_path %>
     <%= render partial: 'shared/notices' %>
     <%= yield %>
   </body>

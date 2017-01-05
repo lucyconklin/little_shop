@@ -10,4 +10,10 @@ module FeatureHelpers
     end
   end
 
+  def add_one_item_to_cart(item)
+    visit items_path
+    within "#item_#{item.id}" do
+      click_on "Add to cart"
+    end
+  end
 end
