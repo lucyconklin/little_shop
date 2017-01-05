@@ -16,7 +16,7 @@ class Cart
 
   def price_and_quantity
     contents.map do |id, quantity|
-      [ find_items(id).price_in_cents, quantity ]
+      [find_items(id).price_in_cents, quantity]
     end
   end
 
