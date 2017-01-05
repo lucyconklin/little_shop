@@ -4,6 +4,12 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/StringLiterals:
   Enabled: false
+Style/VariableName:
+  Enabled: false
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: false
 
 AllCops:
   Exclude:
