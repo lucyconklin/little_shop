@@ -7,8 +7,8 @@
         <div class="caption">
           <h3><%= item.title %></h3>
         </div>
+        <%= button_to "Add to cart", carts_path(item_id: item.id), class:"btn btn-info add_to_cart" %>
       <% end %>
-      <button class="btn btn-info add_to_cart">Add to cart</button>
     </div>
   </div>
 <% end %>
