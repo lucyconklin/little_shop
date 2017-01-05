@@ -17,4 +17,3 @@ AllCops:
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
-    - 'spec/support/*'
