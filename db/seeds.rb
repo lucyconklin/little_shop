@@ -1,5 +1,3 @@
-DatabaseCleaner.clean_with :truncation
-
 images = ['https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/MaryRose-wooden_spoon1.JPG/1280px-MaryRose-wooden_spoon1.JPG',
           'http://www.publicdomainpictures.net/pictures/50000/nahled/houten-kunstwerken-011.jpg',
           'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Bough_bike_Sporty.jpg/913px-Bough_bike_Sporty.jpg']
