@@ -55,7 +55,7 @@ class Cart
     clean_cart
   end
 
-private
+  private
 
   def clean_cart
     contents.delete_if do |item_id, quantity|
