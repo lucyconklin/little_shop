@@ -20,4 +20,3 @@ module FeatureHelpers
   end
 
 end
-
