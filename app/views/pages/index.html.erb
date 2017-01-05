@@ -1,18 +1,40 @@
 <div class="jumbotron">
   <div class="layer">
-    <div class="jumbotron-title">TIMBER SHOP</div>
-    <div class="jumbotron-text">Get your lumber here, matey!</div>
+    <div class="jumbotron-contents">
+      <div class="jumbotron-title">
+        TIMBER SHOP
+      </div>
+      <div class="jumbotron-text">Get your lumber here, matey!</div>
+    </div>
   </div>
 </div>
 
 <div class="container-fluid pendant-holder">
-  <div class="col-sm-6 col-md-4 pendant">
-    Shop All Items
+  <div class="col-md-4">
+    <div class="pendant">
+      <%= link_to(items_path) do %>
+        Shop All
+        <br />
+        Items
+      <% end %>
+    </div>
   </div>
-  <div class="col-sm-6 col-md-4 pendant">
-    Shop Items by Category
+  <div class="col-md-4">
+    <div class="pendant">
+      <%= link_to("#") do %>
+        Shop by
+        <br />
+        Category
+      <% end %>
+    </div>
   </div>
-  <div class="col-sm-6 col-md-4 pendant">
-    Sign Up for Coupons
+  <div class="col-md-4">
+    <div class="pendant">
+      <%= link_to("#") do %>
+        Signup for
+        <br />
+        Coupons
+      <% end %>
+    </div>
   </div>
 </div>
