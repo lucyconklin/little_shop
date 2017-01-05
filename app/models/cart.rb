@@ -16,21 +16,21 @@ class Cart
 
   def price_and_quantity
     contents.map do |id, quantity|
-      [find_items(id).price_in_cents, quantity]
+      [find_item(id).price_in_cents, quantity]
     end
   end
 
   def items
-    find_items(contents.keys)
+    find_item(contents.keys)
   end
 
-  def find_items(id)
+  def find_item(id)
     Item.find(id)
   end
 
   def items_with_quantities
     contents.reduce({}) do |memo, (id, quantity)|
-      memo[find_items(id)] = quantity
+      memo[find_item(id)] = quantity
       memo
     end
   end
