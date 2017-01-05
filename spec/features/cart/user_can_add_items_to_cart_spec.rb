@@ -19,7 +19,7 @@ feature "When a customer visits the items index and adds items to their cart" do
   end
 
   scenario "the cart counter says 2 after adding another one of the first item" do
-    2.times do 
+    2.times do
       within "#item_#{computer.id}" do
         click_on "Add to cart"
       end
@@ -29,7 +29,7 @@ feature "When a customer visits the items index and adds items to their cart" do
   end
 
   scenario "the cart counter says 3 after adding one of the second item" do
-    2.times do 
+    2.times do
       within "#item_#{computer.id}" do
         click_on "Add to cart"
       end
