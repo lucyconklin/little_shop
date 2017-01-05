@@ -1,5 +1,3 @@
-require "faker"
-
 DatabaseCleaner.clean_with :truncation
 
 images = ['https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/MaryRose-wooden_spoon1.JPG/1280px-MaryRose-wooden_spoon1.JPG',
