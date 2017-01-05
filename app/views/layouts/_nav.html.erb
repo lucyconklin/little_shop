@@ -5,9 +5,8 @@
     </div>
     <ul class="nav navbar-nav pull-right">
       <li class="shopping-bag">
-        <%= link_to "#{@cart.number_of_items}", "#", class: "cart-counter" %>
+        <%= link_to "#{@cart.number_of_items}", cart_path, class: "cart-counter" %>
       </li>
-      <li> <%= link_to "Login", "#" %> </li>
       <li> <%= link_to "Items", items_path %> </li>
 
       <div class="dropdown">
@@ -16,9 +15,9 @@
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="#">Category 1</a></li>
-          <li><a href="#">Category 2</a></li>
-          <li><a href="#">Category 3</a></li>
+          <% categories.each do |category| %>
+          <li> <%= link_to "#{category.name}", category_path(category) %> </li>
+          <% end %>
         </ul>
       </div>
 
