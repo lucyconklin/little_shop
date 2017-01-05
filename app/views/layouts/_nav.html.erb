@@ -4,13 +4,8 @@
       <a class="navbar-brand" href="/">Timber Shop</a>
     </div>
     <ul class="nav navbar-nav pull-right">
-      <li>
-        <button type="button" class="cart-button">
-          <span class="glyphicon glyphicon-shopping-cart"></span>
-        </button>
-      </li>
-      <li>
-        <span class="cart-counter">1</span>
+      <li class="shopping-bag">
+        <%= link_to "#{@cart.number_of_items}", "#", class: "cart-counter" %>
       </li>
       <li> <%= link_to "Login", "#" %> </li>
       <li> <%= link_to "Items", items_path %> </li>
