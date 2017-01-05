@@ -36,7 +36,8 @@ class Cart
 
   def total_price_in_cents
     price_and_quantity.reduce(0) do |memo,prices|
-      memo += prices[0] * prices[1] ; memo
+      memo += prices[0] * prices[1]
+      memo
     end
   end
 

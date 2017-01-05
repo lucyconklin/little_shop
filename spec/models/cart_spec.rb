@@ -23,10 +23,9 @@ describe Cart do
 
   describe "#total_price_in_dollars" do
     it 'sums the price of all the items in the cart' do
-      num = 1000
-      item_1 = create(:item, price_in_cents: num += 10)
-      item_2 = create(:item, price_in_cents: num += 10)
-      item_3 = create(:item, price_in_cents: num += 10)
+      item_1 = create(:item, price_in_cents: 1010)
+      item_2 = create(:item, price_in_cents: 1020)
+      item_3 = create(:item, price_in_cents: 1030)
       cart = Cart.new({item_2.id => 1})
 
       cart.add_item(item_1.id)
@@ -58,7 +57,9 @@ describe Cart do
       cart.add_item(item_2.id)
       cart.add_item(item_3.id)
 
-      expect(cart.items_with_quantities).to eq({item_1 => 1, item_2 => 2, item_3 => 1})
+      expect(cart.items_with_quantities).to eq({item_1 => 1,
+                                                item_2 => 2,
+                                                item_3 => 1})
     end
   end
 end
