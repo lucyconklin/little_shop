@@ -12,6 +12,8 @@ Style/EmptyLinesAroundModuleBody:
   Enabled: false
 Style/SpaceInsideHashLiteralBraces:
   Enabled: false
+Style/BracesAroundHashParameters:
+  Enabled: false
 
 AllCops:
   Exclude:
