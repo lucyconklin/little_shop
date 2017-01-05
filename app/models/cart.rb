@@ -2,7 +2,7 @@ class Cart
   attr_accessor :contents
 
   def initialize(initial_contents)
-    @contents = initial_contents || Hash.new
+    @contents = initial_contents || {}
   end
 
   def number_of_items
