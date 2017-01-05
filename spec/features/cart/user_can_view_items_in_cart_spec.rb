@@ -1,45 +1,49 @@
 require 'rails_helper'
 
-feature "When a customer visits the items index and wants to view their cart" do
+feature "When a customer visits the home page and wants to view their cart" do
 
-  let!(:pants) { create(:item, title: "Rustic Wooden Pants") }
-  let!(:computer) { create(:item, title: "Synergistic Silk Computer") }
+  let!(:pants) { create(:item, title: "Rustic Wooden Pants", price_in_cents: 11_11) }
+  let!(:computer) { create(:item, title: "Synergistic Silk Computer", price_in_cents: 22_22) }
+  let!(:spoon) { create(:item, title: "Four Dollar Wooden Spoon", price_in_cents: 33_33) }
 
-  before { visit items_path }
-
-  scenario 'the user should see a view cart button or link' do
-    expect(page).to have_selector(:link_or_button, "View cart")
-  end
-
-  scenario 'the user clicks on view cart' do
-    item = add_one_item_to_cart
+  before do
+    add_one_item_to_cart(pants)
+    add_one_item_to_cart(pants)
+    add_one_item_to_cart(computer)
+    add_one_item_to_cart(spoon)
+    visit root_path
     click_on "View cart"
-    expect(page).to have_current_path(cart_path(cart))
   end
 
-  scenario 'the user should see a small image of the item' do
+  scenario "clicking on view cart takes them to the cart page" do
     expect(page).to have_current_path("/cart")
-    expect(page).to have_css("img[src*='image_name.png']")
   end
 
-  scenario 'the user should see the title of the item' do
-    expect(page).to have_current_path("/cart")
-    expect(page).to have_content(Item.first.title)
+  scenario "the user sees the title of the item" do
+    expect(page).to have_content pants.title
+    expect(page).to have_content computer.title
+    expect(page).to have_content spoon.title
   end
 
-  scenario 'the user should see the description of the item' do
-    expect(page).to have_current_path("/cart")
-    expect(page).to have_content(Item.first.description)
+  scenario "the user sees the description of the item" do
+    expect(page).to have_content pants.description
+    expect(page).to have_content computer.description
+    expect(page).to have_content spoon.description
   end
 
-  scenario 'the user should see the price of the item' do
-    expect(page).to have_current_path("/cart")
-    expect(page).to have_content(Item.first.price)
+  scenario "the user sees the price of the item" do
+    expect(page).to have_content pants.price_in_dollars
+    expect(page).to have_content computer.price_in_dollars
+    expect(page).to have_content spoon.price_in_dollars
   end
 
-  scenario 'the user should see the total price of the cart' do
-    expect(page).to have_current_path("/cart")
-    expect(page).to have_content(cart.total_price)
+  scenario "the user sees the quantity for each item" do
+    expect(page).to have_content "2 x $11.11"
+    expect(page).to have_content "1 x $22.22"
+    expect(page).to have_content "1 x $33.33"
   end
 
+  scenario "the user sees the total price of the cart" do
+    expect(page).to have_content "$77.77"
+  end
 end

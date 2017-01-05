@@ -14,7 +14,7 @@ class Cart
     contents[item_id.to_s] += 1
   end
 
-  def find_items
+  def price_and_quantity
     found_items = []
     contents.each_pair do |id,quantity|
       found_items <<[ Item.find(id).price_in_cents, quantity ]
@@ -22,8 +22,20 @@ class Cart
     found_items
   end
 
+  def items
+    Item.find(contents.keys)
+  end
+
+  def items_with_quantities
+    item_quantity = {}
+    contents.map do |id, quantity|
+      item_quantity[Item.find(id)] = quantity
+    end
+    item_quantity
+  end
+
   def total_price_in_cents
-    find_items.reduce(0) do |memo,prices|
+    price_and_quantity.reduce(0) do |memo,prices|
       memo += prices[0] * prices[1] ; memo
     end
   end
