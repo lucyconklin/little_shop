@@ -1,13 +1,14 @@
 <div class="row">
-<div class="col-sm-6 col-md-4">
-  <div class="thumbnail">
-    <img src=<%= @item.image_url %> alt=<%= @item.title %>>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src=<%= @item.image_url %> alt=<%= @item.title %>>
+    </div>
   </div>
-</div>
-<div class="col-sm-6 col-md-8">
-  <h2><%= @item.title %></h2>
-  <p><%= @item.description %></p>
-  <p><%= number_to_currency(@item.price_in_dollars) %></p>
-  <p><%= @item.category_name %></p>
-</div>
+  <div class="col-sm-6 col-md-8">
+    <h2><%= @item.title %></h2>
+    <p><%= @item.description %></p>
+    <p><%= number_to_currency(@item.price_in_dollars) %><%= button_to "Add to cart", carts_path(item_id: @item.id), class:"btn btn-info" %></p>
+    <p><%= @item.category_name %></p>
+    
+  </div>
 </div>
