@@ -45,4 +45,21 @@ class Cart
   def total_price_in_dollars
     total_price_in_cents / 100.to_f
   end
+
+  def empty?
+    contents.empty?
+  end
+
+  def remove_item(item_id)
+    contents[item_id.to_s] -= 1
+    clean_cart
+  end
+
+private
+
+  def clean_cart
+    contents.delete_if do |item_id, quantity|
+      quantity == 0
+    end
+  end
 end

@@ -62,4 +62,38 @@ describe Cart do
                                                 item_3 => 1})
     end
   end
+
+  describe "#empty?" do
+    it "returns true if nothing in cart" do
+      cart = Cart.new({})
+
+      expect(cart.empty?).to be true
+    end
+
+    it "returns false when there is something in cart" do
+      item = create(:item)
+      cart = Cart.new({})
+      cart.add_item(item.id)
+
+      expect(cart.empty?).to be false
+    end
+  end
+
+  describe "#remove_item" do
+    it "removes item from the cart" do
+      item_1, item_2 = create_list(:item, 2)
+      cart = Cart.new({ item_1.id.to_s => 2, item_2.id.to_s => 1 })
+
+      cart.remove_item(item_1.id)
+      expect(cart.contents).to eq({ item_1.id.to_s => 1, item_2.id.to_s => 1 })
+    end
+
+    it "removes item from cart entirely when quantity is 0" do
+      item_1, item_2 = create_list(:item, 2)
+      cart = Cart.new({ item_1.id.to_s => 1, item_2.id.to_s => 1 })
+
+      cart.remove_item(item_1.id)
+      expect(cart.contents).to eq({ item_2.id.to_s => 1 })
+    end
+  end
 end
