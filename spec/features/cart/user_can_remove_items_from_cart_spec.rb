@@ -13,7 +13,7 @@ feature "A user can remove an item from the cart" do
     end
   end
 
-  context "When a cart has only one an item in it" do
+  context "When a cart has only one item in it" do
     it "a user can remove that one item" do
       item = create(:item)
       add_one_item_to_cart(item)
