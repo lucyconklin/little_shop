@@ -1,6 +1,9 @@
+$header_font: 'Quattrocento', serif
+
 $jumbotron-height: 500px
 $white: white
-$accent: #6242f4
+$gray: #b6d6db
+$pendant-size: 300px
 
 .jumbotron
   background: url(https://static.pexels.com/photos/1045/wood-forest-stack-stacked.jpg) no-repeat center center
@@ -14,13 +17,13 @@ $accent: #6242f4
   top: 0
   left: 0
   width: 100%
-  // border-top: 10px solid $accent
-  // border-bottom: 10px solid $accent
 
+.jumbotron-contents
+  margin-top: $jumbotron-height / 3
 
 .jumbotron-title
-  margin-top: $jumbotron-height / 3
   color: $white
+  font-family: $header_font
   font-size: 6em
   font-weight: bold
 
@@ -34,12 +37,22 @@ $accent: #6242f4
 
 .pendant-holder
   margin-top: 5em
-  
+  margin-bottom: 5em
+  width: 90%
 
 .pendant
-  height: 300px
-  background-color: $accent
-  color: white
+  background-image: url(full_tree_slice.jpg)
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+  height: $pendant-size
+  padding-top: $pendant-size * .32
+  text-align: center
+  color: #827e77
+  font-size: 3em
   font-weight: bold
   text-align: center
-  margin: 20px
+  margin: 0px auto
+
+.pendant:hover
+  font-size: 3.2em
