@@ -14,12 +14,20 @@ class CartsController < ApplicationController
   def destroy
     if params[:remove].nil?
       @cart.decrease_item_quantity(item.id)
+      last_item
     else
       @cart.delete_entire_item(item.id)
       flash[:success] = remove_message
     end
     set_cart_session
     redirect_to cart_path
+  end
+
+  def last_item
+    item = @cart.contents[params[:item_id]]
+    if item.nil?
+      flash[:success] = remove_message
+    end
   end
 
   def remove_message
