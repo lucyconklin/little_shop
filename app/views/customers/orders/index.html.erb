@@ -1,0 +1,7 @@
+<h1>Orders for this customer</h1>
+
+<% if @orders.any? %>
+  <%= render partial: 'orders' %>
+<% else %>
+  <p>You have not placed any orders.</p>
+<% end %>

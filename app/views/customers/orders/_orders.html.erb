@@ -1,0 +1,6 @@
+<% @orders.each do |order| %>
+  <p>
+    Order total: <%= number_to_currency(order.total_price_in_dollars) %>
+    Order date: <%= order.date %>
+  </p>
+<% end %>
