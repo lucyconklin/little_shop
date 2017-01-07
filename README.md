@@ -23,4 +23,4 @@ Things you may want to cover:
 
 * ...
 ####Master branch build status: 
-![](https://travis-ci.org/lucyconklin/MovingHelper.svg?branch=master)
+![](https://travis-ci.org/lucyconklin/little_shop.svg?branch=master)
