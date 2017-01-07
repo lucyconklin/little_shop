@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <% @items.each_slice(4) do |four_items| %>
   <div class="row">
     <% four_items.each_slice(2) do |two_items| %>
@@ -12,4 +13,5 @@
       </div>
     <% end %>
   </div>
-<% end %>
+  <% end %>
+</div>

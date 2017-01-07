@@ -9,6 +9,5 @@
     <p><%= @item.description %></p>
     <p><%= number_to_currency(@item.price_in_dollars) %><%= button_to "Add to cart", carts_path(item_id: @item.id), class:"btn btn-info" %></p>
     <p><%= @item.category_name %></p>
-    
   </div>
 </div>

@@ -31,10 +31,11 @@
           </ul>
         </li>
 
-        <li>
+        <li class="view-cart" >
           <%= link_to cart_path do %>
+            <span class="hidden">View cart</span>
             <div class="cart">
-              <span class="cart-counter"><%= @cart.number_of_items %></span>
+              <span class="cart_counter"><%= @cart.number_of_items %></span>
               <span class="glyphicon glyphicon-shopping-cart"></span>
             </div>
           <% end %>
