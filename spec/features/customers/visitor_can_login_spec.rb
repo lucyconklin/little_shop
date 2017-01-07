@@ -76,10 +76,10 @@ feature "When a visitor visits the root path" do
 
     expect(current_path).to eql(customers_path)
 
-    expect(page).to have_content("First namecan't be blank")
-    expect(page).to have_content("Last namecan't be blank")
-    expect(page).to have_content("Emailcan't be blank")
-    expect(page).to have_content("Passwordcan't be blank")
+    expect(page).to have_content("First name can't be blank")
+    expect(page).to have_content("Last name can't be blank")
+    expect(page).to have_content("Email can't be blank")
+    expect(page).to have_content("Password can't be blank")
   end
 
   scenario "they see an error message if a customer account already exists for that email" do
@@ -95,7 +95,7 @@ feature "When a visitor visits the root path" do
     click_on "Create Account"
 
     expect(current_path).to eql(customers_path)
-    expect(page).to have_content("Emailhas already been taken")
+    expect(page).to have_content("Email has already been taken")
   end
 
 end
