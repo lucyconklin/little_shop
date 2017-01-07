@@ -25,9 +25,7 @@ class CartsController < ApplicationController
 
   def last_item
     item = @cart.contents[params[:item_id]]
-    if item.nil?
-      flash[:success] = remove_message
-    end
+    flash[:success] = remove_message if item.nil?
   end
 
   def remove_message
