@@ -26,7 +26,6 @@ describe Cart do
   end
 
   describe "#items" do
-
     let!(:item_1) { Item.find(1) }
     let!(:item_2) { Item.find(2) }
     let!(:item_3) { Item.find(3) }
