@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :customer do
+    email "MyString"
+    first_name "MyString"
+    last_name "MyString"
+    password_digest "MyString"
+  end
   factory :item do
     sequence(:title) { |n| Faker::Commerce.product_name + " #{n}" }
 
