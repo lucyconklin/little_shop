@@ -1,6 +1,5 @@
-require "faker"
-
-DatabaseCleaner.clean_with :truncation
+Item.destroy_all
+Category.destroy_all
 
 images = ['https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/MaryRose-wooden_spoon1.JPG/1280px-MaryRose-wooden_spoon1.JPG',
           'http://www.publicdomainpictures.net/pictures/50000/nahled/houten-kunstwerken-011.jpg',

@@ -219,6 +219,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
+  rack
   rack_session_access
   rails (~> 5.0.1)
   rails_12factor

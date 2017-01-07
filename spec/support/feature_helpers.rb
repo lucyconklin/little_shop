@@ -11,9 +11,21 @@ module FeatureHelpers
   end
 
   def add_one_item_to_cart(item)
-    visit items_path
     within "#item_#{item.id}" do
       click_on "Add to cart"
     end
   end
+
+  def click_on_decrease(item)
+    within("#item_#{item.id}") do
+      click_on "-"
+    end
+  end
+
+  def click_on_remove(item)
+    within("#item_#{item.id}") do
+      click_on "Remove"
+    end
+  end
+
 end

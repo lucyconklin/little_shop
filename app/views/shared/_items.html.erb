@@ -1,13 +1,15 @@
-<% @items.each do |item| %>
-  <div class="col-sm-6 col-md-4">
-    <div id="item_<%= item.id %>" class="thumbnail">
-      <%= link_to item_path(item) do %>
-        <img src=<%= item.image_url %> alt=<%= item.title %>>
-        <div class="caption">
-          <h3><%= item.title %></h3>
+<% @items.each_slice(4) do |four_items| %>
+  <div class="row">
+    <% four_items.each_slice(2) do |two_items| %>
+      <div class="col-md-6">
+        <div class="row">
+          <% two_items.each do |item| %>
+            <div class="col-sm-6">
+              <%= render partial: 'shared/item', locals: {item: item} %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    <p><%= number_to_currency(item.price_in_dollars) %><%= button_to "Add to cart", carts_path(item_id: item.id), class:"btn btn-info add_to_cart" %></p>
-    </div>
+      </div>
+    <% end %>
   </div>
 <% end %>

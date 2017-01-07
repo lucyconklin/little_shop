@@ -1,0 +1,10 @@
+<div id="item_<%= item.id %>" class="thumbnail">
+  <%= link_to item_path(item) do %>
+    <img src=<%= item.image_url %> alt=<%= item.title %>>
+    <div class="caption">
+      <h3><%= item.title %></h3>
+    </div>
+  <% end %>
+  <p><%= number_to_currency(item.price_in_dollars) %>
+  <%= button_to "Add to cart", carts_path(item_id: item.id), class:"btn btn-info add_to_cart" %></p>
+</div>

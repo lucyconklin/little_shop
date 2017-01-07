@@ -15,23 +15,24 @@ class Cart
   end
 
   def price_and_quantity
-    found_items = []
-    contents.each_pair do |id,quantity|
-      found_items <<[ Item.find(id).price_in_cents, quantity ]
+    contents.map do |id, quantity|
+      [find_item(id).price_in_cents, quantity]
     end
-    found_items
   end
 
   def items
-    Item.find(contents.keys)
+    find_item(contents.keys)
+  end
+
+  def find_item(id)
+    Item.find(id)
   end
 
   def items_with_quantities
-    item_quantity = {}
-    contents.map do |id, quantity|
-      item_quantity[Item.find(id)] = quantity
+    contents.reduce({}) do |memo, (id, quantity)|
+      memo[find_item(id)] = quantity
+      memo
     end
-    item_quantity
   end
 
   def total_price_in_cents
@@ -43,5 +44,26 @@ class Cart
 
   def total_price_in_dollars
     total_price_in_cents / 100.to_f
+  end
+
+  def empty?
+    contents.empty?
+  end
+
+  def decrease_item_quantity(item_id)
+    contents[item_id.to_s] -= 1
+    clean_cart
+  end
+
+  def delete_entire_item(item_id)
+    contents.delete(item_id.to_s)
+  end
+
+  private
+
+  def clean_cart
+    contents.delete_if do |item_id, quantity|
+      quantity == 0
+    end
   end
 end
