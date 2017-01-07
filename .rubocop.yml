@@ -4,8 +4,8 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 Style/StringLiterals:
   Enabled: false
-Style/VariableNum:
-  Enabled: false
+Style/VariableNumber:
+  EnforcedStyle: snake_case
 Style/EmptyLinesAroundClassBody:
   Enabled: false
 Style/EmptyLinesAroundModuleBody:
@@ -14,6 +14,11 @@ Style/SpaceInsideHashLiteralBraces:
   Enabled: false
 Style/BracesAroundHashParameters:
   Enabled: false
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+
 
 AllCops:
   Exclude:
