@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature "When a customer visits the items index and adds items to their cart" do
-
   let!(:pants) { create(:item, title: "Rustic Wooden Pants", price_in_cents: 11_11) }
   let!(:computer) { create(:item, title: "Synergistic Silk Computer", price_in_cents: 70_80) }
 
@@ -81,7 +80,7 @@ feature "When a customer visits the items index and adds items to their cart" do
         expect(page).to have_content("1 x $70.80")
         expect(page).to have_content("Subtotal: $81.91")
 
-        click_on("+", :match=> :first)
+        click_on("+", match: :first)
 
         expect(page).to have_content("2 x $11.11")
         expect(page).to have_content("1 x $70.80")

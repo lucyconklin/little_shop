@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
   def create
     add_item_to_cart
-    set_session
+    set_cart_session
     flash[:success] = add_message
     redirect_to items_path
   end
@@ -15,10 +15,10 @@ class CartsController < ApplicationController
     if params[:remove].nil?
       @cart.decrease_item_quantity(item.id)
     else
-      @cart.delete_item(item.id)
+      @cart.delete_entire_item(item.id)
       flash[:success] = remove_message
     end
-    set_session
+    set_cart_session
     redirect_to cart_path
   end
 
@@ -41,7 +41,7 @@ class CartsController < ApplicationController
     Item.find(params[:item_id])
   end
 
-  def set_session
+  def set_cart_session
     session[:cart] = @cart.contents
   end
 

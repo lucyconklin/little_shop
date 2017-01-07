@@ -15,6 +15,11 @@ Style/SpaceInsideHashLiteralBraces:
 Style/BracesAroundHashParameters:
   Enabled: false
 
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+
+
 AllCops:
   Exclude:
     - 'db/**/*'
