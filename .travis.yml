@@ -1,2 +1,4 @@
 language: ruby
 script: rspec
+cache: bundler
+sudo: false
