@@ -1,21 +1,14 @@
 <div class="container">
   <h1>Login</h1>
-  <%= form_tag '/login', :class => "form-horizontal center" do %>
-    <div class="form-group">
-      <%= label_tag :email, "Email", class: "control-label" %>
-      <%= text_field_tag :email, params[:email], class: "form-control", autofocus: true, placeholder: "example@email.com" %>
-    </div>
+  <%= bootstrap_form_tag url: '/login' do |f| %>
+    <%= f.text_field :email, placeholder: "example@email.com" %>
+    <%= f.password_field :password, placeholder: "Password" %>
 
-    <div class="form-group">
-      <%= label_tag :password, "Password", class: "control-label" %>
-      <%= password_field_tag :password, params[:password], class: "form-control", autofocus: true, placeholder: "Password" %>
-    </div>
-
-    <%= submit_tag "Login", class: "btn btn-success btn-block" %>
+    <%= f.submit "Login", class: "btn btn-success btn-block" %>
   <% end %>
 
   <p>
     Don't have an account?
-    <%= link_to "Create Account", new_customer_path %>
+    <%= link_to "Register", new_customer_path %>
   </p>
 </div>

@@ -9,7 +9,7 @@ class Customers::SessionsController < Customers::BaseController
     if @customer && @customer.authenticate(params[:password])
       session[:customer_id] = @customer.id
       flash[:success] = "Successfully logged in!"
-      redirect_to customer_path(@customer)
+      redirect_to dashboard_path
     else
       flash[:danger] = "Email and password combination do not exist"
       render :attempt_login
