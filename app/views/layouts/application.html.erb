@@ -7,14 +7,12 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-  <header>
-    <%= render partial: 'layouts/nav' %>
-  </header>
   <body>
-    <%= render partial: 'shared/notices' %>
-    <%= yield %>
-  </body>
-  <footer>
+    <%= render partial: 'layouts/nav' %>
+    <section class="main">
+      <%= render partial: 'shared/notices' %>
+      <%= yield %>
+    </section>
     <%= render partial: 'layouts/footer' %>
-  </footer>
+  </body>
 </html>
