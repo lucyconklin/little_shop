@@ -11,7 +11,6 @@ feature "When a customer visits the home page and wants to view their cart" do
     2.times do
       add_one_item_to_cart(pants)
     end
-    #add_one_item_to_cart(pants)
     add_one_item_to_cart(computer)
     add_one_item_to_cart(spoon)
     visit root_path

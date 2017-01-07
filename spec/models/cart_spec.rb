@@ -1,7 +1,6 @@
 require'rails_helper'
 
 describe Cart do
-
   let!(:cart) { add_three_items_to_cart }
 
   describe "#number_of_items" do
@@ -27,16 +26,23 @@ describe Cart do
   end
 
   describe "#items" do
-    it "returns all the items in the cart" do
-      item_1, item_2, item_3 = Item.find(1), Item.find(2), Item.find(3)
 
+    let!(:item_1) { Item.find(1) }
+    let!(:item_2) { Item.find(2) }
+    let!(:item_3) { Item.find(3) }
+
+    it "returns all the items in the cart" do
       expect(cart.items).to match_array [item_1, item_2, item_3]
     end
   end
 
   describe "#items_with_quantities" do
+
+    let!(:item_1) { Item.find(1) }
+    let!(:item_2) { Item.find(2) }
+    let!(:item_3) { Item.find(3) }
+
     it "returns the items and their quantities" do
-      item_1, item_2, item_3 = Item.find(1), Item.find(2), Item.find(3)
       cart.add_item(2)
 
       expect(cart.items_with_quantities).to include(item_1 => 1, item_2 => 2, item_3 => 1)
@@ -57,8 +63,10 @@ describe Cart do
 
   describe "#decrease_item_quantity" do
 
-    it "decreases item quantity from the cart" do
+    let!(:item_1) { Item.find(1) }
+    let!(:item_2) { Item.find(2) }
 
+    it "decreases item quantity from the cart" do
       expect(cart.contents).to include("1" => 1, "2" => 1)
 
       cart.decrease_item_quantity(1)
@@ -67,8 +75,6 @@ describe Cart do
     end
 
     it "removes item from cart entirely when quantity is decreased to 0" do
-      item_1, item_2 = Item.find(1), Item.find(2)
-
       cart.decrease_item_quantity(item_1.id)
 
       expect(cart.contents).not_to have_key(item_1.id)
@@ -78,9 +84,10 @@ describe Cart do
 
   describe "#delete_item" do
 
-    it 'deletes an item from the cart and leaves the remaining item' do
-      item_1, item_2 = Item.find(1), Item.find(2)
+    let!(:item_1) { Item.find(1) }
+    let!(:item_2) { Item.find(2) }
 
+    it 'deletes an item from the cart and leaves the remaining item' do
       cart.delete_item(item_1.id)
 
       expect(cart.contents).not_to have_key(item_1.id)
