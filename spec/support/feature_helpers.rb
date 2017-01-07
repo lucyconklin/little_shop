@@ -21,6 +21,7 @@ module FeatureHelpers
       click_on "-"
     end
   end
+  
   def click_on_remove(item)
     within("#item_#{@item_1.id}") do
       click_on "Remove"
