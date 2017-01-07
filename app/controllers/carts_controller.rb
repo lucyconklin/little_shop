@@ -3,7 +3,7 @@ class CartsController < ApplicationController
   def create
     add_item_to_cart
     set_cart_session
-    flash[:success] = add_message
+    flash_add_message
     redirect_to items_path
   end
 
@@ -17,7 +17,7 @@ class CartsController < ApplicationController
       last_item
     else
       @cart.delete_entire_item(item.id)
-      flash[:success] = remove_message
+      flash_remove_message
     end
     set_cart_session
     redirect_to cart_path
@@ -25,17 +25,17 @@ class CartsController < ApplicationController
 
   def last_item
     item = @cart.contents[params[:item_id]]
-    if item.nil?
-      flash[:success] = remove_message
-    end
+    flash_remove_message if item.nil?
   end
 
-  def remove_message
-    "Succesfully removed #{view_context.link_to(item.title, item)} from your cart."
+  def flash_remove_message
+    message = "Succesfully removed #{view_context.link_to(item.title, item)} from your cart."
+    flash[:success] = message
   end
 
-  def add_message
-    "You have added 1 #{item.title} to your cart."
+  def flash_add_message
+    message = "You have added 1 #{item.title} to your cart."
+    flash[:success] = message
   end
 
   def update
