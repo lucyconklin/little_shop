@@ -7,8 +7,11 @@ feature "When a customer visits the home page and wants to view their cart" do
   let!(:spoon) { create(:item, title: "Four Dollar Wooden Spoon", price_in_cents: 33_33) }
 
   before do
-    add_one_item_to_cart(pants)
-    add_one_item_to_cart(pants)
+    visit items_path
+    2.times do
+      add_one_item_to_cart(pants)
+    end
+    #add_one_item_to_cart(pants)
     add_one_item_to_cart(computer)
     add_one_item_to_cart(spoon)
     visit root_path

@@ -50,9 +50,13 @@ class Cart
     contents.empty?
   end
 
-  def remove_item(item_id)
+  def decrease_item_quantity(item_id)
     contents[item_id.to_s] -= 1
     clean_cart
+  end
+
+  def delete_item(item_id)
+    contents.delete(item_id.to_s)
   end
 
   private

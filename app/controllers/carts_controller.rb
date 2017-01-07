@@ -1,10 +1,9 @@
 class CartsController < ApplicationController
 
   def create
-    item = Item.find(params[:item_id])
-    @cart.add_item(item.id)
-    session[:cart] = @cart.contents
-    flash[:success] = "You have added 1 #{item.title} to your cart."
+    add_item_to_cart
+    set_session
+    flash[:success] = add_message
     redirect_to items_path
   end
 
@@ -14,25 +13,40 @@ class CartsController < ApplicationController
 
   def destroy
     if params[:remove].nil?
-      item = Item.find(params[:item_id])
-      @cart.remove_item(item.id)
-      session[:cart] = @cart.contents
+      @cart.decrease_item_quantity(item.id)
     else
-      item = Item.find(params[:item_id])
-      @cart.contents.delete(item.id.to_s)
-      session[:cart] = @cart.contents
-      flash[:success] = message(item)
+      @cart.delete_item(item.id)
+      flash[:success] = remove_message
     end
+    set_session
     redirect_to cart_path
   end
 
-  def message(item)
+  def remove_message
     "Succesfully removed #{view_context.link_to(item.title, item)} from your cart."
   end
 
+  def add_message
+    "You have added 1 #{item.title} to your cart."
+  end
+
   def update
-    item = Item.find(params[:item_id])
-    @cart.add_item(item.id)
+    add_item_to_cart
     redirect_to cart_path
   end
+
+  private
+
+  def item
+    Item.find(params[:item_id])
+  end
+
+  def set_session
+    session[:cart] = @cart.contents
+  end
+
+  def add_item_to_cart
+    @cart.add_item(item.id)
+  end
+
 end
