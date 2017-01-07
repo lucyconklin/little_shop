@@ -55,7 +55,7 @@ class Cart
     clean_cart
   end
 
-  def delete_item(item_id)
+  def delete_entire_item(item_id)
     contents.delete(item_id.to_s)
   end
 

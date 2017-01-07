@@ -88,7 +88,7 @@ describe Cart do
     let!(:item_2) { Item.find(2) }
 
     it 'deletes an item from the cart and leaves the remaining item' do
-      cart.delete_item(item_1.id)
+      cart.delete_entire_item(item_1.id)
 
       expect(cart.contents).not_to have_key(item_1.id)
       expect(cart.contents).to include(item_2.id.to_s => 1)

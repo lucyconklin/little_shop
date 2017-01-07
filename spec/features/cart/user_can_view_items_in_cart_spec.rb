@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature "When a customer visits the home page and wants to view their cart" do
-
   let!(:pants) { create(:item, title: "Rustic Wooden Pants", price_in_cents: 11_11) }
   let!(:computer) { create(:item, title: "Synergistic Silk Computer", price_in_cents: 22_22) }
   let!(:spoon) { create(:item, title: "Four Dollar Wooden Spoon", price_in_cents: 33_33) }
