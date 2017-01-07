@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "When a visitor visits the root path" do
   before do
-    customer = Customer.create!(first_name: "Jane",
+    Customer.create!(first_name: "Jane",
                                 last_name: "Doe",
                                 email: "jane@jane.com",
                                 password: "boom")
@@ -97,5 +97,4 @@ feature "When a visitor visits the root path" do
     expect(current_path).to eql(customers_path)
     expect(page).to have_content("Email has already been taken")
   end
-
 end
