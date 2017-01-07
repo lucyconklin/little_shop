@@ -8,6 +8,7 @@ env:
   - TEST_DIRECTORY=spec/features
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
-script: xvfb-run bundle exec rspec $TEST_DIRECTORY
+script: 
+  - xvfb-run bundle exec rspec $TEST_DIRECTORY
 cache: bundler
 sudo: false
