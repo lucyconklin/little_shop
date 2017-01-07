@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+####Master branch build status: 
+![](https://travis-ci.org/lucyconklin/little_shop.svg?branch=master)

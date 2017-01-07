@@ -16,4 +16,16 @@ module FeatureHelpers
     end
   end
 
+  def click_on_decrease(item)
+    within("#item_#{item.id}") do
+      click_on "-"
+    end
+  end
+
+  def click_on_remove(item)
+    within("#item_#{item.id}") do
+      click_on "Remove"
+    end
+  end
+
 end
