@@ -11,7 +11,6 @@ feature "When a visitor visits the root path" do
   end
 
   scenario "they can navigate to the login page and login" do
-    skip
     fill_in "email", with: "jane@jane.com"
     fill_in "password", with: "boom"
     click_on "Login"
@@ -63,7 +62,7 @@ feature "When a visitor visits the root path" do
 
     expect(current_path).to eql(dashboard_path)
     within(".navbar") do
-      expect(page).to have_content("Logged in as Jane Doe")
+      expect(page).to have_content("Logged in as John Smith")
     end
   end
 
@@ -93,7 +92,6 @@ feature "When a visitor visits the root path" do
 
     expect(current_path).to eql(customers_path)
     expect(page).to have_content("Emailhas already been taken")
-    # Add functionality to reset password?
   end
 
 end

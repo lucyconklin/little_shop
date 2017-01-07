@@ -8,6 +8,11 @@
           <span class="glyphicon glyphicon-tree-conifer"></span>
         </a>
       </div>
+      <div>
+        <% if current_customer? %>
+          Logged in as <%= current_customer?.first_name %> <%= current_customer?.last_name %>
+        <% end %>
+      </div>
       <ul class="nav navbar-nav pull-right">
 
         <li> <%= link_to "Sign in", login_path %> </li>
