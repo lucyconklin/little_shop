@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   validates_uniqueness_of :title
 
   belongs_to :category
+  has_many :order_items
+  has_many :orders, through: :order_items
 
   def price_in_dollars
     price_in_cents / 100.to_f

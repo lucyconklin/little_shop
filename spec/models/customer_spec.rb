@@ -10,6 +10,6 @@ describe Customer do
   end
 
   context "associations" do
-    # orders
+    it { is_expected.to have_many(:orders) }
   end
 end

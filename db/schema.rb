@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107002256) do
+ActiveRecord::Schema.define(version: 20170107035743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,4 +46,35 @@ ActiveRecord::Schema.define(version: 20170107002256) do
     t.index ["title"], name: "index_items_on_title", unique: true, using: :btree
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "item_price_in_cents"
+    t.integer  "item_quantity"
+    t.integer  "item_id"
+    t.integer  "order_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["item_id"], name: "index_order_items_on_item_id", using: :btree
+    t.index ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "total_price_in_cents"
+    t.integer  "status_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id", using: :btree
+    t.index ["status_id"], name: "index_orders_on_status_id", using: :btree
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "order_items", "items"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "statuses"
 end
