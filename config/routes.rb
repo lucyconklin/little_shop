@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
 
   get '/cart' => "carts#show", as: "cart"
+  post '/cart' => "carts#update"
   delete '/cart' => "carts#destroy"
 
   get '/orders' => "customers/orders#index"
