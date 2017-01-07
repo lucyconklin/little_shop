@@ -7,7 +7,7 @@ feature "When a visitor visits the root path" do
                                 email: "jane@jane.com",
                                 password: "boom")
     visit root_path
-    click_on "Sign in"
+    click_on "Signin"
   end
 
   scenario "they can navigate to the login page and login" do
@@ -61,9 +61,13 @@ feature "When a visitor visits the root path" do
     click_on "Create Account"
 
     expect(current_path).to eql(dashboard_path)
-    within(".navbar") do
-      expect(page).to have_content("Logged in as John Smith")
-    end
+    expect(page).to have_css(".navbar", text: "Logged in as John Smith")
+    expect(page).to have_content("Account Information")
+    expect(page).to have_content("First name: John")
+    expect(page).to have_content("Last name: Smith")
+    expect(page).to have_content("Email: john@john.com")
+    expect(page).not_to have_selector(:link_or_button, text: "Signin")
+    expect(page).to have_selector(:link_or_button, text: "Logout")
   end
 
   scenario "they see an error message if they do not input all required fields" do

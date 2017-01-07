@@ -15,7 +15,13 @@
       </div>
       <ul class="nav navbar-nav pull-right">
 
-        <li> <%= link_to "Sign in", login_path %> </li>
+        <li>
+          <% if current_customer? %>
+            <%= link_to "Logout", "#" %>
+          <% else %>
+            <%= link_to "Signin", login_path %>
+          <% end %>
+        </li>
 
         <li> <%= link_to "Items", items_path, class: "nav" %> </li>
 
