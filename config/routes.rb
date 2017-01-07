@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/cart' => "carts#show", as: "cart"
   delete '/cart' => "carts#destroy"
 
+  get '/orders' => "customers/orders#index"
+
   resources :categories, :path => '', only: [:show]
 
   resources :carts, only: [:create]

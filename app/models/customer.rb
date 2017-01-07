@@ -6,4 +6,6 @@ class Customer < ApplicationRecord
   validates :password_digest, presence: true
 
   has_many :orders
+
+  has_secure_password
 end
