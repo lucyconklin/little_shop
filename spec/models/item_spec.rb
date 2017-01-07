@@ -7,6 +7,12 @@ describe Item do
     it { is_expected.to validate_presence_of(:price_in_cents) }
     it { is_expected.to validate_presence_of(:image_url) }
     it { is_expected.to validate_uniqueness_of(:title) }
+    it { is_expected.to validate_presence_of(:retired) }
+    it "is false by default" do
+      item = create(:item)
+
+      expect(item.retired).to eq(false)
+    end
   end
 
   context "associations" do
