@@ -222,6 +222,7 @@ DEPENDENCIES
   rack_session_access
   rails (~> 5.0.1)
   rails_12factor
+  rake
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
