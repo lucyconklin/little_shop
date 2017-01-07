@@ -9,10 +9,12 @@
     <div class="col-md-4" id="item_<%= item.id %>">
       <p><%= item.title %></p>
       <p><%= item.description %></p>
-      <p><%= quantity %> x <%= number_to_currency(item.price_in_dollars) %></p>
-      <%= link_to "Remove", cart_path(item_id: item.id), method: :delete %>
-    </div>
+      <p><%= quantity %> x <%= number_to_currency(item.price_in_dollars) %>
+      <%= link_to "-", cart_path(item_id: item.id), method: :delete %>
+      <%= link_to "+", cart_path(item_id: item.id), method: :post%></p>
+    <%= link_to "Remove", cart_path(item_id: item.id),name: 'remove', method: :delete %>
   </div>
+</div>
 <% end %>
 <div class="row">
   <div class="col-md-offset-2 col-md-2">
