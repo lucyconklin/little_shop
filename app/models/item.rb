@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   validates :price_in_cents, presence: true
   validates :image_url, presence: true
   validates_uniqueness_of :title
-  validates :retired, :inclusion => {:in => [true, false]}
+  validates :retired, inclusion: { in: [true, false] }
 
   belongs_to :category
 
