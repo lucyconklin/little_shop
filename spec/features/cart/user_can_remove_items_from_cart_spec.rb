@@ -48,7 +48,7 @@ feature "A user can remove an item from the cart" do
 
 			expect(page).not_to have_content(item_1.description)
 			expect(page).to have_content(item_2.description)
-			expect(page).to have_content(:link, item_1.title)
+			expect(page).to have_content(:link, item_2.title)
 		end
 	end
 
@@ -68,7 +68,6 @@ feature "A user can remove an item from the cart" do
 			end
 
 			expect(page).to have_content("2 x $#{@item_2.price_in_dollars}")
-			expect(page).to have_content("1 x $#{@item_1.price_in_dollars}")
 		end
 
 		it 'the user should see a decrease button or link' do
