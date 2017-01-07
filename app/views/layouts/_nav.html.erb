@@ -1,27 +1,37 @@
-<nav class="navbar navbar-fixed-top navbar-right">
+<nav class="navbar navbar-fixed-top navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">Timber Shop</a>
+      <a class="navbar-brand" href="/">
+        <span class="glyphicon glyphicon-tree-conifer"></span>
+        Timber Shop
+        <span class="glyphicon glyphicon-tree-conifer"></span>
+      </a>
     </div>
     <ul class="nav navbar-nav pull-right">
-      <li class="shopping-bag">
-        <%= link_to "#{@cart.number_of_items}", cart_path, class: "cart-counter" %>
-      </li>
-      <li> <%= link_to "Items", items_path %> </li>
 
-      <div class="dropdown">
-        <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <li> <%= link_to "Items", items_path, class: "nav" %> </li>
+
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle nav" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
           <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        </a>
+        <ul class="dropdown-menu">
           <% categories.each do |category| %>
           <li> <%= link_to "#{category.name}", category_path(category) %> </li>
           <% end %>
         </ul>
-      </div>
+      </li>
+
+      <li>
+        <%= link_to cart_path do %>
+          <div class="cart">
+            <span class="cart-counter"><%= @cart.number_of_items %></span>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+          </div>
+        <% end %>
+      </li>
 
     </ul>
-
   </div>
 </nav>

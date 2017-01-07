@@ -1,40 +1,42 @@
 <div class="jumbotron">
-  <div class="layer">
+  <div class="gray-layer">
     <div class="jumbotron-contents">
-      <div class="jumbotron-title">
-        TIMBER SHOP
-      </div>
-      <div class="jumbotron-text">Get your lumber here, matey!</div>
+      <h3 class="jumbotron-title">TIMBER SHOP</h3>
+      <p class="jumbotron-text text-center">100% authentic</p>
     </div>
   </div>
 </div>
 
-<div class="container-fluid pendant-holder">
-  <div class="col-md-4">
-    <div class="pendant">
-      <%= link_to(items_path) do %>
-        Shop All
-        <br />
-        Items
-      <% end %>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="pendant">
-      <%= link_to("#") do %>
-        Shop by
-        <br />
-        Category
-      <% end %>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="pendant">
-      <%= link_to("#") do %>
-        Signup for
-        <br />
-        Coupons
-      <% end %>
-    </div>
-  </div>
-</div>
+<section class="pendant-container">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <h3 class="pendant text-center">
+          <%= link_to(items_path) do %>
+            Shop All
+            <br />
+            Items
+          <% end %>
+        </h3>
+      </div>
+      <div class="col-md-4">
+        <h3 class="pendant text-center">
+          <%= link_to("#") do %>
+            Shop by
+            <br />
+            Category
+          <% end %>
+        </h3>
+      </div>
+      <div class="col-md-4">
+        <h3 class="pendant text-center">
+          <%= link_to("#") do %>
+            Signup for
+            <br />
+            Coupons
+          <% end %>
+        </h3>
+      </div>
+    </div><!-- end row -->
+  </div><!-- end container-fluid -->
+</section>

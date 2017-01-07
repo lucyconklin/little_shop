@@ -1,24 +1,16 @@
-$header_font: 'Quattrocento', serif
-$dark-brown-gray: #42424c
-$gray-blue: #9eafb4
-$light-gray-blue: #deeaea
-$tan: #c9a379
-$green-gray: #576363
-$white: white
-
-$jumbotron-height: 500px
+$jumbotron-height: 600px
 $pendant-size: 300px
 
 .jumbotron
   background: url(https://static.pexels.com/photos/1045/wood-forest-stack-stacked.jpg) no-repeat center center
   min-height: $jumbotron-height
   text-align: center
+  padding: 0
 
-.layer
+.gray-layer
   background-color: rgba(87,99,99, 0.25)
   min-height: $jumbotron-height
   position: absolute
-  top: 0
   left: 0
   width: 100%
 
@@ -26,23 +18,25 @@ $pendant-size: 300px
   margin-top: $jumbotron-height / 3
 
 .jumbotron-title
-  color: $white
+  color: white
   font-family: $header_font
   font-size: 6em
   font-weight: bold
 
-.jumbotron-text
-  color: $white
-  font-size: 3em
+p.jumbotron-text
+  color: white
+  font-size: 30px
   border-top: 1px solid white
   width: 40%
   margin: 0 auto
   padding-top: 0.25em
 
-.pendant-holder
+.pendant-container
   margin-top: 5em
   margin-bottom: 5em
-  width: 90%
+  width: 80%
+  margin-left: auto
+  margin-right: auto
 
 .pendant
   background-image: url(full_tree_slice.jpg)
@@ -51,12 +45,10 @@ $pendant-size: 300px
   background-size: contain
   height: $pendant-size
   padding-top: $pendant-size * .32
-  text-align: center
   color: $dark-brown-gray
   font-size: 3em
   font-weight: bold
-  text-align: center
   margin: 0px auto
 
-.pendant:hover
-  font-size: 3.2em
+.pendant a:hover
+  text-decoration: none
