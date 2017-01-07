@@ -46,6 +46,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'rack_session_access'
+  gem 'rake'
 end
 
 group :development do
