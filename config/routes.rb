@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#index'
-  get '/login' => "customer/sessions#attempt_login"
-  post '/login' => "customer/sessions#login"
+  get '/login' => "customers/sessions#attempt_login"
+  post '/login' => "customers/sessions#login"
 
   resources :customers, only: [:new, :create]
 

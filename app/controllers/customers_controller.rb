@@ -1,5 +1,6 @@
-class CustomersController < Customer::BaseController
-
+class CustomersController < Customers::BaseController
+  skip_before_action :require_customer, :only => [:new, :create]
+  
   def new
     @customer = Customer.new
   end
