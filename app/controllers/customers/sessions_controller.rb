@@ -1,10 +1,11 @@
-class Customer::SessionsController < Customer::BaseController
-  skip_before_action :require_customer, :only => [:attempt_login, :login]
+class Customers::SessionsController < Customers::BaseController
+  skip_before_action :require_customer, :only => [:new, :create]
 
-  def attempt_login
+  def new
+    # render 'customers/sessions/new'
   end
 
-  def login
+  def create
     @customer = Customer.find_by(email: params[:email])
     if @customer && @customer.authenticate(params[:password])
       session[:customer_id] = @customer.id
@@ -12,14 +13,7 @@ class Customer::SessionsController < Customer::BaseController
       redirect_to customer_path(@customer)
     else
       flash[:danger] = "Email and password combination do not exist"
-      render :attempt_login
+      render :new
     end
   end
-
-  def new
-  end
-
-  def create
-  end
-
 end

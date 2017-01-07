@@ -9,10 +9,11 @@ feature "When a visitor visits the root path" do
 
     click_on "Login"
 
-    expect(page).to have_content("First name can't be blank")
-    expect(page).to have_content("Last name can't be blank")
-    expect(page).to have_content("Email can't be blank")
-    expect(page).to have_content("Password can't be blank")
+    expect(page).to have_content("Email and password combination do not exist")
+
+    click_on "Create Account"
+
+    expect(current_path).to eql(new_customer_path)
 
     fill_in "customer[first_name]", with: "Jane"
     fill_in "customer[last_name]", with: "Doe"
