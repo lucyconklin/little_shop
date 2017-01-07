@@ -56,7 +56,7 @@ feature "A user can remove an item from the cart" do
 
   context "When a cart has 2 of each item" do
     before do
-      @item_1, @item_2 = create_list(:item,2)
+      @item_1, @item_2 = create_list(:item, 2)
       2.times do
         visit items_path
         add_one_item_to_cart(@item_1)

@@ -12,7 +12,7 @@ module FeatureHelpers
 
   def add_one_item_to_cart(item)
     within "#item_#{item.id}" do
-     click_on "Add to cart"
+      click_on "Add to cart"
     end
   end
 
