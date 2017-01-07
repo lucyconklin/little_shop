@@ -13,15 +13,21 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    byebug
-    item = Item.find(params[:item_id])
-    @cart.remove_item(item.id)
-    session[:cart] = @cart.contents
-    path = request.env['PATH_INFO']
-    unless path.eql?("/cart")
-      flash[:success] = "Succesfully removed #{view_context.link_to(item.title, item)} from your cart."
+    if params[:remove].nil?
+      item = Item.find(params[:item_id])
+      @cart.remove_item(item.id)
+      session[:cart] = @cart.contents
+    else
+      item = Item.find(params[:item_id])
+      @cart.contents.delete(item.id.to_s)
+      session[:cart] = @cart.contents
+      flash[:success] = message(item)
     end
     redirect_to cart_path
+  end
+
+  def message(item)
+    "Succesfully removed #{view_context.link_to(item.title, item)} from your cart."
   end
 
   def update
