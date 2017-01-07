@@ -1,4 +1,44 @@
-<div class="jumbotron">
-  <h1>Timber Shop</h1>
-  <p>Get your lumber here, matey!</p>
-</div>
+<section class="homepage">
+  <div class="jumbotron">
+    <div class="gray-layer">
+      <div class="jumbotron-contents">
+        <h3 class="jumbotron-title">TIMBER SHOP</h3>
+        <p class="jumbotron-text text-center">100% authentic</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="pendant-container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <h3 class="pendant text-center">
+            <%= link_to(items_path) do %>
+              Shop All
+              <br />
+              Items
+            <% end %>
+          </h3>
+        </div>
+        <div class="col-md-4">
+          <h3 class="pendant text-center">
+            <%= link_to("#") do %>
+              Shop by
+              <br />
+              Category
+            <% end %>
+          </h3>
+        </div>
+        <div class="col-md-4">
+          <h3 class="pendant text-center">
+            <%= link_to("#") do %>
+              Signup for
+              <br />
+              Coupons
+            <% end %>
+          </h3>
+        </div>
+      </div><!-- end row -->
+    </div><!-- end container-fluid -->
+  </section>
+</section>

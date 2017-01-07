@@ -7,11 +7,12 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
-    <%= link_to "View cart", cart_path %>
-    <%= render partial: 'shared/notices' %>
-    <%= render partial: 'shared/cart' %>
-    <%= yield %>
+    <%= render partial: 'layouts/nav' %>
+    <section class="main">
+      <%= render partial: 'shared/notices' %>
+      <%= yield %>
+    </section>
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>
