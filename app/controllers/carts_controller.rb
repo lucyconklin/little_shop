@@ -9,6 +9,7 @@ class CartsController < ApplicationController
 
   def show
     @items = @cart.items
+    @customer = current_customer?
   end
 
   def destroy

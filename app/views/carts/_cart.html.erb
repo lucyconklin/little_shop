@@ -21,5 +21,11 @@
   </div>
   <div class="col-md-4">
     <h3 class="text-right"><%= number_to_currency(@cart.total_price_in_dollars) %></h3>
+    <% if @customer %>
+      <p><%= link_to "Checkout", class: "button-primary" %></p>
+    <% else %>
+      <p><%= link_to "Login", login_path, class: "button-primary" %></p>
+      <p><%= link_to "Create Account to Checkout", new_customer_path(:from_cart => "from_cart"), class: "button-primary" %></p>
+    <% end %>
   </div>
 </div>

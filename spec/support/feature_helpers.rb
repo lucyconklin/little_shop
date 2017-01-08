@@ -28,4 +28,29 @@ module FeatureHelpers
     end
   end
 
+  def login
+    fill_in "email", with: "jane@jane.com"
+    fill_in "password", with: "boom"
+    within("form") do
+      click_on "Log in"
+    end
+  end
+
+  def create_valid_account
+    fill_in "customer[first_name]", with: "John"
+    fill_in "customer[last_name]", with: "Smith"
+    fill_in "customer[email]", with: "john@john.com"
+    fill_in "customer[password]", with: "boom"
+    fill_in "customer[password_confirmation]", with: "boom"
+    click_on "Create Account"
+  end
+
+  def invalid_account_creation
+    fill_in "customer[first_name]", with: "Bill"
+    fill_in "customer[last_name]", with: "Sparks"
+    fill_in "customer[email]", with: "john@john.com"
+    fill_in "customer[password]", with: "blue"
+    click_on "Create Account"
+  end
+
 end
