@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/login' => "customers/sessions#attempt_login"
   post '/login' => "customers/sessions#login"
   get '/dashboard' => "customers#dashboard"
+  get '/logout' => "customers/sessions#logout"
 
   resources :customers, only: [:new, :create]
 
