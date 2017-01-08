@@ -15,9 +15,9 @@ describe Customer do
 
   scenario 'is valid when all fields are present' do
     customer = Customer.create(first_name: "Jane",
-                                last_name: "Doe",
-                                email: "jane@jane.com",
-                                password: "boom")
+                               last_name: "Doe",
+                               email: "jane@jane.com",
+                               password: "boom")
 
     expect(customer).to be_valid
   end
