@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :status do
-    name { ["paid", "cancelled", "completed", "ordered"].sample }
+    name { %w(paid cancelled completed ordered).sample }
   end
 
   factory :order do

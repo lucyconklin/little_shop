@@ -17,10 +17,4 @@ describe OrderItem do
       end
     end
   end
-
-  describe "#item_title" do
-    it "returns the title of the item" do
-
-    end
-  end
 end

@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 describe "Viewing a customer's previous orders" do
-
   context "a customer has no orders" do
     scenario "a pleasant message appears" do
-      customer = log_in_as_customer
+      log_in_as_customer
       visit "/orders"
 
       expect(page).to have_content "You have not placed any orders."
