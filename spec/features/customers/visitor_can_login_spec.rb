@@ -2,10 +2,10 @@ require "rails_helper"
 
 feature "When a visitor visits the root path" do
   before do
-    Customer.create!(first_name: "Jane",
-                                last_name: "Doe",
-                                email: "jane@jane.com",
-                                password: "boom")
+    Customer.create!( first_name: "Jane",
+                      last_name: "Doe",
+                      email: "jane@jane.com",
+                      password: "boom")
     visit root_path
     click_on "Sign in"
   end
