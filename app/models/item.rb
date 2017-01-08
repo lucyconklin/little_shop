@@ -7,9 +7,11 @@ class Item < ApplicationRecord
   validates :retired, inclusion: { in: [true, false] }
 
   belongs_to :category
+  has_many :order_items
+  has_many :orders, through: :order_items
 
-  def price_in_dollars
-    price_in_cents / 100.to_f
+  def price_in_dollars(quantity = 1)
+    quantity * price_in_cents / 100.to_f
   end
 
   def category_name

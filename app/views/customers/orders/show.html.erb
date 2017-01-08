@@ -1,0 +1,36 @@
+<h2>Order from <%= @order.date %></h2>
+
+<div class="list-group">
+  <div class="list-group-item">
+    <h3 class="list-group-item-heading">Total:</h3>
+    <p class="list-group-item-text"><%= number_to_currency(@order.total_price_in_dollars) %></p>
+  </div>
+  <div class="list-group-item">
+    <h3 class="list-group-item-heading">Status: <%= @order.status_name %></h3>
+    <p class="list-group-item-text">submitted at: <%= @order.display_submitted_at %></p>
+    <% if @order.completed_or_cancelled? %>
+      <%= render partial: 'completed_or_cancelled' %>
+    <% end %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>Item</td>
+      <td>Quantity x Price</td>
+      <td>Subtotal</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.items_and_quantities.each do |item, quantity| %>
+      <tr>
+        <td><%= link_to item.title, item_path(item) %></td>
+        <td><%= quantity %> x <%= number_to_currency(item.price_in_dollars) %></td>
+        <td><%= number_to_currency(item.price_in_dollars(quantity)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<hr />
+<p class="text-right">Total: <%= number_to_currency(@order.total_price_in_dollars) %></p>
