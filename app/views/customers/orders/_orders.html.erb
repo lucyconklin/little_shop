@@ -1,6 +1,11 @@
-<% @orders.each do |order| %>
-  <p>
-    Order total: <%= number_to_currency(order.total_price_in_dollars) %>
-    Order date: <%= order.date %>
-  </p>
-<% end %>
+<div class="list-group">
+  <% @orders.each do |order| %>
+    <%= link_to root_path, class: "list-group-item" do %>
+      <div id="order_<%= order.id %>">
+        <strong>Order Total:</strong> <%= number_to_currency(order.total_price_in_dollars) %>
+        <strong>Date:</strong> <%= order.date %>
+        <strong>Status:</strong> <%= order.status.name.capitalize %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

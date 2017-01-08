@@ -1,6 +1,6 @@
 class Customers::OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 end
