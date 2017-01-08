@@ -1,0 +1,9 @@
+<%= bootstrap_form_for @customer, :html => {:class => "form-horizontal center"} do |f| %>
+  <%= f.text_field :first_name, placeholder: "First name" %>
+  <%= f.text_field :last_name, placeholder: "Last name" %>
+  <%= f.text_field :email, placeholder: "email@example.com" %>
+  <%= f.password_field :password, placeholder: "Password" %>
+  <%= f.password_field :password_confirmation, placeholder: "Retype Password" %>
+  
+  <%= f.submit "Create Account", class: "btn btn-success btn-block" %>
+<% end %>
