@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   delete '/cart' => "carts#destroy"
 
   get '/orders' => "customers/orders#index"
+  get '/order' => "customers/orders#show"
 
   resources :categories, :path => '', only: [:show]
 

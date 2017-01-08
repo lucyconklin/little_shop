@@ -1,10 +1,17 @@
 FactoryGirl.define do
 
   factory :status do
-    name { ["ordered", "paid", "cancelled", "completed"].sample }
+    name { ["paid", "cancelled", "completed", "ordered"].sample }
   end
 
   factory :order do
+    total_price_in_cents { Faker::Number.between(9_99, 500_01) }
+    customer { Customer.all.sample(1).first }
+    status { Status.all.sample(1).first }
+    items { FactoryGirl.create_list(:item, 5) }
+  end
+
+  factory :all_new_order, class: Order do
     total_price_in_cents { Faker::Number.between(9_99, 500_01) }
     customer
     status
