@@ -14,7 +14,7 @@ describe "Viewing a customer's previous orders" do
   context "a customer has previous orders" do
     scenario "those orders appear as a list" do
       customer = log_in_as_customer
-      order_1, order_2, order_3 = create_list(:order, 3)
+      order_1, order_2, order_3 = create_list(:all_new_order, 3)
       customer.orders = [order_1, order_2]
       visit "/orders"
 
