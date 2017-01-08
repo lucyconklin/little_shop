@@ -5,14 +5,14 @@ FactoryGirl.define do
   end
 
   factory :order do
-    total_price_in_cents { Faker::Number.between(9_99, 500_01) }
+    total_price_in_cents 0
     customer { Customer.all.sample(1).first }
     status { Status.all.sample(1).first }
     items { FactoryGirl.create_list(:item, 5) }
   end
 
   factory :all_new_order, class: Order do
-    total_price_in_cents { Faker::Number.between(9_99, 500_01) }
+    total_price_in_cents 0
     customer
     status
     items { FactoryGirl.create_list(:item, 5) }
