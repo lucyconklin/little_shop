@@ -12,4 +12,13 @@ describe Customer do
   context "associations" do
     it { is_expected.to have_many(:orders) }
   end
+
+  scenario 'is valid when all fields are present' do
+    customer = Customer.create( first_name: "Jane",
+                                last_name: "Doe",
+                                email: "jane@jane.com",
+                                password: "boom")
+
+    expect(customer).to be_valid
+  end
 end
