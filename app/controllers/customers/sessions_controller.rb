@@ -1,5 +1,5 @@
 class Customers::SessionsController < Customers::BaseController
-  skip_before_action :require_customer, :only => [:attempt_login, :login]
+  skip_before_action :require_customer, only: [:attempt_login, :login]
 
   def attempt_login
   end
