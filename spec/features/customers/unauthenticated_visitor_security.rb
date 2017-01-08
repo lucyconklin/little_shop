@@ -1,6 +1,5 @@
 require "rails_helper"
 
-
 feature "When a site visitor is unauthenticated" do
   before do
     customer = create(:customer)
