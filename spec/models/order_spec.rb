@@ -43,7 +43,6 @@ describe Order do
         expect(order.calculated_price_in_cents).to eq 21_11
         expect(order.total_price_in_cents).to eq 21_11
       end
-
     end
 
     context "there are multiple items with different quantities" do

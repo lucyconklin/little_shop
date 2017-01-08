@@ -7,7 +7,7 @@ describe OrderItem do
   end
 
   describe "before saving" do
-    context "saves the item quantity and price" do
+    context "saves the item price" do
       it "returns the price of the item in cents" do
         items = create_list(:item, 2)
         order = create(:all_new_order, items: items)
