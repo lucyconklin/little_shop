@@ -15,8 +15,8 @@ FactoryGirl.define do
     first_name            { Faker::Pokemon.name }
     last_name             { Faker::StarWars.planet.split.join("-") }
     email                 { first_name + "_of_" + last_name + "_" + Faker::Number.hexadecimal(4) + "@example.com" }
-    password              { "Secret12345" }
-    password_confirmation { "Secret12345" }
+    password              { "boom" }
+    password_confirmation { "boom" }
   end
 
   images = [
