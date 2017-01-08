@@ -7,7 +7,7 @@ feature "When a visitor visits the root path" do
                                 email: "jane@jane.com",
                                 password: "boom")
     visit root_path
-    click_on "Signin"
+    click_on "Sign in"
   end
 
   scenario "they can navigate to the login page and login" do
@@ -66,8 +66,8 @@ feature "When a visitor visits the root path" do
     expect(page).to have_content("First name: John")
     expect(page).to have_content("Last name: Smith")
     expect(page).to have_content("Email: john@john.com")
-    expect(page).not_to have_selector(:link_or_button, text: "Signin")
-    expect(page).to have_selector(:link_or_button, text: "Logout")
+    expect(page).not_to have_selector(:link_or_button, text: "Sign in")
+    expect(page).to have_selector(:link_or_button, text: "Log out")
   end
 
   scenario "they see an error message if they do not input all required fields" do
