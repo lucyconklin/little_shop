@@ -14,7 +14,7 @@ describe Customer do
   end
 
   scenario 'is valid when all fields are present' do
-    customer = Customer.create( first_name: "Jane",
+    customer = Customer.create(first_name: "Jane",
                                 last_name: "Doe",
                                 email: "jane@jane.com",
                                 password: "boom")
