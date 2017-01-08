@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   post '/cart' => "carts#update"
   delete '/cart' => "carts#destroy"
 
+  get '/orders' => "customers/orders#index"
+  get '/order' => "customers/orders#show"
+
   resources :categories, :path => '', only: [:show]
 
   resources :carts, only: [:create]

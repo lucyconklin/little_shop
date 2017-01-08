@@ -53,4 +53,13 @@ module FeatureHelpers
     click_on "Create Account"
   end
 
+  def log_in_as_customer(customer = create(:customer))
+    visit login_path
+    fill_in "Email", with: customer.email
+    fill_in "Password", with: "boom"
+    within("form") do
+      click_on "Log in"
+    end
+    customer
+  end
 end

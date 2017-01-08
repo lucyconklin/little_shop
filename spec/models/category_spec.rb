@@ -9,4 +9,10 @@ RSpec.describe Category do
   context 'associations' do
     it { is_expected.to have_many(:items) }
   end
+
+  scenario 'is valid with a name' do
+    category = Category.create(name: "Kitchen Things")
+
+    expect(category).to be_valid
+  end
 end
