@@ -20,6 +20,14 @@ describe Order do
     end
   end
 
+  describe "#order_price_in_cents" do
+    it "returns the total price for the order" do
+      item_1 = create(:item, price_in_cents: 11_11)
+      item_2 = create(:item, price_in_cents: 10_00)
+      order = create(:all_new_order)
+    end
+  end
+
   describe "#date" do
     it "returns a well-formatted date" do
       order_date = DateTime.new(2017, 2, 22, 8)

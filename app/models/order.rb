@@ -19,7 +19,7 @@ class Order < ApplicationRecord
   end
 
   def items_and_quantities
-    items.inject(Hash.new(0)) do |hash, item|
+    items.reduce(Hash.new(0)) do |hash, item|
       hash[item] += 1
       hash
     end
