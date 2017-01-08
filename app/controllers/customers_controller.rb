@@ -10,7 +10,6 @@ class CustomersController < Customers::BaseController
     if @customer.save
       session[:customer_id] = @customer.id
       flash[:success] = 'Successfully logged in!'
-      #redirect_to dashboard_path
       redirect_to_correct_path
     else
       @errors = @customer.errors

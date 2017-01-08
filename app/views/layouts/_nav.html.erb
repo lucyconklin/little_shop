@@ -12,44 +12,44 @@
       <% if current_customer? %>
         <div class="logged-in-message">
           Logged in as <%= current_customer.first_name %> <%= current_customer.last_name %>
-        </div>
-      <% end %>
+      </div>
+    <% end %>
 
-      <ul class="nav navbar-nav pull-right">
+    <ul class="nav navbar-nav pull-right">
 
-        <li>
-          <% if current_customer? %>
-            <%= link_to "Log out", logout_path %>
-          <% else %>
-            <%= link_to "Log in", login_path %>
-          <% end %>
-        </li>
+      <li>
+        <% if current_customer? %>
+          <%= link_to "Log out", logout_path %>
+        <% else %>
+          <%= link_to "Log in", login_path %>
+        <% end %>
+      </li>
 
-        <li> <%= link_to "Items", items_path, class: "nav" %> </li>
+      <li> <%= link_to "Items", items_path, class: "nav" %> </li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle nav" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Categories
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <% categories.each do |category| %>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle nav" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <% categories.each do |category| %>
             <li> <%= link_to "#{category.name}", category_path(category) %> </li>
-            <% end %>
-          </ul>
-        </li>
-
-        <li class="view-cart" >
-          <%= link_to cart_path do %>
-            <span class="hidden">View cart</span>
-            <div class="cart">
-              <span class="cart_counter"><%= @cart.number_of_items %></span>
-              <span class="glyphicon glyphicon-shopping-cart"></span>
-            </div>
           <% end %>
-        </li>
+        </ul>
+      </li>
 
-      </ul>
-    </div>
-  </nav>
+      <li class="view-cart" >
+        <%= link_to cart_path do %>
+          <span class="hidden">View cart</span>
+          <div class="cart">
+            <span class="cart_counter"><%= @cart.number_of_items %></span>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+          </div>
+        <% end %>
+      </li>
+
+    </ul>
+  </div>
+</nav>
 </header>
