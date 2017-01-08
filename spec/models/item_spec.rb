@@ -19,6 +19,15 @@ describe Item do
     it { is_expected.to have_many(:orders).through(:order_items) }
   end
 
+  scenario 'is valid when all fields are present' do
+    item = Item.create(title: "Wooden Spoons",
+                       description: "These are hand carved.",
+                       price_in_cents: "100",
+                       image_url: "https://c1.staticflickr.com/1/138/379043173_3776319eec_z.jpg?zz=1")
+
+    expect(item).to be_valid
+  end
+
   describe "#price_in_dollars" do
     let(:item) { create(:item, price_in_cents: 12_34) }
 

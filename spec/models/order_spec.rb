@@ -14,17 +14,58 @@ describe Order do
 
   describe "#total_price_in_dollars" do
     it "returns the price in dollars" do
-      order = create(:all_new_order, total_price_in_cents: 12_34)
+      item = create(:item, price_in_cents: 12_34)
+      order = create(:all_new_order, items: [item])
 
       expect(order.total_price_in_dollars).to eq 12.34
     end
   end
 
-  describe "#order_price_in_cents" do
-    it "returns the total price for the order" do
-      item_1 = create(:item, price_in_cents: 11_11)
-      item_2 = create(:item, price_in_cents: 10_00)
-      order = create(:all_new_order)
+  describe "#calculated_price_in_cents" do
+    let!(:item_1) { create(:item, price_in_cents: 11_11) }
+    let!(:item_2) { create(:item, price_in_cents: 10_00) }
+
+    context "there is one item on the order" do
+      it "returns the price of that one item" do
+        items = [item_1]
+        order = create(:all_new_order, items: items)
+
+        expect(order.calculated_price_in_cents).to eq 11_11
+        expect(order.total_price_in_cents).to eq 11_11
+      end
+    end
+
+    context "there are two unique items" do
+      it "returns the total price of those two items added together" do
+        items = [item_1, item_2]
+        order = create(:all_new_order, items: items)
+
+        expect(order.calculated_price_in_cents).to eq 21_11
+        expect(order.total_price_in_cents).to eq 21_11
+      end
+    end
+
+    context "there are multiple items with different quantities" do
+      it "returns the total price for the order" do
+        items = [item_1, item_1, item_2, item_2, item_2]
+        order = create(:all_new_order, items: items)
+
+        expect(order.calculated_price_in_cents).to eq 52_22
+        expect(order.total_price_in_cents).to eq 52_22
+      end
+    end
+  end
+
+  describe "price_in_cents" do
+    let(:item_1) { create(:item, price_in_cents: 11_11) }
+    let(:item_2) { create(:item, price_in_cents: 20_02) }
+
+    it "returns the total price of all the items on the order" do
+      items = [item_1, item_1, item_1, item_2, item_2]
+      order = create(:all_new_order, items: items)
+
+      expect(order.total_price_in_cents).to eq 73_37
+      expect(order.calculated_price_in_cents).to eq 73_37
     end
   end
 

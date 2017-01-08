@@ -5,10 +5,18 @@ class Order < ApplicationRecord
   validates :customer, presence: true
   validates :items, presence: true
 
+  before_validation :set_total
+
   belongs_to :status
   belongs_to :customer
   has_many :order_items
   has_many :items, through: :order_items
+
+  def calculated_price_in_cents
+    items_and_quantities.map do |item, quantity|
+      item.price_in_cents * quantity
+    end.reduce(:+)
+  end
 
   def total_price_in_dollars
     total_price_in_cents / 100.to_f
@@ -39,5 +47,9 @@ class Order < ApplicationRecord
 
   def display_updated_at
     created_at.strftime('%e %b %Y at %l:%M %p')
+  end
+
+  def set_total
+    self.total_price_in_cents = calculated_price_in_cents
   end
 end
