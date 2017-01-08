@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Log in</h1>
+  <%= bootstrap_form_tag url: '/login' do |f| %>
+    <%= f.text_field :email, placeholder: "example@email.com" %>
+    <%= f.password_field :password, placeholder: "Password" %>
+
+    <%= f.submit "Log in", class: "btn btn-success btn-block" %>
+  <% end %>
+
+  <p>
+    Don't have an account?
+    <%= link_to "Register", new_customer_path %>
+  </p>
+</div>

@@ -8,7 +8,22 @@
           <span class="glyphicon glyphicon-tree-conifer"></span>
         </a>
       </div>
+
+      <% if current_customer? %>
+        <div class="logged-in-message">
+          Logged in as <%= current_customer.first_name %> <%= current_customer.last_name %>
+        </div>
+      <% end %>
+
       <ul class="nav navbar-nav pull-right">
+
+        <li>
+          <% if current_customer? %>
+            <%= link_to "Log out", "#" %>
+          <% else %>
+            <%= link_to "Sign in", login_path %>
+          <% end %>
+        </li>
 
         <li> <%= link_to "Items", items_path, class: "nav" %> </li>
 
