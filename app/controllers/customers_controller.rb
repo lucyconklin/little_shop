@@ -1,5 +1,5 @@
 class CustomersController < Customers::BaseController
-  skip_before_action :require_customer, :only => [:new, :create]
+  skip_before_action :require_customer, only: [:new, :create]
 
   def new
     @customer = Customer.new
@@ -20,12 +20,16 @@ class CustomersController < Customers::BaseController
   end
 
   def dashboard
-    @customer = @current_customer
+    @customer = current_customer
   end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:customer).permit( :first_name,
+                                      :last_name,
+                                      :email,
+                                      :password,
+                                      :password_confirmation)
   end
 end
