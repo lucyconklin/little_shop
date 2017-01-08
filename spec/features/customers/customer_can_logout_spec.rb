@@ -2,10 +2,10 @@ require "rails_helper"
 
 feature "When a customer is logged in" do
   before do
-    Customer.create!( first_name: "Jane",
-                      last_name: "Doe",
-                      email: "jane@jane.com",
-                      password: "boom")
+    Customer.create!(first_name: "Jane",
+                     last_name: "Doe",
+                     email: "jane@jane.com",
+                     password: "boom")
     visit login_path
     fill_in "email", with: "jane@jane.com"
     fill_in "password", with: "boom"
