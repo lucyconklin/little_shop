@@ -36,9 +36,9 @@ all_items = Item.all
 
 customers.each do |customer|
   number_between_5_and_8 = Faker::Number.between(5, 8)
-  number_between_1_and_9 = Faker::Number.between(1, 9)
+  number_between_4_and_9 = Faker::Number.between(4, 9)
 
-  number_between_1_and_9.times do
+  number_between_4_and_9.times do
     items_in_order = all_items.sample(number_between_5_and_8)
     2.times { items_in_order << items_in_order.sample(4) }
     items_in_order.flatten!
