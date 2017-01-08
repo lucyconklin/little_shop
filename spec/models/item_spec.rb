@@ -20,10 +20,14 @@ describe Item do
   end
 
   describe "#price_in_dollars" do
-    it "returns the price in dollars" do
-      item = create(:item, price_in_cents: 12_34)
+    let(:item) { create(:item, price_in_cents: 12_34) }
 
+    it "returns the price in dollars" do
       expect(item.price_in_dollars).to eq 12.34
+    end
+
+    it "returns the price in dollars when there is more than one item" do
+      expect(item.price_in_dollars(10)).to eq 123.40
     end
   end
 
