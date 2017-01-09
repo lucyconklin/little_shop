@@ -19,7 +19,7 @@ describe "Viewing one of a customer's order" do
       end
 
       expect(page).to have_content "Status: #{order_3.status_name}"
-      expect(page).to have_content "$#{order_3.total_price_in_dollars}"
+      expect(page).to have_content order_3.total_price_in_dollars
       expect(page).to have_content "submitted at: #{order_3.display_submitted_at}"
       expect(page).to have_content "#{order_3.status_name.downcase} at: #{order_3.display_updated_at}"
     end
