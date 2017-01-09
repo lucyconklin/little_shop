@@ -1,9 +1,9 @@
 class CartsController < ApplicationController
-
+  include MessageHelper
   def create
     add_item_to_cart
     set_cart_session
-    flash_add_message
+    flash_message_add_item_to_cart(item)
     redirect_to items_path
   end
 
@@ -18,25 +18,15 @@ class CartsController < ApplicationController
       last_item
     else
       @cart.delete_entire_item(item.id)
-      flash_remove_message
+      flash_message_remove_from_cart(item)
     end
     set_cart_session
     redirect_to cart_path
   end
 
   def last_item
-    item = @cart.contents[params[:item_id]]
-    flash_remove_message if item.nil?
-  end
-
-  def flash_remove_message
-    message = "Succesfully removed #{view_context.link_to(item.title, item)} from your cart."
-    flash[:success] = message
-  end
-
-  def flash_add_message
-    message = "You have added 1 #{item.title} to your cart."
-    flash[:success] = message
+    contents = @cart.contents[params[:item_id]]
+    flash_message_remove_from_cart(item) if contents.nil?
   end
 
   def update

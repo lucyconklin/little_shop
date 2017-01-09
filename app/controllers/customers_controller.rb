@@ -1,4 +1,5 @@
 class CustomersController < Customers::BaseController
+  include MessageHelper
   skip_before_action :require_customer, only: [:new, :create]
 
   def new
@@ -9,7 +10,7 @@ class CustomersController < Customers::BaseController
     @customer = Customer.new(customer_params)
     if @customer.save
       session[:customer_id] = @customer.id
-      flash[:success] = 'Successfully logged in!'
+      flash_message_successful_login
       redirect_to_correct_path
     else
       @errors = @customer.errors
@@ -32,10 +33,10 @@ class CustomersController < Customers::BaseController
   private
 
   def customer_params
-    params.require(:customer).permit( :first_name,
-      :last_name,
-      :email,
-      :password,
-    :password_confirmation)
+    params.require(:customer).permit(:first_name,
+                                     :last_name,
+                                     :email,
+                                     :password,
+                                     :password_confirmation)
   end
 end
