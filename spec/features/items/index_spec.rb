@@ -8,7 +8,7 @@ describe "Viewing all items" do
   scenario "shows all items" do
     visit items_path
 
-    expect(page).to have_current_path "/items"
+    expect(page).to have_current_path items_path
     expect(page).to have_content item_1.title
     expect(page).to have_content item_2.title
     expect(page).to have_content item_3.title
