@@ -52,8 +52,8 @@ feature "When a visitor visits the root path" do
   end
 
   scenario "they see an error message if they input an invalid email/password combination" do
-    fill_in "email", with: "john@john.com"
-    fill_in "password", with: "boom"
+    fill_in "email", with: "jane@jane.com"
+    fill_in "password", with: "wrong"
     within("form") do
       click_on "Log in"
     end
