@@ -1,16 +1,21 @@
-<div class="container">
-  <h1>Admin Dashboard</h1>
-  <p>First name: admin first name</p>
-  <p>Last name: admin last name %></p>
-  <p>Email: admin email</p>
+<h1>Admin Dashboard</h1>
+
+<h2>Order History for all Customers</h2>
+
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Filter by Status
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <% @statuses.each do |status| %>
+      <li> <%= link_to "#{status.name}", admin_dashboard_path(filter_by: status.name) %> </li>
+    <% end %>
+  </ul>
 </div>
 
-#don't forget to add filters
-
-<h1>Order History for all Customers</h1>
-
 <% if @orders.any? %>
-  <%= render partial: 'orders' %>
+  <%= render partial: 'shared/orders' %>
 <% else %>
   <p>There have been no orders placed at this time.</p>
 <% end %>
