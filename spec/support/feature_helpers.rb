@@ -76,4 +76,11 @@ module FeatureHelpers
     customer
   end
 
+  def log_in_as_admin
+    fill_in "email", with: "jane@admin.com"
+    fill_in "password", with: "admin_boom"
+    within("form") do
+      click_on "Log in"
+    end
+  end
 end

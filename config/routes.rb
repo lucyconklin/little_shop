@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   get '/dashboard' => "customers#dashboard"
   get '/logout' => "customers/sessions#logout"
 
+  scope '/admin' do
+    root to: 'admins#index', as: 'admins'
+    get '/login' => "admins/sessions#new", as: 'admin_login'
+    post '/login' => "admins/sessions#create"
+    get '/dashboard' => "admins#show", as: 'admin_dashboard'
+  end
+
   resources :customers, only: [:new, :create]
 
   resources :items, only: [:index, :show]
