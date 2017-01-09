@@ -9,14 +9,14 @@ feature "Admin logs in" do
   scenario "successful login goes to admin dashboard page" do
     log_in_as_admin
 
-    expect(page).to have_current_path(admins_dashboard_path)
+    expect(page).to have_current_path(admin_dashboard_path)
   end
 
   scenario "page indicates admin is logged in as admin" do
     log_in_as_admin
 
     expect(page).to have_content("Admin Dashboard")
-    expect(page).to have_css(".navbar", text: "Logged in as Admin Jane Boss")
+    expect(page).to have_css(".navbar", text: "Logged in as Admin: Jane Boss")
     expect(page).to have_content("Successfully logged in")
   end
 end

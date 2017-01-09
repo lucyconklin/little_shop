@@ -1,5 +1,5 @@
 require "rails_helper"
-
+ p
 feature "the admin can update their own data" do
 
   let!(:admin) {logged_in_as_current_admin}
@@ -13,15 +13,15 @@ feature "the admin can update their own data" do
 
   end
 
-  scenario "the admin can update last name" do
+  xscenario "the admin can update last name" do
 
   end
 
-  scenario "the admin can update email" do
+  xscenario "the admin can update email" do
 
   end
 
-  scenario "the admin can update password" do
+  xscenario "the admin can update password" do
 
   end
 end
