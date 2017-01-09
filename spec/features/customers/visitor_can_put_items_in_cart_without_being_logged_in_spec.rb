@@ -50,5 +50,4 @@ feature 'When a visitor has items in their cart' do
 
     expect(page).to have_selector(:link_or_button, "Log out")
   end
-
 end
