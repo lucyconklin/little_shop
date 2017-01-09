@@ -1,16 +1,18 @@
-
 .add_to_cart
   width: 100%
 
 .button
-  border: 2px solid $gray-blue
+  border: 2px solid
+  border-color: $gray-blue
   padding: 4px 6px
+
+a.button
+  text-decoration: none
 
 .button-delete
   @extend .button
   border-color: $light-red
   background-color: $light-red
-
 
 .button-delete:hover, .button-delete:focus
   border-color: $red
@@ -32,3 +34,14 @@ a.minus, a.plus
 
 .plus:hover, .plus:focus
   color: green
+
+.button-login
+  @extend .button
+  border-color: $gray-blue
+  background-color: $gray-blue
+  color: black
+
+.button-login:hover, .button-delete:focus
+  border-color: green
+  background-color: green
+  color: black
