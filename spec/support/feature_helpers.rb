@@ -79,4 +79,10 @@ module FeatureHelpers
     customer.orders = [order_2, order_3]
   end
 
+  def create_customer_with_orders
+    customer = create(:customer)
+    customer.orders << create_list(:order, 5)
+    customer
+  end
+
 end

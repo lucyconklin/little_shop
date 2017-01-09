@@ -24,6 +24,15 @@ FactoryGirl.define do
     email                 { first_name + "_of_" + last_name + "_" + Faker::Number.hexadecimal(4) + "@example.com" }
     password              { "boom" }
     password_confirmation { "boom" }
+
+    factory :customer_with_orders do
+      transient do
+        orders_count 5
+      end
+      after(:create) do |customer, evaluator|
+        create_list(:all_new_order, evaluator.orders_count, customer: customer)
+      end
+    end
   end
 
   images = [
