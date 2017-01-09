@@ -4,3 +4,8 @@
 1610 module 2 final group project
 * [Assignment Markdown](https://github.com/turingschool/curriculum/blob/master/source/projects/little_shop.markdown)
 * [Timber Shop on Heroku](https://timber-shop.herokuapp.com/)
+
+@cpowell23
+@ski-climb
+@lucyconklin
+@robbie-smith
