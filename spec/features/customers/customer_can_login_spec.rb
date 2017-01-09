@@ -38,5 +38,4 @@ feature "When a customer visits the root path" do
 
     expect(page).to have_css(".navbar", text: "Logged in as Jane Doe")
   end
-
 end

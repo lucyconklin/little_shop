@@ -3,11 +3,10 @@ require "rails_helper"
 feature "When a customer is logged in" do
   before do
     logged_in_as_customer
-    visit login_path
+    visit root_path
   end
 
   scenario "the customer should view a logged in as message" do
-    expect(current_path).to eql(login_path)
     expect(page).to have_css(".navbar", text: "Logged in as Jane Doe")
   end
 
