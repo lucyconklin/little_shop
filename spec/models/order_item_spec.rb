@@ -7,8 +7,7 @@ describe OrderItem do
   end
 
   describe "before saving" do
-
-    let!(:items) { create_list(:item,2) }
+    let!(:items) { create_list(:item, 2) }
     let!(:order) { create(:all_new_order, items: items) }
 
     context "saves the item price" do
