@@ -50,6 +50,7 @@ module FeatureHelpers
     fill_in "customer[last_name]", with: "Sparks"
     fill_in "customer[email]", with: "john@john.com"
     fill_in "customer[password]", with: "blue"
+    fill_in "customer[password_confirmation]", with: "boom"
     click_on "Create Account"
   end
 

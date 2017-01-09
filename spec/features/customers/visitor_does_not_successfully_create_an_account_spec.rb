@@ -22,4 +22,13 @@ feature "A visitor does not successfully create an account" do
     expect(page).to have_content("Email has already been taken")
     expect(page).not_to have_content("Successfully logged in")
   end
+
+  scenario "the user should see an error message if a the password is incorrectly entered" do
+    create_valid_account
+    visit new_customer_path
+    invalid_account_creation
+
+    expect(page).to have_content("Password confirmation doesn't match Password")
+    expect(page).not_to have_content("Successfully logged in")
+  end
 end
