@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Admin Dashboard</h1>
+  <p>First name: admin first name</p>
+  <p>Last name: admin last name %></p>
+  <p>Email: admin email</p>
+</div>
+
+#don't forget to add filters
+
+<h1>Order History for all Customers</h1>
+
+<% if @orders.any? %>
+  <%= render partial: 'orders' %>
+<% else %>
+  <p>There have been no orders placed at this time.</p>
+<% end %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post '/login' => "customers/sessions#login"
   get '/dashboard' => "customers#dashboard"
   get '/logout' => "customers/sessions#logout"
+  get 'admin/dashboard' => "admin/orders#index"
 
   resources :customers, only: [:new, :create]
 
