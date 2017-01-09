@@ -2,23 +2,34 @@ require 'rails_helper'
 
 feature 'A visitor can create an account' do
 
-  before { visit new_customer_path }
+  before { visit root_path }
 
-  scenario 'the current path should be customers/new' do
+  scenario "the user clicks on log in" do
+    click_on "Log in"
+    expect(page).to have_current_path(login_path)
+  end
+
+  scenario 'the user should see the link or button to register' do
+    visit login_path
+    expect(page).to have_selector(:link_or_button, "Register")
+  end
+
+  scenario "the user then clicks on register/create account and is redirected to the new customer path " do
+    visit login_path
+    click_on "Register"
+
     expect(current_path).to eql(new_customer_path)
   end
 
-  scenario 'the user should see a link or button to create and account' do
-    expect(page).to have_button("Create Account")
-  end
-
   scenario "when the user creates an account they should be routed to their dashboard page" do
+    visit new_customer_path
     create_valid_account
 
     expect(current_path).to eql(dashboard_path)
   end
 
   scenario 'the user should see their profile information' do
+    visit new_customer_path
     create_valid_account
 
     expect(current_path).to eql(dashboard_path)
@@ -31,6 +42,7 @@ feature 'A visitor can create an account' do
   end
 
   scenario 'the dashboard path should have a log out button and not a log in button' do
+    visit new_customer_path
     create_valid_account
 
     expect(page).not_to have_selector(:link_or_button, text: "Log in")
