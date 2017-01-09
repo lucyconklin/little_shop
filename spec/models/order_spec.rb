@@ -124,6 +124,7 @@ describe Order do
   describe "#display_submitted_at" do
     let(:order) { create(:all_new_order) }
     let(:submitted_at) { DateTime.new(2017, 2, 22, 8, 22) }
+
     it "returns a nicely formatted date-time" do
       order.update(created_at: submitted_at)
 
@@ -134,6 +135,7 @@ describe Order do
   describe "#display_updated_at" do
     let(:order) { create(:all_new_order) }
     let(:updated_at) { DateTime.new(2017, 2, 24, 8, 24) }
+
     it "returns a nicely formatted date-time" do
       order.update(created_at: updated_at)
 

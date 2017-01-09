@@ -62,4 +62,20 @@ module FeatureHelpers
     end
     customer
   end
+
+  def logged_in_as_customer
+    customer = create(:customer, first_name: "Jane", last_name: "Doe", email: "jane@jane.com")
+    page.set_rack_session(customer_id: customer.id)
+    customer
+  end
+  def create_orders_with_items(order)
+    3.times { order.items << order.items.sample(3) }
+    completed = create(:status, name: "completed")
+    order.update(status: completed)
+  end
+
+  def update_customer_orders(customer, order_2, order_3)
+    customer.orders = [order_2, order_3]
+  end
+
 end
