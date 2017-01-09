@@ -46,5 +46,4 @@ feature "When a customer visits the root path" do
     expect(page).to have_content("Email and password combination do not exist")
     expect(page).not_to have_content("Successfully logged in")
   end
-
 end

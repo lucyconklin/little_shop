@@ -6,7 +6,6 @@ feature "the customer views the details for an order" do
   let!(:order_2) { create(:all_new_order) }
   let!(:order_3) { create(:all_new_order) }
 
-
   scenario "the users page path should be /orders " do
     visit orders_path
     expect(page).to have_current_path(orders_path)
