@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "When a customer is authenticated" do
   let(:customer_2) { create(:customer_with_orders)}
+
   before do
     logged_in_as_customer
   end

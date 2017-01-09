@@ -53,16 +53,6 @@ module FeatureHelpers
     click_on "Create Account"
   end
 
-  def log_in_as_customer(customer = create(:customer))
-    visit login_path
-    fill_in "Email", with: customer.email
-    fill_in "Password", with: "boom"
-    within("form") do
-      click_on "Log in"
-    end
-    customer
-  end
-
   def logged_in_as_customer
     customer = create(:customer, first_name: "Jane", last_name: "Doe", email: "jane@jane.com")
     page.set_rack_session(customer_id: customer.id)
