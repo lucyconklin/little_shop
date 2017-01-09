@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "When a visitor is logged in" do
   before do
-    customer = Customer.create!( first_name: "Jane",
+    Customer.create!( first_name: "Jane",
                       last_name: "Doe",
                       email: "jane@jane.com",
                       password: "boom")
