@@ -19,4 +19,10 @@ feature "Admin logs in" do
     expect(page).to have_css(".navbar", text: "Logged in as Admin: Jane Boss")
     expect(page).to have_content("Successfully logged in")
   end
+
+  scenario "after logging in the session[admin_id] should be set" do
+    log_in_as_admin
+    byebug
+    expect(page).to eq(Admin.first.id)
+  end
 end

@@ -1,5 +1,5 @@
 class Admins::SessionsController < Admins::BaseController
-include MessageHelper
+  include MessageHelper
   def new
   end
 
