@@ -1,26 +1,6 @@
-# README
+# Little Shop
+#### Master branch build status:  ![](https://travis-ci.org/lucyconklin/little_shop.svg?branch=master)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-####Master branch build status: 
-![](https://travis-ci.org/lucyconklin/little_shop.svg?branch=master)
+1610 module 2 final group project
+* [Assignment Markdown](https://github.com/turingschool/curriculum/blob/master/source/projects/little_shop.markdown)
+* [Timber Shop on Heroku](https://timber-shop.herokuapp.com/)
