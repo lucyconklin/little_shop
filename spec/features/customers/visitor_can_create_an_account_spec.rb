@@ -48,5 +48,4 @@ feature 'A visitor can create an account' do
     expect(page).not_to have_selector(:link_or_button, text: "Log in")
     expect(page).to have_selector(:link_or_button, text: "Log out")
   end
-
 end
