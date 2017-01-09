@@ -61,4 +61,12 @@ FactoryGirl.define do
       end
     end
   end
+
+  factory :admin do
+    first_name            "Jane"
+    last_name             "Boss"
+    email                 "jane@boss.com"
+    password              "admin_boom"
+    password_confirmation "admin_boom"
+  end
 end
