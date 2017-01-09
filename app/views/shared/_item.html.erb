@@ -6,5 +6,11 @@
     </div>
   <% end %>
   <p><%= number_to_currency(item.price_in_dollars) %>
-  <%= button_to "Add to cart", carts_path(item_id: item.id), class:"btn btn-info add_to_cart" %></p>
+    <% if item.retired == false %>
+      <%= button_to "Add to cart", carts_path(item_id: item.id), class:"btn btn-info add_to_cart" %></p>
+    <% else %>
+      <div class="button-disabled">
+        Item not available
+      </div>
+    <% end %>
 </div>

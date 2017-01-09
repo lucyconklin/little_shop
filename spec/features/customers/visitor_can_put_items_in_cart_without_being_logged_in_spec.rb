@@ -25,18 +25,18 @@ feature 'When a visitor has items in their cart' do
     visit cart_path
 
     expect(page).to have_selector(:link_or_button, "Log in")
-    expect(page).to have_selector(:link_or_button, "Create Account to Checkout")
+    expect(page).to have_selector(:link_or_button, "Register")
   end
 
   scenario "after the user creates an account, the should be redirected to their cart" do
-    click_on "Create Account to Checkout"
+    click_on "Register"
     create_valid_account
     expect(page).to have_content("Successfully logged in!")
     expect(page).to have_current_path(cart_path)
   end
 
   scenario "the user should then see the items that were originally in their cart" do
-    click_on "Create Account to Checkout"
+    click_on "Register"
     create_valid_account
 
     expect(page).to have_current_path(cart_path)
@@ -45,7 +45,7 @@ feature 'When a visitor has items in their cart' do
   end
 
   scenario "the user should then see a logout button or link" do
-    click_on "Create Account to Checkout"
+    click_on "Register"
     create_valid_account
 
     expect(page).to have_selector(:link_or_button, "Log out")
