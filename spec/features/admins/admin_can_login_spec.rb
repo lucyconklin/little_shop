@@ -17,6 +17,7 @@ feature "When a visitor visits the admin log in path" do
     end
 
     expect(current_path).to eql(admin_dashboard_path)
+    expect(page).to have_content("Admin Dashboard")
     expect(page).to have_css(".navbar", text: "Logged in as Admin Jane Admin")
     expect(page).to have_content("Successfully logged in")
   end
