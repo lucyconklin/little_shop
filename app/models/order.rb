@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-
   validates :total_price_in_cents, presence: true
   validates :status, presence: true
   validates :customer, presence: true
@@ -42,14 +41,18 @@ class Order < ApplicationRecord
   end
 
   def display_submitted_at
-    created_at.strftime('%e %b %Y at %l:%M %p')
+    display_date_time(created_at)
   end
 
   def display_updated_at
-    created_at.strftime('%e %b %Y at %l:%M %p')
+    display_date_time(updated_at)
   end
 
   def set_total
     self.total_price_in_cents = calculated_price_in_cents
+  end
+
+  def display_date_time(date_time)
+    date_time.strftime('%e %b %Y at %l:%M %p')
   end
 end
