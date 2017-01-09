@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 feature "When a customer visits the root path" do
   before do
     create(:customer, first_name: "Jane", last_name: "Doe", email: "jane@jane.com")
@@ -6,15 +7,7 @@ feature "When a customer visits the root path" do
     click_on "Log in"
   end
 
-  scenario "they can navigate to the login page and log in" do
-    login
-
-    expect(current_path).to eql(dashboard_path)
-    expect(page).to have_css(".navbar", text: "Logged in as Jane Doe")
-    expect(page).to have_content("Successfully logged in")
-  end
-
-  scenario "they see an error message if they leave the email field blank" do
+  scenario "the customer should see an error message if they leave the email field blank" do
     fill_in "password", with: "boom"
     within("form") do
       click_on "Log in"
@@ -24,7 +17,7 @@ feature "When a customer visits the root path" do
     expect(page).not_to have_content("Successfully logged in")
   end
 
-  scenario "they see an error message if they leave the password field blank" do
+  scenario "the customer should see an error message if they leave the password field blank" do
     fill_in "email", with: "jane@jane.com"
     within("form") do
       click_on "Log in"
@@ -34,7 +27,7 @@ feature "When a customer visits the root path" do
     expect(page).not_to have_content("Successfully logged in")
   end
 
-  scenario "they see an error message if they leave both the email and password blank" do
+  scenario "the customer should see an error message if they leave both the email and password blank" do
     within("form") do
       click_on "Log in"
     end
@@ -43,7 +36,7 @@ feature "When a customer visits the root path" do
     expect(page).not_to have_content("Successfully logged in")
   end
 
-  scenario "they see an error message if they input an invalid email/password combination" do
+  scenario "the customer should see an error message if they input an invalid email/password combination" do
     fill_in "email", with: "john@john.com"
     fill_in "password", with: "boom"
     within("form") do
