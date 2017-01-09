@@ -137,7 +137,7 @@ describe Order do
     let(:updated_at) { DateTime.new(2017, 2, 24, 8, 24) }
 
     it "returns a nicely formatted date-time" do
-      order.update(created_at: updated_at)
+      order.update(updated_at: updated_at)
 
       expect(order.display_updated_at).to eq "24 Feb 2017 at  8:24 AM"
     end

@@ -16,21 +16,23 @@ feature "When a customer visits the root path" do
     expect(current_path).to eql(login_path)
   end
 
-  scenario "the user is redirected to their dashboard page upon logging in" do
+  scenario "the customer is redirected to their dashboard page upon logging in" do
     click_on "Log in"
     login
 
     expect(page).to have_current_path(dashboard_path)
+    expect(page).to have_selector(:link_or_button, "Log out")
+    expect(page).to_not have_selector(:link_or_button, "Log in")
   end
 
-  scenario "the user should see a successfully logged in message after logging in" do
+  scenario "the customer should see a successfully logged in message after logging in" do
     click_on "Log in"
     login
 
     expect(page).to have_content("Successfully logged in")
   end
 
-  scenario "the user should see a message that tells them they are logged in " do
+  scenario "the customer should see a message that tells them they are logged in " do
     click_on "Log in"
     login
 

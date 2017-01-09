@@ -41,18 +41,18 @@ class Order < ApplicationRecord
   end
 
   def display_submitted_at
-    display_date_time
+    display_date_time(created_at)
   end
 
   def display_updated_at
-    display_date_time
+    display_date_time(updated_at)
   end
 
   def set_total
     self.total_price_in_cents = calculated_price_in_cents
   end
 
-  def display_date_time
-    created_at.strftime('%e %b %Y at %l:%M %p')
+  def display_date_time(date_time)
+    date_time.strftime('%e %b %Y at %l:%M %p')
   end
 end
