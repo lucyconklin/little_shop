@@ -68,6 +68,7 @@ module FeatureHelpers
     page.set_rack_session(customer_id: customer.id)
     customer
   end
+
   def create_orders_with_items(order)
     3.times { order.items << order.items.sample(3) }
     completed = create(:status, name: "completed")

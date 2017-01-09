@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "When a visitor visits the root path" do
+feature "When a customer visits the root path" do
   before do
     Customer.create!( first_name: "Jane",
       last_name: "Doe",
@@ -62,4 +62,4 @@ feature "When a visitor visits the root path" do
     expect(page).not_to have_content("Successfully logged in")
   end
 
- end
+end
