@@ -3,7 +3,10 @@
     <%= link_to order_path(order_id: order.id), id: "order_#{order.id}", class: "list-group-item" do %>
       <strong>Order Total:</strong> <%= number_to_currency(order.total_price_in_dollars) %>
       <strong>Date:</strong> <%= order.date %>
-      <strong>Status:</strong> <%= order.status.name.capitalize %>
+      <strong>Status:</strong>
+      <span class="status_<%= order.status_name.downcase %>">
+        <%= order.status.name.capitalize %>
+      </span>
     <% end %>
   <% end %>
 </div>
