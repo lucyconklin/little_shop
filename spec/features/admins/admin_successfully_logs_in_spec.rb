@@ -22,7 +22,8 @@ feature "Admin logs in" do
 
   scenario "after logging in the session[admin_id] should be set" do
     log_in_as_admin
-    byebug
-    expect(page).to eq(Admin.first.id)
+    session = page.get_rack_session["admin_id"]
+    
+    expect(session).to eq(Admin.first.id)
   end
 end
