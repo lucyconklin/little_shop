@@ -51,13 +51,4 @@ feature 'When a visitor has items in their cart' do
     expect(page).to have_selector(:link_or_button, "Log out")
   end
 
-  scenario "the user clicks logout and should then see a login button" do
-    click_on "Create Account to Checkout"
-    create_valid_account
-    click_on "Log out"
-
-    expect(page).to have_selector(:link_or_button, "Log in")
-    expect(page).to_not have_selector(:link_or_button, "Log out")
-  end
-
 end

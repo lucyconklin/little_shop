@@ -52,7 +52,7 @@ FactoryGirl.define do
   factory :item do
     sequence(:title) { |n| Faker::Commerce.product_name + " #{n}" }
     description { Faker::Hipster.sentence }
-    price_in_cents { Faker::Number.number(4) }
+    price_in_cents { Faker::Number.number(3) }
     image_url { images.sample }
     category
   end
