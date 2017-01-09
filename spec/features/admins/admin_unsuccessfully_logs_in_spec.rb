@@ -2,6 +2,8 @@ require 'rails_helper'
 
 feature "Admin sad paths" do
 
+before { visit admin_login_path }
+
   scenario "Admin enters wrong email" do
     fill_in "email", with: "john@admin.com"
     fill_in "password", with: "admin_boom"
@@ -10,7 +12,7 @@ feature "Admin sad paths" do
     end
 
     expect(page).to have_current_path(admin_login_path)
-    expect(page).to have("Email and password combination do not exist")
+    expect(page).to have_content("Email and password combination does not exist")
   end
 
   scenario "Admin enters wrong password" do
@@ -21,7 +23,7 @@ feature "Admin sad paths" do
     end
 
     expect(page).to have_current_path(admin_login_path)
-    expect(page).to have("Email and password combination do not exist")
+    expect(page).to have_content("Email and password combination does not exist")
   end
 
   scenario "both fields are blank" do
@@ -30,6 +32,6 @@ feature "Admin sad paths" do
     end
 
     expect(page).to have_current_path(admin_login_path)
-    expect(page).to have("Email and password combination do not exist")
+    expect(page).to have_content("Email and password combination does not exist")
   end
 end

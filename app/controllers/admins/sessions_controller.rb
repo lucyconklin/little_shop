@@ -10,6 +10,7 @@ class Admins::SessionsController < Admins::BaseController
       flash_message_successful_login
       redirect_to admin_dashboard_path
     else
+      flash_message_failed_login
       render :new
     end
   end

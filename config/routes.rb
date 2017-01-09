@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     post '/login' => "admins/sessions#create"
     get '/dashboard' => "admins#show", as: 'admin_dashboard'
   end
-
+ 
   resources :customers, only: [:new, :create]
 
   resources :items, only: [:index, :show]
