@@ -10,7 +10,7 @@ describe Status do
   end
 
   it "count_of_orders method returns the # of orders with that status" do
-    customer = create(:customer)
+    create(:customer)
     status = create(:status, name: "paid")
     create_list(:order, 3, status: status)
 
