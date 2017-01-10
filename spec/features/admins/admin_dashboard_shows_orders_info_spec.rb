@@ -38,9 +38,9 @@ feature "Admin dashboard" do
   end
 
   scenario "they can see a link to each order" do
-    expect(page).to have_link("#{@order_1.id}")
-    expect(page).to have_link("#{@order_2.id}")
-    expect(page).to have_link("#{@order_3.id}")
+    expect(page).to have_link(@order_1.id.to_s)
+    expect(page).to have_link(@order_2.id.to_s)
+    expect(page).to have_link(@order_3.id.to_s)
   end
 
   scenario "they can see total number of orders by status" do

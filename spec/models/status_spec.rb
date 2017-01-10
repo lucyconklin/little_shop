@@ -9,5 +9,11 @@ describe Status do
     it { is_expected.to have_many(:orders) }
   end
 
-  #need to test count_of_orders method
+  it "count_of_orders method returns the # of orders with that status" do
+    customer = create(:customer)
+    status = create(:status, name: "paid")
+    create_list(:order, 3, status: status)
+
+    expect(status.count_of_orders).to eql(3)
+  end
 end

@@ -1,19 +1,15 @@
 class AdminsController < Admins::BaseController
   include MessageHelper
+
   def show
     @admin = current_admin # take this line out
-    # @status_name = Order.group(:status).count(:id)
-
     @status_filter = params[:status_filter]
     @statuses = Status.all
 
-    if @status_filter.nil?
-      @orders = Order.all
-    elsif @statuses.pluck(:name).include?(@status_filter) == false
-      render file: "/public/404"
+    if valid_status_filter?
+      @orders = set_orders
     else
-      status = Status.find_by(name: @status_filter)
-      @orders = status.orders.most_recent
+      render file: "/public/404"
     end
   end
 
@@ -32,6 +28,20 @@ class AdminsController < Admins::BaseController
   end
 
   private
+
+  def valid_status_filter?
+    status_names = @statuses.pluck(:name)
+    @status_filter.nil? || status_names.include?(@status_filter)
+  end
+
+  def set_orders
+    if @status_filter.nil?
+      Order.all.most_recent
+    else
+      status = Status.find_by(name: @status_filter)
+      status.orders.most_recent
+    end
+  end
 
   def admin_params
     params.require(:admin).permit(:first_name, :last_name, :email, :password)
