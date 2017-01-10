@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "Log as as a customer" do
+feature "Log out as a customer" do
   before do
     add_three_items_to_cart
     logged_in_as_customer
