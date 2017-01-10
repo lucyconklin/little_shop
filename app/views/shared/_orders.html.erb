@@ -8,6 +8,9 @@
         <th> Order Total </th>
         <th> Order Date </th>
         <th> Order Status </th>
+        <th> Mark as completed </th>
+        <th> Mark as paid </th>
+        <th> Cancel </th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +25,15 @@
             <span class="status_<%= order.status_name.downcase %>">
               <%= order.status.name.capitalize %>
             </span>
+          </td>
+          <td>
+            <%= button_tag "Mark as completed", class: "button-submit" if order.status.name == "paid" %>
+          </td>
+          <td>
+            <%= button_tag "Mark as paid", class: "button-submit" if order.status.name == "ordered" %>
+          </td>
+          <td>
+            <%= button_tag "Cancel", class: "button-delete" if order.status.name == "ordered" || order.status.name == "paid" %>
           </td>
         </tr>
       <% end %>

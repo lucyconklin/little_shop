@@ -14,8 +14,8 @@
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
-    <% @statuses.each do |status| %>
-      <li> <%= link_to "#{status.name}", admin_dashboard_path(filter_by: status.name) %> </li>
+    <% @status_name.each do |status, quantity| %>
+      <li> <%= link_to "#{status.name} #{quantity}", admin_dashboard_path(filter_by: status.name) %> </li>
     <% end %>
   </ul>
 </div>

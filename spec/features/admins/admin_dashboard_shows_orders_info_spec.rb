@@ -43,7 +43,7 @@ feature "Admin dashboard" do
     skip
   end
 
-  scenario "they can click on 'cancel' to cancel paid or ordered orders" do
+  scenario "they can click on 'cancel' to cancel 'paid' or 'ordered' orders" do
 
     within(:css, ".order_#{order_1.id}") do
       click_on "Cancel"
@@ -60,7 +60,7 @@ feature "Admin dashboard" do
     within("order_#{order_1.id}") { expect(page).to have_content("paid") }
   end
 
-  scenario "they can 'mark as completed' on orders that are paid" do
+  scenario "they can 'mark as completed' on orders that are 'paid'" do
     within(:css, ".order_#{order_1.id}") do
       click_on "Mark as completed"
     end
