@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin?
   helper_method :current_admin
 
-
   def set_cart
     @cart = Cart.new(session[:cart])
   end
@@ -14,6 +13,8 @@ class ApplicationController < ActionController::Base
   def clear_cart
     session[:cart] = nil
   end
+
+  private
 
   def current_customer?
     !!current_customer
@@ -23,6 +24,14 @@ class ApplicationController < ActionController::Base
     @current_customer ||= Customer.find(session[:customer_id]) if session[:customer_id]
   end
 
+  protected
+
+  def require_admin_login
+    unless current_admin?
+      redirect_to admin_login_path
+    end
+  end
+
   def current_admin?
     !!current_admin
   end
@@ -30,5 +39,4 @@ class ApplicationController < ActionController::Base
   def current_admin
     @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
   end
-
 end

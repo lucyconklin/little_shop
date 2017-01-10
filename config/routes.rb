@@ -13,12 +13,14 @@ Rails.application.routes.draw do
     post '/login' => "admins/sessions#create"
     delete '/logout' => "admins/sessions#destroy", as: 'admin_logout'
     get '/dashboard' => "admins#show", as: 'admin_dashboard'
-    resources :admins, :path => '', only: [:edit, :update]
+    get '/items' => "items#index", as: 'items'
+    get '/items/:id/edit' => 'items#edit', as: 'edit_admin_item'
   end
+  resources :admins, only: [:edit, :update]
 
   resources :customers, only: [:new, :create]
 
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show, :update]
 
   get '/cart' => "carts#show", as: "cart"
   post '/cart' => "carts#update"
