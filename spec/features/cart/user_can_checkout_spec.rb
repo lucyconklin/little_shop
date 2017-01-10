@@ -3,14 +3,14 @@ require 'rails_helper'
 describe "Cart checkout" do
   context "as a logged in user" do
     let!(:item) { add_three_items_to_cart }
-    before do 
+    before do
       create(:status, name: "ordered")
       logged_in_as_customer
       visit cart_path
     end
 
     context "there are items in the cart" do
-      context "but the customer has not checked out" do 
+      context "but the customer has not checked out" do
         scenario "shows the Checkout button" do
           expect(page).to have_content(:link_or_button, "Checkout")
         end
@@ -36,7 +36,7 @@ describe "Cart checkout" do
 
         scenario "displays the order in the order history table after checkout" do
           order = Order.first
-          expect(page).to have_content "#{order.total_price_in_dollars}"
+          expect(page).to have_content order.total_price_in_dollars
         end
 
         scenario "shows a message to the customer to show that the order was placed after checkout" do
