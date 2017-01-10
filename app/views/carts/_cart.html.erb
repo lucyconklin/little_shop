@@ -21,7 +21,7 @@
   </div>
   <div class="col-md-4">
     <h3 class="text-right"><%= number_to_currency(@cart.total_price_in_dollars) %></h3>
-    <% if @customer %>
+    <% if current_customer? %>
       <p><%= link_to "Checkout", class: "button-primary" %></p>
     <% else %>
       <p class="text-right"><%= link_to "Login", login_path, class: "button-login" %></p>
