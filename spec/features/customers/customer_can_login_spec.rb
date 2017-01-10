@@ -50,6 +50,7 @@ feature "Logging in as a customer" do
       scenario "signs them in as a customer" do
         expect(page).to have_current_path(dashboard_path)
         expect(page).to have_content customer.email
+        expect(page).not_to have_content "Admin"
       end
 
       scenario "logs the user out as an admin" do
