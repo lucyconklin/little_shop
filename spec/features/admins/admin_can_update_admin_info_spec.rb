@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "the admin can update their own data" do
 
-  let!(:admin) {logged_in_as_current_admin}
+  let!(:admin) { logged_in_as_current_admin }
 
   before do
     visit admin_dashboard_path
