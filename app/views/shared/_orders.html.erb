@@ -3,24 +3,36 @@
     <thead>
       <tr>
         <% if current_admin? %>
-          <th> Customer Name </th>
-        <% end %>
-        <% if current_admin? %>
           <th> Customer ID </th>
+          <th> Customer Name </th>
+          <th> Customer Email </th>
         <% end %>
         <th> Order Total </th>
         <th> Order Date </th>
-        <th> Order Status </th>
+        <% if current_admin? %>
+          <th class="dropdown">
+             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Order Status <b class="caret"></b></a>
+             <ul class="dropdown-menu">
+               <% if @status_filter.nil? == false %>
+                 <li> <%= link_to "Clear filter", admin_dashboard_path(status_filter: nil) %>
+               <% end %>
+               <% @statuses.sort_by_name.each do |status| %>
+                 <li> <%= link_to "#{status.name.capitalize}", admin_dashboard_path(status_filter: status.name) %> </li>
+               <% end %>
+             </ul>
+          </th>
+        <% else %>
+          <th> Order Status </th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <% @orders.each do |order| %>
       <tr class="order_<%= order.id %>">
         <% if current_admin? %>
-          <td> <%= order.customer.first_name %> <%= order.customer.last_name %> </td>
-        <% end %>
-        <% if current_admin? %>
           <td> <%= order.customer.id %> </td>
+          <td> <%= order.customer.first_name %> <%= order.customer.last_name %> </td>
+          <td> <%= order.customer.email %> </td>
         <% end %>
         <td> <%= number_to_currency(order.total_price_in_dollars) %> </td>
         <td> <%= order.date %> </td>
