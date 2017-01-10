@@ -12,4 +12,8 @@ feature "When a site visitor is unauthenticated" do
     expect(page).to have_content("The page you were looking for doesn't exist.")
   end
 
+  # As an unregistered user
+  # When I visit "/admin/dashboard"
+  # I get a 404
+  # And I can't do admin things
 end

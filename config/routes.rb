@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/checkout' => "checkout#checkout"
 
   scope '/admin' do
-    root to: 'admins#index', as: 'admins'
+    root to: "admins#show", as: 'admin_dashboard'
     put '/orders' => "admins/orders#update"
     get '/login' => "admins/sessions#new", as: 'admin_login'
     post '/login' => "admins/sessions#create"
