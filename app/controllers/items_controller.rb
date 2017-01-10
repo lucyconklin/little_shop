@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   include MessageHelper
-  before_action :require_admin, except: [:index, :show]
+  before_action :require_admin_login, except: [:index, :show]
 
   def index
     @items = Item.all
@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    byebug
     @item = item
   end
 

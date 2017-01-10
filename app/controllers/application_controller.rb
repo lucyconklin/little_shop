@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def require_admin
+  def require_admin_login
     unless current_admin?
-      render file: "/public/404"
+      redirect_to admin_login_path
     end
   end
 
