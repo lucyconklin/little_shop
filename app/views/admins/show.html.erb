@@ -8,17 +8,14 @@
 
 <h2>Order History for all Customers</h2>
 
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Filter by Status
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <% @status_name.each do |status, quantity| %>
-      <li> <%= link_to "#{status.name} #{quantity}", admin_dashboard_path(filter_by: status.name) %> </li>
-    <% end %>
-  </ul>
-</div>
+<h3>Order summary</h3>
+<ul>
+<% @statuses.sort_by_name.each do |status| %>
+  <li class="status_<%= status.name.downcase %>">
+    <%= status.name.capitalize %> - <%= status.count_of_orders %>
+  </li>
+<% end %>
+</ul>
 
 <% if @orders.any? %>
   <%= render partial: 'shared/orders' %>

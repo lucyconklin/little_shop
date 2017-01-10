@@ -1,18 +1,15 @@
 class AdminsController < Admins::BaseController
   include MessageHelper
+
   def show
     @admin = current_admin # take this line out
-    @filter_by = params[:filter_by] # this is the only thing we are taking out of the params
-    @statuses = Status.all # dashboard.statuses
-    @status_name = Order.group(:status).count(:id) #dashboard.status_names
-    # make an AdminDashboard model for these new methods to live in
+    @status_filter = params[:status_filter]
+    @statuses = Status.all
 
-    if @filter_by.nil?
-      @orders = Order.all
-    elsif @statuses.pluck(:name).include?(@filter_by) == false
-      render file: "/public/404"
+    if valid_status_filter?
+      @orders = set_orders
     else
-      @orders = Order.where(status: Status.find_by(name: @filter_by))
+      render file: "/public/404"
     end
   end
 
@@ -31,6 +28,20 @@ class AdminsController < Admins::BaseController
   end
 
   private
+
+  def valid_status_filter?
+    status_names = @statuses.pluck(:name)
+    @status_filter.nil? || status_names.include?(@status_filter)
+  end
+
+  def set_orders
+    if @status_filter.nil?
+      Order.all.most_recent
+    else
+      status = Status.find_by(name: @status_filter)
+      status.orders.most_recent
+    end
+  end
 
   def admin_params
     params.require(:admin).permit(:first_name, :last_name, :email, :password)

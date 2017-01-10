@@ -1,19 +1,8 @@
-<<<<<<< HEAD
 <div class="wrapper">
-  <h1>Order history</h1>
-  
-  <% if @orders.any? %>
-    <%= render partial: 'orders' %>
-  <% else %>
-    <p>You have not placed any orders.</p>
-  <% end %>
-</div>
-=======
 <h1>Order history</h1>
-
 <% if @orders.any? %>
   <%= render partial: 'shared/orders' %>
 <% else %>
-  <p>You have not placed any orders.</p>
+<p>You have not placed any orders.</p>
 <% end %>
->>>>>>> ec94a6185beff14b975f4b0b305f7ee7805a6aba
+</div>
