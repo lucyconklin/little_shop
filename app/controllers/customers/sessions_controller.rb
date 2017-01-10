@@ -20,7 +20,7 @@ class Customers::SessionsController < Customers::BaseController
 
   def logout
     session[:customer_id] = nil
-    session[:cart] = nil
+    clear_cart
     flash_message_successful_logout
     redirect_to(login_path)
   end

@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     @cart = Cart.new(session[:cart])
   end
 
+  def clear_cart
+    session[:cart] = nil
+  end
+
   def current_customer?
     !!current_customer
   end
