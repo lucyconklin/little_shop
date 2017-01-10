@@ -18,4 +18,8 @@ module MessageHelper
     flash[:danger] = "Email and password combination does not exist"
   end
 
+  def flash_messafe_success
+    flash[:success] = 'Successfully edited information'
+  end
+
 end

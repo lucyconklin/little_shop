@@ -62,7 +62,7 @@ module FeatureHelpers
 
   def logged_in_as_current_admin
     admin = create(:admin)
-    page.set_rack_session(id: admin.id)
+    page.set_rack_session(admin_id: admin.id)
     admin
   end
 

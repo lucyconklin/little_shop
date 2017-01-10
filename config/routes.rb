@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     get '/login' => "admins/sessions#new", as: 'admin_login'
     post '/login' => "admins/sessions#create"
     get '/dashboard' => "admins#show", as: 'admin_dashboard'
+    resources :admins, :path => '', only: [:edit, :update]
   end
- 
+
   resources :customers, only: [:new, :create]
 
   resources :items, only: [:index, :show]
