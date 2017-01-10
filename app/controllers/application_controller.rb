@@ -11,12 +11,22 @@ class ApplicationController < ActionController::Base
     @cart = Cart.new(session[:cart])
   end
 
+  private
+
   def current_customer?
     !!current_customer
   end
 
   def current_customer
     @current_customer ||= Customer.find(session[:customer_id]) if session[:customer_id]
+  end
+
+  protected
+
+  def require_admin
+    unless current_admin?
+      render file: "/public/404"
+    end
   end
 
   def current_admin?

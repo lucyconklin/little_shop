@@ -26,4 +26,7 @@ module MessageHelper
     flash[:success] = 'Successfully edited information'
   end
 
+  def flash_message_successful_update
+    flash[:success] = 'You have successfully updated the item'
+  end
 end
