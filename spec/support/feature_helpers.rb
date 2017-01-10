@@ -61,6 +61,12 @@ module FeatureHelpers
     customer
   end
 
+  def logged_in_as_current_admin
+    admin = create(:admin)
+    page.set_rack_session(admin_id: admin.id)
+    admin
+  end
+
   def create_orders_with_items(order)
     3.times { order.items << order.items.sample(3) }
     completed = create(:status, name: "completed")
@@ -77,4 +83,11 @@ module FeatureHelpers
     customer
   end
 
+  def log_in_as_admin
+    fill_in "email", with: "jane@admin.com"
+    fill_in "password", with: "admin_boom"
+    within("form") do
+      click_on "Log in"
+    end
+  end
 end

@@ -1,0 +1,12 @@
+<h1>Edit</h1>
+
+<%= bootstrap_form_for(@admin, layout: :horizontal)do |f| %>
+  <%= f.text_field :first_name, placeholder: "First name" %>
+  <%= f.text_field :last_name, placeholder: "Last name" %>
+  <%= f.text_field :email, placeholder: "email@example.com" %>
+  <%= f.password_field :current_password, placeholder: "Current password" %>
+  <%= f.password_field :password, placeholder: "New password" %>
+  <%= f.password_field :password_confirmation, placeholder: "Retype Password" %>
+
+  <%= f.submit "Submit", class: "btn btn-success btn-block" %>
+<% end %>
