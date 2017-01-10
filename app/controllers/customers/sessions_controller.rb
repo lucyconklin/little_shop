@@ -18,8 +18,8 @@ class Customers::SessionsController < Customers::BaseController
 
   def logout
     session[:customer_id] = nil
+    session[:cart] = nil
     flash[:success] = "Successfully logged out"
     redirect_to(login_path)
   end
-
 end
