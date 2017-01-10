@@ -16,6 +16,12 @@ class Admins::SessionsController < Admins::BaseController
     end
   end
 
+  def destroy
+    session[:admin_id] = nil
+    flash_message_successful_logout
+    redirect_to admin_login_path
+  end
+
   private
 
   def admin_params

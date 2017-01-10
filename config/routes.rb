@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root to: 'admins#index', as: 'admins'
     get '/login' => "admins/sessions#new", as: 'admin_login'
     post '/login' => "admins/sessions#create"
+    delete '/logout' => "admins/sessions#destroy", as: 'admin_logout'
     get '/dashboard' => "admins#show", as: 'admin_dashboard'
     resources :admins, :path => '', only: [:edit, :update]
   end
