@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     root to: 'admins#index', as: 'admins'
     get '/login' => "admins/sessions#new", as: 'admin_login'
     post '/login' => "admins/sessions#create"
-    get '/dashboard' => "admins#show", as: 'admin_dashboard'
+    get '/dashboard' => "admin/orders#index", as: 'admin_dashboard'
   end
- 
+
   resources :customers, only: [:new, :create]
 
   resources :items, only: [:index, :show]

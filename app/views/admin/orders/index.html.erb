@@ -11,8 +11,8 @@
     <% if @status_filter.nil? == false %>
       <li> <%= link_to "Clear filter", admin_dashboard_path(status_filter: nil) %>
     <% end %>
-    <% @statuses.each do |status| %>
-      <li> <%= link_to "#{status.name}", admin_dashboard_path(status_filter: status.name) %> </li>
+    <% @statuses.sort_by_name.each do |status| %>
+      <li> <%= link_to "#{status.name.capitalize}", admin_dashboard_path(status_filter: status.name) %> </li>
     <% end %>
   </ul>
 </div>
