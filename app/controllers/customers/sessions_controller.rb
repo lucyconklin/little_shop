@@ -7,6 +7,7 @@ class Customers::SessionsController < Customers::BaseController
   def login
     @customer = Customer.find_by(email: params[:email])
     if @customer && @customer.authenticate(params[:password])
+      session[:admin_id] = nil
       session[:customer_id] = @customer.id
       flash[:success] = "Successfully logged in"
       redirect_to dashboard_path
