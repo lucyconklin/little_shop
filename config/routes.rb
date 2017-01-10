@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   scope '/admin' do
     root to: 'admins#index', as: 'admins'
+    put '/orders' => "admins/orders#update"
     get '/login' => "admins/sessions#new", as: 'admin_login'
     post '/login' => "admins/sessions#create"
     get '/dashboard' => "admins#show", as: 'admin_dashboard'

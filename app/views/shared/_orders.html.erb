@@ -57,7 +57,7 @@
             <%= button_tag "Mark as paid", class: "button-submit" if order.status.name == "ordered" %>
           </td>
           <td>
-            <%= button_tag "Cancel", class: "button-delete" if order.status.name == "ordered" || order.status.name == "paid" %>
+            <%= button_to "Cancel", orders_path, method: :put, params: {"order_id" => order.id, "status" => "cancelled"} %>
           </td>
         <% end %>
         <td> <%= number_to_currency(order.total_price_in_dollars) %> </td>

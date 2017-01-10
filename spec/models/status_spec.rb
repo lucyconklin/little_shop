@@ -8,4 +8,6 @@ describe Status do
   context 'associations' do
     it { is_expected.to have_many(:orders) }
   end
+
+  #need to test count_of_orders method
 end
