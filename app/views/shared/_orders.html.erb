@@ -14,11 +14,11 @@
              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Order Status <b class="caret"></b></a>
              <ul class="dropdown-menu">
                <% if @status_filter.nil? == false %>
-                  <li> <%= link_to "Clear filter", admin_dashboard_path(status_filter: nil) %>
+                  <li> <%= link_to "Clear filter", admin_dashboard_path(status_filter: nil), class: "dropdown-option" %>
                   <li role="separator" class="divider"></li>
                <% end %>
                <% @statuses.sort_by_name.each do |status| %>
-                  <li> <%= link_to "#{status.name.capitalize}", admin_dashboard_path(status_filter: status.name) %> </li>
+                  <li> <%= link_to "#{status.name.capitalize}", admin_dashboard_path(status_filter: status.name), class: "dropdown-option" %> </li>
                <% end %>
              </ul>
           </th>
@@ -27,11 +27,11 @@
              <a href="#" data-toggle="dropdown" class="dropdown-toggle">Order Status <b class="caret"></b></a>
              <ul class="dropdown-menu">
                <% if @status_filter.nil? == false %>
-                  <li> <%= link_to "Clear filter", orders_path(status_filter: nil) %>
+                  <li> <%= link_to "Clear filter", orders_path(status_filter: nil), class: "dropdown-option" %>
                   <li role="separator" class="divider"></li>
                <% end %>
                <% @statuses.sort_by_name.each do |status| %>
-                  <li> <%= link_to "#{status.name.capitalize}", orders_path(status_filter: status.name) %> </li>
+                  <li> <%= link_to "#{status.name.capitalize}", orders_path(status_filter: status.name), class: "dropdown-option" %> </li>
                <% end %>
              </ul>
           </th>
