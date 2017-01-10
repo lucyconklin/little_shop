@@ -79,7 +79,6 @@ feature "When an admin is logged in" do
     create_list(:order, 3, status: completed, customer: customer)
     create_list(:order, 4, status: ordered, customer: customer)
 
-    create(:admin)
     visit admin_login_path
     log_in_as_admin
     visit admin_dashboard_path

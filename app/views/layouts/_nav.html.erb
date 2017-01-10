@@ -13,7 +13,8 @@
         <div class="logged-in-message">
           Logged in as <%=link_to "#{current_customer.first_name} #{current_customer.last_name}", dashboard_path %>
         </div>
-      <% elsif current_admin? %>
+      <% end %>
+      <% if current_admin? %>
         <div class="logged-in-message">
           Logged in as Admin: <%=link_to "#{current_admin.first_name} #{current_admin.last_name}", admin_dashboard_path %>
         </div>

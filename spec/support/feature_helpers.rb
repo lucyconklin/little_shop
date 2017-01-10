@@ -83,12 +83,13 @@ module FeatureHelpers
     customer
   end
 
-  def log_in_as_admin
-    fill_in "email", with: "jane@admin.com"
+  def log_in_as_admin(admin = create(:admin))
+    fill_in "email", with: admin.email
     fill_in "password", with: "admin_boom"
     within("form") do
       click_on "Log in"
     end
+    admin
   end
 
   def log_in_as_customer(customer = create(:customer))
