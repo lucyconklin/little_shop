@@ -11,7 +11,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    byebug
     @item = item
   end
 

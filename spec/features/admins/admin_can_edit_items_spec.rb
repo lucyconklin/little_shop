@@ -66,12 +66,11 @@ feature 'the admin updates a item' do
 
   scenario "the admin updates the item retired field" do
     click_on_edit
-    select 'True', from:"item_retired"
+    select 'True', from: "item_retired"
     click_on "Update"
 
     expect(item.retired).to be true
   end
-
 end
 
 def click_on_edit

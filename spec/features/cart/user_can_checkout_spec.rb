@@ -31,7 +31,7 @@ describe "Cart checkout" do
         end
 
         scenario "redirects the customer to their order history page after checkout" do
-          expect(page).to have_current_path orders_path
+          expect(page).to have_current_path customer_orders_path
         end
 
         scenario "displays the order in the order history table after checkout" do

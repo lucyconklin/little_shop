@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature "Admin sad paths" do
-
   before { visit admin_login_path }
 
   scenario "Admin enters wrong email" do

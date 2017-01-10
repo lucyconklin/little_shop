@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   scope '/admin' do
     root to: 'admins#index', as: 'admins'
+    put '/orders' => "admins/orders#update"
     get '/login' => "admins/sessions#new", as: 'admin_login'
     post '/login' => "admins/sessions#create"
     get '/dashboard' => "admins#show", as: 'admin_dashboard'
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
   post '/cart' => "carts#update"
   delete '/cart' => "carts#destroy"
 
-  get '/orders' => "customers/orders#index"
+  get '/orders' => "customers/orders#index", as: 'customer_orders'
   get '/order' => "customers/orders#show"
 
   resources :categories, :path => '', only: [:show]

@@ -43,7 +43,6 @@ feature 'the admin fails to update a item' do
 
       expect(item.image_url).to_not be_empty
     end
-
   end
 
   def click_on_edit
