@@ -4,6 +4,7 @@ feature 'the admin updates a item' do
   context 'when the admin visits admin/items' do
     let!(:admin) { logged_in_as_current_admin }
     let(:item) { Item.first }
+
     before do
       create(:category_with_items)
       visit items_path(admin)

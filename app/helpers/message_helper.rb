@@ -29,4 +29,8 @@ module MessageHelper
   def flash_message_successful_update
     flash[:success] = 'You have successfully updated the item'
   end
+
+  def flash_message_failed_update
+    flash[:danger] = "You failed to update the item."
+  end
 end

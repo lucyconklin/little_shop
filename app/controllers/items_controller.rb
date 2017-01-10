@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
       flash_message_successful_update
       redirect_to item_path(item)
     else
+      flash_message_failed_update
       render :edit
     end
   end
