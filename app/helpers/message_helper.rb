@@ -14,6 +14,10 @@ module MessageHelper
     flash[:success] = 'Successfully logged in!'
   end
 
+  def flash_message_successful_order
+    flash[:success] = "Order was successfully placed."
+  end
+
   def flash_message_failed_login
     flash[:danger] = "Email and password combination does not exist"
   end
@@ -22,7 +26,11 @@ module MessageHelper
     flash[:success] = 'Successfully edited information'
   end
 
-  def flash_message_successful_order
-    flash[:success] = "Order was successfully placed."
+  def flash_message_successful_update
+    flash[:success] = 'You have successfully updated the item'
+  end
+
+  def flash_message_failed_update
+    flash[:danger] = "You failed to update the item."
   end
 end

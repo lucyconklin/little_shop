@@ -13,4 +13,7 @@
       Item not available
     </div>
   <% end %>
+  <% if current_admin?  %>
+    <%= link_to "Edit item", edit_admin_item_path(id: item.id), class: "btn btn-info" %>
+  <% end %>
 </div>
