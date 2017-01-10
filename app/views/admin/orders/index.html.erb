@@ -2,21 +2,6 @@
 
 <h2>Order History for all Customers</h2>
 
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Filter by Status
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <% if @status_filter.nil? == false %>
-      <li> <%= link_to "Clear filter", admin_dashboard_path(status_filter: nil) %>
-    <% end %>
-    <% @statuses.sort_by_name.each do |status| %>
-      <li> <%= link_to "#{status.name.capitalize}", admin_dashboard_path(status_filter: status.name) %> </li>
-    <% end %>
-  </ul>
-</div>
-
 <% if @orders.any? %>
   <%= render partial: 'shared/orders' %>
 <% else %>
