@@ -15,7 +15,7 @@ feature "the customer views the details for an order" do
     create_orders_with_items(order_3)
     update_customer_orders(customer, order_2, order_3)
     visit orders_path
-    click_on_order_3
+    click_on "#{order_3.id}"
 
     expect(page).to have_content "Status: #{order_3.status_name}"
     expect(page).to have_content order_3.total_price_in_dollars
@@ -27,16 +27,12 @@ feature "the customer views the details for an order" do
     create_orders_with_items(order_3)
     update_customer_orders(customer, order_2, order_3)
     visit orders_path
-    click_on_order_3
+    click_on "#{order_3.id}"
 
     order_3.items_and_quantities.each do |item, quantity|
       expect(page).to have_selector(:link_or_button, item.title)
       expect(page).to have_content "#{quantity} x $#{item.price_in_dollars}"
       expect(page).to have_content "$#{item.price_in_dollars(quantity)}"
     end
-  end
-
-  def click_on_order_3
-    click_on("order_#{order_3.id}")
   end
 end

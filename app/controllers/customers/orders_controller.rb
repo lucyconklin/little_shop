@@ -15,14 +15,13 @@ class Customers::OrdersController < Customers::BaseController
       render file: "/public/404"
     else
       status = Status.find_by(name: @status_filter)
-      # @orders = status.orders.most_recent
       @orders = customer_orders.where(status: status).most_recent
     end
   end
 
   def show
     @order = Order.find(params[:order_id])
-    if @orders.include?(@order)
+    if customer_orders.include?(@order)
       render :show
     else
       render file: "/public/404"
