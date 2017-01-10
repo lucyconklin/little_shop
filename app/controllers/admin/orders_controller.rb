@@ -1,15 +1,16 @@
 class Admin::OrdersController < ApplicationController
 
   def index
-    @filter_by = params[:filter_by]
+    @status_filter = params[:status_filter]
     @statuses = Status.all
 
-    if @filter_by.nil?
+    if @status_filter.nil?
       @orders = Order.all
-    elsif @statuses.pluck(:name).include?(@filter_by) == false
+    elsif @statuses.pluck(:name).include?(@status_filter) == false
       render file: "/public/404"
     else
-      @orders = Order.where(status: Status.find_by(name: @filter_by))
+      status = Status.find_by(name: @status_filter)
+      @orders = status.orders.most_recent
     end
   end
 
