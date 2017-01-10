@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @item = item
     if @item.update(item_params)
       flash_message_successful_update
-      redirect_to items_path
+      redirect_to item_path(item)
     else
       render :edit
     end
