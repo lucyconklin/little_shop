@@ -21,7 +21,10 @@ class Cart
   end
 
   def items
-    find_item(contents.keys)
+    items_with_quantities.reduce(Array.new) do |collector, (item, quantity)|
+      quantity.times { collector << item }
+      collector
+    end
   end
 
   def find_item(id)

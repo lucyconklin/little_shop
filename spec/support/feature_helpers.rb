@@ -8,6 +8,7 @@ module FeatureHelpers
         click_on "Add to cart"
       end
     end
+    item
   end
 
   def add_one_item_to_cart(item)
