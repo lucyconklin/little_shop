@@ -13,6 +13,12 @@ feature 'the admin updates a item' do
       expect(page).to have_selector(:link_or_button, "Edit item")
     end
 
+    scenario 'after clicking on edit the admin should be redirected' do
+      click_on_edit
+
+      expect(page).to have_current_path("/admin/items/#{item.id}/edit")
+    end
+
     scenario "the admin should see a successfully updated item message after updating the item" do
       update_item
 
