@@ -1,5 +1,5 @@
 require "rails_helper"
- p
+
 feature "the admin can update their own data" do
 
   let!(:admin) {logged_in_as_current_admin}
@@ -21,38 +21,43 @@ feature "the admin can update their own data" do
   end
 
   scenario "the admin can update first name" do
-    fill_in "First name", with: "Arnold"
+    fill_in "admin[first_name]", with: "Arnold"
     click_on "Submit"
 
+    admin.reload
     expect(page).to have_content("Arnold Boss")
     expect(page).to have_content("jane@admin.com")
+    expect(admin.first_name).to eq("Arnold")
   end
 
-  xscenario "the admin can update last name" do
-    fill_in "Last name", with: "Schwarzenegger"
+  scenario "the admin can update last name" do
+    fill_in "admin[last_name]", with: "Schwarzenegger"
     click_on "Submit"
 
-    expect(page).to have_current_path(admin_dashboard_path)
+    admin.reload
     expect(page).to have_content("Jane Schwarzenegger")
     expect(page).to have_content("jane@admin.com")
+    expect(admin.last_name).to eq("Schwarzenegger")
   end
 
-  xscenario "the admin can update email" do
-    fill_in "email", with: "terminator@terminator.com"
+  scenario "the admin can update email" do
+    fill_in "admin[email]", with: "terminator@terminator.com"
     click_on "Submit"
+    admin.reload
 
-    expect(page).to have_current_path(admin_dashboard_path)
     expect(page).to have_content("Jane Boss")
     expect(page).to have_content("terminator@terminator.com")
+    expect(admin.email).to eq("terminator@terminator.com")
   end
 
-  xscenario "the admin can update password" do
-    expect(admin.password).to eq("admin_boom")
-    fill_in "current password", with: "admin_boom"
-    fill_in "password", with: "jonkimble"
-    fill_in "confirm password", with: "jonkimble"
+  scenario "the admin can update password" do
+    fill_in "admin[current_password]", with: "admin_boom"
+    fill_in "admin[password]", with: "jonkimble"
+    fill_in "admin[password_confirmation]", with: "jonkimble"
     click_on "Submit"
+    admin.reload
 
-    expect(admin.password).to eq("jonkimble")
+    expect(admin.authenticate('admin_boom')).to be false
+    expect(admin.authenticate('jonkimble')).to be_a(Admin)
   end
 end

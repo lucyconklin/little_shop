@@ -1,5 +1,5 @@
 class AdminsController < Admins::BaseController
-
+  include MessageHelper
   def show
     @admin = current_admin
   end
@@ -9,9 +9,8 @@ class AdminsController < Admins::BaseController
   end
 
   def update
-    admin = current_admin
-    # byebug
-    if admin.update_attributes(admin_params)
+    @admin = Admin.find(params[:id])
+    if @admin.update(admin_params)
       flash_message_success
       redirect_to admin_dashboard_path
     else
