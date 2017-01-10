@@ -1,9 +1,0 @@
-<h1>Admin Dashboard</h1>
-
-<h2>Order History for all Customers</h2>
-
-<% if @orders.any? %>
-  <%= render partial: 'shared/orders' %>
-<% else %>
-  <p>There have been no orders placed at this time.</p>
-<% end %>

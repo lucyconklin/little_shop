@@ -6,6 +6,6 @@ class CheckoutController < ApplicationController
     clear_cart
     flash_message_successful_order
 
-    redirect_to orders_path
+    redirect_to customer_orders_path
   end
 end
