@@ -1,0 +1,17 @@
+<h1>Edit</h1>
+
+<div>
+    <%= form_for(@admin) do |f| %>
+    <div class="form-group">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class:"form-control", placeholder: :first_name %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit %>
+    </div>
+    <div class="form-group">
+      <%= button_to "Submit", method: :put %>
+    </div>
+  <% end %>
+</div>
