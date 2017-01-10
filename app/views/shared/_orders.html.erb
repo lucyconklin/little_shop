@@ -51,10 +51,10 @@
           <td> <%= order.customer.first_name %> <%= order.customer.last_name %> </td>
           <td> <%= order.customer.email %> </td>
           <td>
-            <%= button_tag "Mark as completed", class: "button-submit" if order.status.name == "paid" %>
+            <%= button_to "Mark as completed", orders_path, method: :put, class: "order_#{order.id}_complete", params: {"order_id" => order.id, "status" => "completed"} %>
           </td>
           <td>
-            <%= button_tag "Mark as paid", class: "button-submit" if order.status.name == "ordered" %>
+            <%= button_to "Mark as paid", orders_path, method: :put, class: "order_#{order.id}_mark_as_paid", params: {"order_id" => order.id, "status" => "paid"} %>
           </td>
           <td>
             <%= button_to "Cancel", orders_path, method: :put, class: "order_#{order.id}_cancel", params: {"order_id" => order.id, "status" => "cancelled"} %>
