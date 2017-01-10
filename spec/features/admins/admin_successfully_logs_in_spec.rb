@@ -38,7 +38,7 @@ feature "Admin logs in" do
       end
 
       scenario "logs them out as a customer" do
-        visit orders_path
+        visit customer_orders_path
 
         expect(page).to have_content("The page you were looking for doesn't exist.")
       end
