@@ -7,14 +7,14 @@ feature "the customer views the details for an order" do
   let!(:order_3) { create(:all_new_order) }
 
   scenario "the users page path should be /orders " do
-    visit orders_path
-    expect(page).to have_current_path(orders_path)
+    visit customer_orders_path
+    expect(page).to have_current_path(customer_orders_path)
   end
 
   scenario "the user should see the details for the order" do
     create_orders_with_items(order_3)
     update_customer_orders(customer, order_2, order_3)
-    visit orders_path
+    visit customer_orders_path
     click_on "#{order_3.id}"
 
     expect(page).to have_content "Status: #{order_3.status_name}"
@@ -26,7 +26,7 @@ feature "the customer views the details for an order" do
   scenario "the user should see the items for the order" do
     create_orders_with_items(order_3)
     update_customer_orders(customer, order_2, order_3)
-    visit orders_path
+    visit customer_orders_path
     click_on "#{order_3.id}"
 
     order_3.items_and_quantities.each do |item, quantity|

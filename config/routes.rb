@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post '/cart' => "carts#update"
   delete '/cart' => "carts#destroy"
 
-  get '/orders' => "customers/orders#index"
+  get '/orders' => "customers/orders#index", as: 'customer_orders'
   get '/order' => "customers/orders#show"
 
   resources :categories, :path => '', only: [:show]
