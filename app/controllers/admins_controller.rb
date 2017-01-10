@@ -2,9 +2,11 @@ class AdminsController < Admins::BaseController
   include MessageHelper
   def show
     @admin = current_admin # take this line out
+    @status_name = Order.group(:status).count(:id)
+  
     @filter_by = params[:filter_by] # this is the only thing we are taking out of the params
     @statuses = Status.all # dashboard.statuses
-    @status_name = Order.group(:status).count(:id) #dashboard.status_names
+     #dashboard.status_names
     # make an AdminDashboard model for these new methods to live in
 
     if @filter_by.nil?
