@@ -7,7 +7,7 @@ Category.destroy_all
 Status.destroy_all
 Customer.destroy_all
 
-puts "Making some new items for your database... \n\n" 
+puts "Making some new items for your database... \n\n"
 FactoryGirl.create_list(:category, 7)
 categories = Category.all
 number_from_10_to_30 = Faker::Number.between(10, 30)
@@ -46,8 +46,14 @@ customers.each do |customer|
   end
 end
 
+FactoryGirl.create(:admin)
+
 puts "Here is a sample customer, just for you, so you can log in right away. \n"
 puts "Sample customer: \n" + \
 "  email: #{customer.email} \n" + \
 "  password: boom"
 
+puts "Here is a sample admin, just for you, so you can log in right away. \n"
+puts "Sample admin: \n" + \
+"  email: jane@admin.com \n" + \
+"  password: admin_boom"
