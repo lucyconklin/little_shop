@@ -4,7 +4,8 @@ feature "customer is not authorized to edit an item" do
   let(:customer) { logged_in_as_current_customer }
   let(:item) { create(:item) }
 
-  scenario 'the customer attempts to visit the item edit path' do
+  scenario 'a logged in customer attempts to visit the item edit path' do
+    logged_in_as_current_customer
     visit edit_admin_item_path(item)
 
     expect(page).to_not have_current_path(edit_admin_item_path(item))
