@@ -71,7 +71,6 @@ feature 'the admin updates a item' do
 
     expect(item.retired).to be true
   end
-
 end
 
 def click_on_edit
