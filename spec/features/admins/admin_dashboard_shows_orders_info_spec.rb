@@ -13,7 +13,8 @@ feature "Admin dashboard" do
     @order_1 = create(:order, status: paid, customer: customer)
     @order_2, @order_3 = create_list(:order, 2, status: cancelled, customer: customer)
     create_list(:order, 3, status: completed, customer: customer)
-    create_list(:order, 4, status: ordered, customer: customer)
+    create_list(:order, 3, status: ordered, customer: customer)
+    @order_4 = create(:order, status: ordered, customer: customer)
 
     visit admin_dashboard_path
   end
@@ -56,9 +57,9 @@ feature "Admin dashboard" do
   end
 
   scenario "they can click on 'mark as paid' on orders that are 'ordered'" do
-    find(".order_#{@order_1.id}_mark_as_paid").click
+    find(".order_#{@order_4.id}_mark_as_paid").click
 
-    within(".order_#{@order_1.id}_row") { expect(page).to have_content("Paid") }
+    within(".order_#{@order_4.id}_row") { expect(page).to have_content("Paid") }
   end
 
   scenario "they can 'mark as completed' on orders that are 'paid'" do
