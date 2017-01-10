@@ -12,24 +12,23 @@ feature "When a customer is authenticated" do
   end
 
   scenario "the customer cannot view the admin dashboard" do
-    # When I visit admin_dashboard_path
-    # I get a 404
-  end
+    admin = create(:admin)
+    visit admin_dashboard_path
 
-  scenario "the customer cannot edit orders" do
-    # When I visit orders_path
-    # I get a 404
+    expect(page).to have_content("The page you were looking for doesn't exist.")
   end
 
   scenario "the customer cannot edit an admin" do
-    # When I visit edit_admin_path
-    # I get a 404
+    admin = create(:admin)
+    visit edit_admin_path(admin)
+
+    expect(page).to have_content("The page you were looking for doesn't exist.")
   end
 
   scenario "the customer cannot edit items" do
-    # When I visit edit_admin_item_path
-    # I get a 404
-  end
+    item = create(:item)
+    visit edit_admin_item_path(item)
 
-  #why do we have an admins#index?
+    expect(page).to have_content("The page you were looking for doesn't exist.")
+  end
 end
