@@ -52,7 +52,7 @@ feature "Admin dashboard" do
   scenario "they can click on 'cancel' to cancel 'paid' or 'ordered' orders" do
     find(".order_#{@order_1.id}_cancel").click
 
-    within(".order_#{@order_1.id}_cancel") { expect(page).to have_content("Cancelled") }
+    within(".order_#{@order_1.id}_row") { expect(page).to have_content("Cancelled") }
   end
 
   # xscenario "they can click on 'mark as paid' on orders that are 'ordered'" do

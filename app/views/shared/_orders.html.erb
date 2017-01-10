@@ -44,7 +44,7 @@
     </thead>
     <tbody>
       <% @orders.each do |order| %>
-      <tr>
+      <tr class= "order_<%= order.id %>_row">
         <td> <%= link_to "#{order.id}", order_path(order_id: order.id), class: "order_#{order.id}" %> </td>
         <% if current_admin? %>
           <td> <%= order.customer.id %> </td>
@@ -57,7 +57,7 @@
             <%= button_tag "Mark as paid", class: "button-submit" if order.status.name == "ordered" %>
           </td>
           <td>
-            <%= button_to "Cancel", orders_path, method: :put, params: {"order_id" => order.id, "status" => "cancelled"} %>
+            <%= button_to "Cancel", orders_path, method: :put, class: "order_#{order.id}_cancel", params: {"order_id" => order.id, "status" => "cancelled"} %>
           </td>
         <% end %>
         <td> <%= number_to_currency(order.total_price_in_dollars) %> </td>

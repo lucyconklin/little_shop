@@ -10,7 +10,6 @@ class Admins::OrdersController < ApplicationController
     order.save
     redirect_to admin_dashboard_path
     # if Status.all.include?(params[:status])
-    # order.save
   end
 
 end
