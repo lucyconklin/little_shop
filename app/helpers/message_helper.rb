@@ -22,4 +22,7 @@ module MessageHelper
     flash[:success] = 'Successfully edited information'
   end
 
+  def flash_message_successful_order
+    flash[:success] = "Order was successfully placed."
+  end
 end

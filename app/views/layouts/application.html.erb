@@ -8,14 +8,12 @@
     <%= javascript_include_tag 'application' %>
   </head>
   <body>
-    <div class="wrapper">
-      <%= render partial: 'layouts/nav' %>
-      <section class="main">
-        <%= render partial: 'shared/errors' %>
-        <%= render partial: 'shared/notices' %>
-        <%= yield %>
-      </section>
-      <%= render partial: 'layouts/footer' %>
-    </div>
+    <%= render partial: 'layouts/nav' %>
+    <section class="main">
+      <%= render partial: 'shared/errors' %>
+      <%= render partial: 'shared/notices' %>
+      <%= yield %>
+    </section>
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>
