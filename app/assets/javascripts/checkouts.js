@@ -26,11 +26,16 @@ function stripeResponseHandler(status, response) {
 
     // Get the token ID:
     var token = response.id;
+    console.log(response);
 
     // Insert the token ID into the form so it gets submitted to the server:
     $form.append($('<input type="hidden" name="stripeToken">').val(token));
+    $form.append($('<input type="hidden" name="card_brand">').val(response.card.brand));
+    $form.append($('<input type="hidden" name="card_last4">').val(response.card.last4));
+    $form.append($('<input type="hidden" name="card_exp_month">').val(response.card.exp_month));
+    $form.append($('<input type="hidden" name="card_exp_year">').val(response.card.exp_year));
 
     // Submit the form:
-    // $form.get(0).submit();
+    $form.get(0).submit();
   }
 };
