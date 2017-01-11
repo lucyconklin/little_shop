@@ -1,7 +1,5 @@
 class AdminsController < Admins::BaseController
   before_action :require_admin
-  include MessageHelper
-  include ApplicationHelper
 
   def show
     @status_filter = status_filter

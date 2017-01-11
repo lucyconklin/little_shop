@@ -1,6 +1,4 @@
 class CartsController < ApplicationController
-  include MessageHelper
-  include ApplicationHelper
 
   def create
     add_item_to_cart

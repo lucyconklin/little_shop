@@ -1,5 +1,4 @@
 class CheckoutController < ApplicationController
-  include MessageHelper
 
   def checkout
     OrderProcessor.new.process(current_customer, @cart.items)

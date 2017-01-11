@@ -19,4 +19,7 @@ module ApplicationHelper
     Admin.find(id)
   end
 
+  def customer(id=session[:customer_id])
+    Customer.find(id)
+  end
 end

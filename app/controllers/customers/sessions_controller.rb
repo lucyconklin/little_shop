@@ -1,6 +1,7 @@
 class Customers::SessionsController < Customers::BaseController
   include MessageHelper
-  skip_before_action :require_customer, only: [:new, :create]
+
+  skip_before_action :require_customer
 
   def new; end
 
