@@ -16,4 +16,17 @@ describe Status do
 
     expect(status.count_of_orders).to eql(3)
   end
+
+  it "sort_by_name returns a sorted array of statuses" do
+    create(:status, name: "paid")
+    create(:status, name: "cancelled")
+    create(:status, name: "ordered")
+    create(:status, name: "completed")
+
+    statuses = Status.all.sort_by_name
+    expect(statuses[0].name).to eql("cancelled")
+    expect(statuses[1].name).to eql("completed")
+    expect(statuses[2].name).to eql("ordered")
+    expect(statuses[3].name).to eql("paid")
+  end
 end
