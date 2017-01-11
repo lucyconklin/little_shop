@@ -25,9 +25,7 @@ class CustomersController < Customers::BaseController
     end
   end
 
-  def dashboard
-    @customer = current_customer
-  end
+  def dashboard; end
 
   private
 
