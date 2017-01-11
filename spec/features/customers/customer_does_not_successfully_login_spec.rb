@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "When a customer visits the root path" do
+feature "When a customer does not enter valid login credentials" do
   before do
     create(:customer, first_name: "Jane", last_name: "Doe", email: "jane@jane.com")
     visit root_path
@@ -13,7 +13,7 @@ feature "When a customer visits the root path" do
       click_on "Log in"
     end
 
-    expect(page).to have_content("Email and password combination do not exist")
+    expect(page).to have_content("Email and password combination does not exist")
     expect(page).not_to have_content("Successfully logged in")
   end
 
@@ -23,7 +23,7 @@ feature "When a customer visits the root path" do
       click_on "Log in"
     end
 
-    expect(page).to have_content("Email and password combination do not exist")
+    expect(page).to have_content("Email and password combination does not exist")
     expect(page).not_to have_content("Successfully logged in")
   end
 
@@ -32,7 +32,7 @@ feature "When a customer visits the root path" do
       click_on "Log in"
     end
 
-    expect(page).to have_content("Email and password combination do not exist")
+    expect(page).to have_content("Email and password combination does not exist")
     expect(page).not_to have_content("Successfully logged in")
   end
 
@@ -43,7 +43,7 @@ feature "When a customer visits the root path" do
       click_on "Log in"
     end
 
-    expect(page).to have_content("Email and password combination do not exist")
+    expect(page).to have_content("Email and password combination does not exist")
     expect(page).not_to have_content("Successfully logged in")
   end
 end
