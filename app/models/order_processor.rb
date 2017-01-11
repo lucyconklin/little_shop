@@ -1,8 +1,10 @@
 class OrderProcessor
-  attr_accessor :order
+  include ApplicationHelper
+
+  attr_reader :order
 
   def initialize
-    @order = Order.new(status: Status.find_by(name: "ordered"))
+    @order = Order.new(status: status("ordered"))
   end
 
   def process(customer, cart_items)
