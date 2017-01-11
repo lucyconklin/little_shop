@@ -24,5 +24,4 @@ class Admins::ItemsController < Admins::BaseController
   def item_params
     params.require(:item).permit(:title, :description, :image_url, :retired)
   end
-
 end

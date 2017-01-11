@@ -40,5 +40,4 @@ class CartsController < ApplicationController
   def add_item_to_cart
     @cart.add_item(item.id)
   end
-
 end

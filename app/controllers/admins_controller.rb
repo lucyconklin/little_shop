@@ -11,13 +11,10 @@ class AdminsController < Admins::BaseController
     end
   end
 
-  def edit
-    @admin = current_admin
-  end
+  def edit; end
 
   def update
-    @admin = admin
-    if @admin.update(admin_params)
+    if admin.update(admin_params)
       flash_message_success
       redirect_to admin_dashboard_path
     else
