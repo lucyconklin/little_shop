@@ -2,8 +2,7 @@ class Customers::SessionsController < Customers::BaseController
   include MessageHelper
   skip_before_action :require_customer, only: [:new, :create]
 
-  def new
-  end
+  def new ; end
 
   def create
     @customer = Customer.find_by(email: params[:email])
