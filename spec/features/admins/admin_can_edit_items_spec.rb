@@ -29,12 +29,14 @@ feature 'the admin updates a item' do
   scenario "the admin should see a successfully updated item message after updating the item" do
     update_item
 
+    expect(page).to have_content "successfully updated the item"
     expect(page).to have_content("You have successfully updated the item")
   end
 
   scenario "after updating an item, the admin to should be routed to the item show page" do
     update_item
 
+    expect(page).to have_content "successfully updated the item"
     expect(page).to have_current_path(item_path(item))
   end
 
@@ -43,6 +45,7 @@ feature 'the admin updates a item' do
     fill_in "item[title]", with: "new pants"
     click_on "Update"
 
+    expect(page).to have_content "successfully updated the item"
     expect(item.title).to eq("new pants")
   end
 
@@ -52,6 +55,7 @@ feature 'the admin updates a item' do
     fill_in "item[description]", with: "#{new_description}"
     click_on "Update"
 
+    expect(page).to have_content "successfully updated the item"
     expect(item.description).to eq(new_description)
   end
 
@@ -61,6 +65,7 @@ feature 'the admin updates a item' do
     fill_in "item[image_url]", with: new_image_url
     click_on "Update"
 
+    expect(page).to have_content "successfully updated the item"
     expect(item.image_url).to eq(new_image_url)
   end
 
@@ -69,6 +74,7 @@ feature 'the admin updates a item' do
     select 'True', from: "item_retired"
     click_on "Update"
 
+    expect(page).to have_content "successfully updated the item"
     expect(item.retired).to be true
   end
 end

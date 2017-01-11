@@ -1,5 +1,4 @@
 class CustomersController < Customers::BaseController
-  include MessageHelper
   skip_before_action :require_customer, only: [:new, :create]
 
   def new
@@ -26,9 +25,7 @@ class CustomersController < Customers::BaseController
     end
   end
 
-  def dashboard
-    @customer = current_customer
-  end
+  def dashboard; end
 
   private
 

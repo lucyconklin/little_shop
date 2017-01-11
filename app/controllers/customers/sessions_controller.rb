@@ -1,14 +1,13 @@
 class Customers::SessionsController < Customers::BaseController
   include MessageHelper
-  skip_before_action :require_customer, only: [:new, :create]
+
+  skip_before_action :require_customer
 
   def new; end
 
   def create
-    @customer = Customer.find_by(email: params[:email])
-    if @customer && @customer.authenticate(params[:password])
-      session[:admin_id] = nil
-      session[:customer_id] = @customer.id
+    if authenticated_customer?
+      set_customer_session
       flash_message_successful_login
       redirect_to dashboard_path
     else
@@ -18,9 +17,23 @@ class Customers::SessionsController < Customers::BaseController
   end
 
   def destroy
-    session[:customer_id] = nil
-    clear_cart
+    reset_session
     flash_message_successful_logout
     redirect_to(login_path)
+  end
+
+  private
+
+  def customer
+    Customer.find_by(email: params[:email])
+  end
+
+  def set_customer_session
+    session[:customer_id] = customer.id
+    session[:admin_id] = nil
+  end
+
+  def authenticated_customer?
+    customer && customer.authenticate(params[:password])
   end
 end

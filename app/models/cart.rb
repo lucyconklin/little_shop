@@ -1,4 +1,6 @@
 class Cart
+  include ApplicationHelper
+
   attr_reader :contents
 
   def initialize(initial_contents)
@@ -14,12 +16,6 @@ class Cart
     contents[item_id.to_s] += 1
   end
 
-  def price_and_quantity
-    contents.map do |id, quantity|
-      [find_item(id).price_in_cents, quantity]
-    end
-  end
-
   def items
     items_with_quantities.reduce(Array.new) do |collector, (item, quantity)|
       quantity.times { collector << item }
@@ -27,20 +23,9 @@ class Cart
     end
   end
 
-  def find_item(id)
-    Item.find(id)
-  end
-
   def items_with_quantities
     contents.reduce({}) do |memo, (id, quantity)|
-      memo[find_item(id)] = quantity
-      memo
-    end
-  end
-
-  def total_price_in_cents
-    price_and_quantity.reduce(0) do |memo, prices|
-      memo += prices[0] * prices[1]
+      memo[item(id)] = quantity
       memo
     end
   end
@@ -67,6 +52,19 @@ class Cart
   def clean_cart
     contents.delete_if do |item_id, quantity|
       quantity == 0
+    end
+  end
+
+  def price_and_quantity
+    contents.map do |id, quantity|
+      [item(id).price_in_cents, quantity]
+    end
+  end
+
+  def total_price_in_cents
+    price_and_quantity.reduce(0) do |memo, prices|
+      memo += prices[0] * prices[1]
+      memo
     end
   end
 end

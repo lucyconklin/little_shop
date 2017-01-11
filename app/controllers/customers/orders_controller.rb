@@ -1,5 +1,6 @@
 class Customers::OrdersController < Customers::BaseController
   before_action :customer_orders
+  include ApplicationHelper
 
   def customer_orders
     current_customer.orders
@@ -17,7 +18,7 @@ class Customers::OrdersController < Customers::BaseController
   end
 
   def show
-    @order = Order.find(params[:order_id])
+    @order = order
     if customer_orders.include?(@order)
       render :show
     else
@@ -36,7 +37,7 @@ class Customers::OrdersController < Customers::BaseController
     if @status_filter.nil?
       @orders = customer_orders.most_recent
     else
-      status = Status.find_by(name: @status_filter)
+      status = status(@status_filter)
       @orders = customer_orders.where(status: status).most_recent
     end
   end
