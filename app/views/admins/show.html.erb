@@ -13,7 +13,7 @@
 
   <h3>Order summary</h3>
   <ul>
-  <% @statuses.sort_by_name.each do |status| %>
+  <% @statuses.each do |status| %>
     <li class="status_<%= status.name.downcase %>">
       <%= status.name.capitalize %> - <%= status.count_of_orders %>
     </li>
