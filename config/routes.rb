@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     put '/orders' => "admins/orders#update"
     get '/login' => "admins/sessions#new", as: 'admin_login'
     post '/login' => "admins/sessions#create"
+    delete '/logout' => "admins/sessions#destroy", as: 'admin_logout'
     get '/dashboard' => "admins#show", as: 'admin_dashboard'
     get '/items' => "items#index", as: 'items'
     get '/items/:id/edit' => 'items#edit', as: 'edit_admin_item'

@@ -1,10 +1,7 @@
 require "rails_helper"
 
 feature "Admin logs in" do
-  before do
-    create(:admin)
-    visit admin_login_path
-  end
+  before { visit admin_login_path }
 
   scenario "successful login goes to admin dashboard page" do
     log_in_as_admin
@@ -25,5 +22,26 @@ feature "Admin logs in" do
     session = page.get_rack_session["admin_id"]
 
     expect(session).to eq(Admin.first.id)
+  end
+
+  describe "when a user is already logged in as a customer" do
+    let!(:customer) { log_in_as_customer }
+
+    context "logging in as an admin" do
+      before { visit admin_login_path }
+      let!(:admin) { log_in_as_admin }
+
+      scenario "signs them in as an admin" do
+        expect(page).to have_current_path admin_dashboard_path
+        expect(page).to have_content admin.email
+        expect(page).to have_content "Logged in as Admin"
+      end
+
+      scenario "logs them out as a customer" do
+        visit customer_orders_path
+
+        expect(page).to have_content("The page you were looking for doesn't exist.")
+      end
+    end
   end
 end
