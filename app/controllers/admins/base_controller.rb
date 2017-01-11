@@ -4,8 +4,6 @@ class Admins::BaseController < ApplicationController
   private
   
   def require_admin
-    unless current_admin?
-      render file: "/public/404"
-    end
+     render file: "/public/404" unless current_admin?
   end
 end
