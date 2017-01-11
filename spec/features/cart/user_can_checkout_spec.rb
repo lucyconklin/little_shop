@@ -22,27 +22,6 @@ describe "Cart checkout" do
           expect(order.items).to match_array [item, item, item]
         end
       end
-
-      context "and the customer has checked out" do
-        before { click_on "Checkout" }
-
-        scenario "the cart is now empty" do
-          expect(page).to have_css(".cart_counter", text: "0")
-        end
-
-        scenario "redirects the customer to their order history page after checkout" do
-          expect(page).to have_current_path customer_orders_path
-        end
-
-        scenario "displays the order in the order history table after checkout" do
-          order = Order.first
-          expect(page).to have_content order.total_price_in_dollars
-        end
-
-        scenario "shows a message to the customer to show that the order was placed after checkout" do
-          expect(page).to have_content "Order was successfully placed."
-        end
-      end
     end
   end
 end
