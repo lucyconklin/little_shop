@@ -13,7 +13,7 @@ feature "When a site visitor is unauthenticated" do
   end
 
   scenario "they cannot view the admin dashboard" do
-    admin = create(:admin)
+    create(:admin)
     visit admin_dashboard_path
 
     expect(page).to have_content("The page you were looking for doesn't exist.")
