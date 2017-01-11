@@ -1,12 +1,13 @@
 class Admins::OrdersController < ApplicationController
+  include ApplicationHelper
 
   def show
-    @order = Order.find(params[:order_id])
+    @order = order
   end
 
   def update
-    order = Order.find(params["order_id"])
-    order.status = Status.find_by(name: params["status"])
+    order = order(params["order_id"])
+    order.status = status
     order.save
     redirect_to admin_dashboard_path
   end

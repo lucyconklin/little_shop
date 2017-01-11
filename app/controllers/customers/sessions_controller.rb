@@ -5,10 +5,9 @@ class Customers::SessionsController < Customers::BaseController
   def new; end
 
   def create
-    @customer = Customer.find_by(email: params[:email])
-    if @customer && @customer.authenticate(params[:password])
+    if customer && customer.authenticate(params[:password])
       session[:admin_id] = nil
-      session[:customer_id] = @customer.id
+      session[:customer_id] = customer.id
       flash_message_successful_login
       redirect_to dashboard_path
     else
@@ -18,9 +17,14 @@ class Customers::SessionsController < Customers::BaseController
   end
 
   def destroy
-    session[:customer_id] = nil
-    clear_cart
+    reset_session
     flash_message_successful_logout
     redirect_to(login_path)
+  end
+
+  private
+
+  def customer
+    Customer.find_by(email: params[:email])
   end
 end

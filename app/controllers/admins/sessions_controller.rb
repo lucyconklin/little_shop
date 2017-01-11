@@ -2,8 +2,7 @@ class Admins::SessionsController < Admins::BaseController
   skip_before_action :require_admin, only: [:new, :create]
   include MessageHelper
 
-  def new
-  end
+  def new; end
 
   def create
     admin = Admin.find_by(email: params[:email])

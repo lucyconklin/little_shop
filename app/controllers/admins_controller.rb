@@ -1,11 +1,11 @@
 class AdminsController < Admins::BaseController
   before_action :require_admin
   include MessageHelper
+  include ApplicationHelper
 
   def show
-    @status_filter = params[:status_filter]
+    @status_filter = status_filter
     @statuses = Status.all.sort_by_name
-
     if valid_status_filter?
       @orders = filter_orders
     else
@@ -18,7 +18,7 @@ class AdminsController < Admins::BaseController
   end
 
   def update
-    @admin = Admin.find(params[:id])
+    @admin = admin
     if @admin.update(admin_params)
       flash_message_success
       redirect_to admin_dashboard_path
@@ -29,16 +29,20 @@ class AdminsController < Admins::BaseController
 
   private
 
+  def status_filter
+    params[:status_filter]
+  end
+
   def valid_status_filter?
     status_names = @statuses.pluck(:name)
-    @status_filter.nil? || status_names.include?(@status_filter)
+    status_filter.nil? || status_names.include?(status_filter)
   end
 
   def filter_orders
-    if @status_filter.nil?
+    if status_filter.nil?
       Order.all.most_recent
     else
-      status = Status.find_by(name: @status_filter)
+      status = status(status_filter)
       status.orders.most_recent
     end
   end
