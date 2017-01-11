@@ -1,12 +1,10 @@
 class AdminsController < Admins::BaseController
+  before_action :require_admin
   include MessageHelper
 
   def show
-    render file: '/public/404' unless current_admin
-
-    @admin = current_admin # take this line out
     @status_filter = params[:status_filter]
-    @statuses = Status.all
+    @statuses = Status.all.sort_by_name
 
     if valid_status_filter?
       @orders = filter_orders

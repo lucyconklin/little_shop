@@ -18,7 +18,7 @@
                   <li> <%= link_to "Clear filter", admin_dashboard_path(status_filter: nil), class: "dropdown-option" %>
                   <li role="separator" class="divider"></li>
                <% end %>
-               <% @statuses.sort_by_name.each do |status| %>
+               <% @statuses.each do |status| %>
                   <li> <%= link_to "#{status.name.capitalize}", admin_dashboard_path(status_filter: status.name), class: "dropdown-option" %> </li>
                <% end %>
              </ul>
@@ -31,7 +31,7 @@
                   <li> <%= link_to "Clear filter", orders_path(status_filter: nil), class: "dropdown-option" %>
                   <li role="separator" class="divider"></li>
                <% end %>
-               <% @statuses.sort_by_name.each do |status| %>
+               <% @statuses.each do |status| %>
                   <li> <%= link_to "#{status.name.capitalize}", orders_path(status_filter: status.name), class: "dropdown-option" %> </li>
                <% end %>
              </ul>

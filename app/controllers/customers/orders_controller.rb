@@ -7,7 +7,7 @@ class Customers::OrdersController < Customers::BaseController
 
   def index
     @status_filter = params[:status_filter]
-    @statuses = Status.all
+    @statuses = Status.all.sort_by_name
 
     if valid_status_filter?
       @orders = filter_orders

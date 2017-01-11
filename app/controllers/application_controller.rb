@@ -24,13 +24,6 @@ class ApplicationController < ActionController::Base
     @current_customer ||= Customer.find(session[:customer_id]) if session[:customer_id]
   end
 
-  protected
-
-  def require_admin_login
-    unless current_admin?
-      redirect_to admin_login_path
-    end
-  end
 
   def current_admin?
     !!current_admin
