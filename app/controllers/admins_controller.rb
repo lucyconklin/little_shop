@@ -9,7 +9,7 @@ class AdminsController < Admins::BaseController
     @statuses = Status.all
 
     if valid_status_filter?
-      @orders = set_orders
+      @orders = filter_orders
     else
       render file: "/public/404"
     end
@@ -36,7 +36,7 @@ class AdminsController < Admins::BaseController
     @status_filter.nil? || status_names.include?(@status_filter)
   end
 
-  def set_orders
+  def filter_orders
     if @status_filter.nil?
       Order.all.most_recent
     else
