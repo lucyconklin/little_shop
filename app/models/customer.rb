@@ -8,4 +8,8 @@ class Customer < ApplicationRecord
   validates :password_digest, presence: true
 
   has_many :orders
+
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
 end

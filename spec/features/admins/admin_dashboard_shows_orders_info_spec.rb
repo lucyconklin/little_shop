@@ -20,8 +20,7 @@ feature "Admin dashboard" do
   end
 
   scenario "admin logs in to see all orders" do
-    expect(page).to have_content(customer.first_name)
-    expect(page).to have_content(customer.last_name)
+    expect(page).to have_content(customer.full_name)
     expect(page).to have_content(customer.id)
 
     expect(page).to have_content(@order_1.status.name.capitalize)
