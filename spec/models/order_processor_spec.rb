@@ -15,14 +15,14 @@ describe OrderProcessor do
   describe "#process" do
     it "assigns the contents of the cart as items on the order" do
       expect { order_processor.process(customer, cart.items) }
-      .to change { order_processor.order.items.count }
-      .from(0).to(5)
+        .to change { order_processor.order.items.count }
+        .from(0).to(5)
     end
 
     it "saves the order" do
       expect { order_processor.process(customer, cart.items) }
-      .to change { Order.count }
-      .from(0).to(1)
+        .to change { Order.count }
+        .from(0).to(1)
     end
   end
 end

@@ -2,7 +2,8 @@ class AdminsController < Admins::BaseController
   include MessageHelper
 
   def show
-    render file: '/public/404' unless current_admin # hack until admin authorization is complete
+    render file: '/public/404' unless current_admin
+
     @admin = current_admin # take this line out
     @status_filter = params[:status_filter]
     @statuses = Status.all
