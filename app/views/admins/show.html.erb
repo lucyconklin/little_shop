@@ -1,13 +1,10 @@
 <div class="wrapper">
-
   <div class="container">
     <h1>Admin Dashboard</h1>
-    <p>First name: <%= @admin.first_name %></p>
-    <p>Last name: <%= @admin.last_name %></p>
-    <p>Email: <%= @admin.email %></p>
-    <p><%= link_to "Edit Profile", edit_admin_path(@admin) %></p>
+    <p>Name: <%= current_admin.full_name %></p>
+    <p>Email: <%= current_admin.email %></p>
+    <p><%= link_to "Edit Profile", edit_admin_path(current_admin) %></p>
   </div>
-
 
   <h2>Order History for all Customers</h2>
 

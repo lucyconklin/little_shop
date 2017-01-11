@@ -1,5 +1,7 @@
 class Admins::SessionsController < Admins::BaseController
+  skip_before_action :require_admin, only: [:new, :create]
   include MessageHelper
+
   def new
   end
 
@@ -17,7 +19,7 @@ class Admins::SessionsController < Admins::BaseController
   end
 
   def destroy
-    session[:admin_id] = nil
+    reset_session
     flash_message_successful_logout
     redirect_to admin_login_path
   end
