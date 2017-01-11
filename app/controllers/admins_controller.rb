@@ -1,8 +1,8 @@
 class AdminsController < Admins::BaseController
+  before_action :require_admin
   include MessageHelper
 
   def show
-    @admin = current_admin # take this line out
     @status_filter = params[:status_filter]
     @statuses = Status.all
 

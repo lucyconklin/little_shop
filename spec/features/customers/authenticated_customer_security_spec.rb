@@ -28,7 +28,6 @@ feature "When a customer is authenticated" do
   scenario "the customer cannot edit items" do
     item = create(:item)
     visit edit_admin_item_path(item)
-
     expect(page).to have_content("The page you were looking for doesn't exist.")
   end
 end

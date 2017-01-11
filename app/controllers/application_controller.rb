@@ -21,11 +21,6 @@ class ApplicationController < ActionController::Base
     @current_customer ||= Customer.find(session[:customer_id]) if session[:customer_id]
   end
 
-  def require_admin
-    unless current_admin?
-      render file: "/public/404"
-    end
-  end
 
   def current_admin?
     !!current_admin

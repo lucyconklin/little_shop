@@ -1,4 +1,4 @@
-class Admins::ItemsController < ApplicationController
+class Admins::ItemsController < Admins::BaseController
   include MessageHelper
 
   def index
