@@ -39,7 +39,7 @@ feature "Admin clicks on an order from dashboard page" do
     @order_1.items.each do |item|
       expect(page).to have_content(item.title)
       expect(page).to have_content("$#{item.price_in_dollars}")
-      expect(page).to have_link("#{item.title}")
+      expect(page).to have_link(item.title.to_s)
     end
 
     @order_1.items_and_quantities.each do |item, quantity|
