@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   has_many :order_items
   has_many :items, through: :order_items
 
-  scope :most_recent, -> { order 'updated_at' }
+  scope :most_recent, -> { order(:updated_at).reverse_order }
 
   def calculated_price_in_cents
     items_and_quantities.map do |item, quantity|
