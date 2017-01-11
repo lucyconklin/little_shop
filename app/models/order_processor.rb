@@ -6,18 +6,8 @@ class OrderProcessor
   end
 
   def process(customer, cart_items)
-    set_items(cart_items)
-    set_customer(customer)
+    order.items = cart_items
+    order.customer = customer
     order.save
   end
-
-  private
-
-    def set_items(cart_items)
-      order.items = cart_items
-    end
-
-    def set_customer(customer)
-      order.customer = customer
-    end
 end
