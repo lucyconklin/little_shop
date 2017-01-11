@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   include MessageHelper
-  before_action :require_admin_login, except: [:index, :show]
+  before_action :require_admin, only: [:edit, :update]
 
   def index
     @items = Item.all

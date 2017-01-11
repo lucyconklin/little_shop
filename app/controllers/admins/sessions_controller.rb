@@ -1,5 +1,7 @@
 class Admins::SessionsController < Admins::BaseController
+  skip_before_action :require_admin, only: [:new, :create]
   include MessageHelper
+
   def new
   end
 
@@ -13,6 +15,11 @@ class Admins::SessionsController < Admins::BaseController
       flash_message_failed_login
       render :new
     end
+  end
+
+  def destroy
+    reset_session
+    redirect_to admin_login_path
   end
 
   private
