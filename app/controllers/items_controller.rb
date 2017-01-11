@@ -7,5 +7,4 @@ class ItemsController < ApplicationController
   def show
     @item = item(params[:id])
   end
-
 end

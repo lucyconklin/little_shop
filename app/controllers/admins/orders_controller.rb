@@ -1,5 +1,4 @@
 class Admins::OrdersController < ApplicationController
-  include ApplicationHelper
 
   def show
     @order = order
