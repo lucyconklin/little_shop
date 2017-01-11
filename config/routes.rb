@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get '/checkout' => "checkout#checkout"
 
   scope '/admin' do
-    root to: "admins#show"
+    root to: 'admins#show'
+    get '/orders/:id' => "admins/orders#show", as: 'admin_order'
     put '/orders' => "admins/orders#update"
     get '/login' => "admins/sessions#new", as: 'admin_login'
     post '/login' => "admins/sessions#create"
@@ -33,6 +34,4 @@ Rails.application.routes.draw do
   resources :categories, :path => '', only: [:show]
 
   resources :carts, only: [:create]
-
-
 end

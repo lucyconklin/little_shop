@@ -3,6 +3,9 @@
 
   <div class="list-group">
     <div class="list-group-item">
+      <h3 class="list-group-item-heading">Customer: <%= @customer.full_name %></h3>
+    </div>
+    <div class="list-group-item">
       <h3 class="list-group-item-heading">Total: <%= number_to_currency(@order.total_price_in_dollars) %></h3>
     </div>
     <div class="list-group-item">

@@ -10,5 +10,4 @@ class Admins::OrdersController < ApplicationController
     order.save
     redirect_to admin_dashboard_path
   end
-
 end
