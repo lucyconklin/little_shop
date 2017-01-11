@@ -79,7 +79,7 @@ describe Cart do
     end
   end
 
-  describe "#delete_item" do
+  describe "#delete_entire_item" do
     let!(:item_1) { Item.find(1) }
     let!(:item_2) { Item.find(2) }
 

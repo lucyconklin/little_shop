@@ -6,6 +6,7 @@ Item.destroy_all
 Category.destroy_all
 Status.destroy_all
 Customer.destroy_all
+Admin.destroy_all
 
 puts "Making some new items for your database... \n\n"
 FactoryGirl.create_list(:category, 7)

@@ -1,19 +1,18 @@
 class Admins::ItemsController < Admins::BaseController
-  include MessageHelper
 
   def index
     @items = Item.all
   end
 
   def edit
-    @item = item
+    @item = item(params[:id])
   end
 
   def update
-    @item = item
+    @item = item(params[:id])
     if @item.update(item_params)
       flash_message_successful_update
-      redirect_to item_path(item)
+      redirect_to item_path(@item)
     else
       flash_message_failed_update
       render :edit
@@ -22,12 +21,7 @@ class Admins::ItemsController < Admins::BaseController
 
   private
 
-  def item
-    Item.find(params[:id])
-  end
-
   def item_params
     params.require(:item).permit(:title, :description, :image_url, :retired)
   end
-
 end

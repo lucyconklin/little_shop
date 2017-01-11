@@ -1,15 +1,11 @@
 class Admins::SessionsController < Admins::BaseController
-  skip_before_action :require_admin, only: [:new, :create]
-  include MessageHelper
+  skip_before_action :require_admin
 
-  def new
-  end
+  def new; end
 
   def create
-    admin = Admin.find_by(email: params[:email])
-    if admin && admin.authenticate(params[:password])
-      session[:admin_id] = admin.id
-      session[:customer_id] = nil
+    if authenticated_admin?
+      set_admin_session
       flash_message_successful_login
       redirect_to admin_dashboard_path
     else
@@ -28,5 +24,18 @@ class Admins::SessionsController < Admins::BaseController
 
   def admin_params
     params.require(:admin).permit(:email, :password)
+  end
+
+  def admin
+    Admin.find_by(email: params[:email])
+  end
+
+  def set_admin_session
+    session[:admin_id] = admin.id
+    session[:customer_id] = nil
+  end
+
+  def authenticated_admin?
+    admin && admin.authenticate(params[:password])
   end
 end
