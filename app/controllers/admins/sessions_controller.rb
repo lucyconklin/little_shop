@@ -4,7 +4,7 @@ class Admins::SessionsController < Admins::BaseController
   def new; end
 
   def create
-    if admin && admin.authenticate(params[:password])
+    if authenticated_admin?
       set_admin_session
       flash_message_successful_login
       redirect_to admin_dashboard_path
@@ -33,5 +33,9 @@ class Admins::SessionsController < Admins::BaseController
   def set_admin_session
     session[:admin_id] = admin.id
     session[:customer_id] = nil
+  end
+
+  def authenticated_admin?
+    admin && admin.authenticate(params[:password])
   end
 end

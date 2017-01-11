@@ -6,7 +6,7 @@ class Customers::SessionsController < Customers::BaseController
   def new; end
 
   def create
-    if customer && customer.authenticate(params[:password])
+    if authenticated_customer?
       set_customer_session
       flash_message_successful_login
       redirect_to dashboard_path
@@ -31,5 +31,9 @@ class Customers::SessionsController < Customers::BaseController
   def set_customer_session
     session[:customer_id] = customer.id
     session[:admin_id] = nil
+  end
+
+  def authenticated_customer?
+    customer && customer.authenticate(params[:password])
   end
 end
