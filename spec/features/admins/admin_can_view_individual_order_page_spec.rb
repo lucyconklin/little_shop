@@ -38,12 +38,14 @@ feature "Admin clicks on an order from dashboard page" do
 
     @order_1.items.each do |item|
       expect(page).to have_content(item.title)
-      expect(page).to have_link(item_path(item))
-      expect(page).to have_content(item.quantity)
       expect(page).to have_content("$#{item.price_in_dollars}")
-      expect(page).to have_content(item.price_in_dollars(item.quantity))
+      expect(page).to have_link("#{item.title}")
     end
 
+    @order_1.items_and_quantities.each do |item, quantity|
+      expect(page).to have_content(quantity)
+      expect(page).to have_content(item.price_in_dollars(quantity))
+    end
   end
 
   scenario "they can see order information" do
