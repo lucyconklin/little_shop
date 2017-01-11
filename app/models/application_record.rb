@@ -5,6 +5,4 @@ class ApplicationRecord < ActiveRecord::Base
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
-  private
-
 end
