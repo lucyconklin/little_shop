@@ -13,7 +13,8 @@
         <div class="logged-in-message">
           Logged in as <%=link_to "#{current_customer.full_name}", dashboard_path %>
         </div>
-      <% elsif current_admin? %>
+      <% end %>
+      <% if current_admin? %>
         <div class="logged-in-message">
           Logged in as Admin: <%=link_to "#{current_admin.full_name}", admin_dashboard_path %>
         </div>
@@ -22,7 +23,9 @@
     <ul class="nav navbar-nav pull-right">
 
       <li>
-        <% if current_customer? || current_admin?%>
+        <% if current_admin? %>
+          <%= link_to "Log out", admin_logout_path, method: :delete %>
+        <% elsif current_customer? %>
           <%= link_to "Log out", logout_path %>
         <% else %>
           <%= link_to "Log in", login_path %>
