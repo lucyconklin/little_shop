@@ -13,7 +13,6 @@ class Customer < ApplicationRecord
     if stripe_id?
       Stripe::Customer.retrieve(stripe_id)
     else
-      byebug
       stripe_customer = Stripe::Customer.create(email: email)
       update(stripe_id: stripe_customer.id)
       stripe_customer
