@@ -50,7 +50,7 @@
         <td> <%= link_to "#{order.id}", order_path(order_id: order.id), class: "order_#{order.id}" %> </td>
         <% if current_admin? %>
           <td> <%= order.customer.id %> </td>
-          <td> <%= order.customer.first_name %> <%= order.customer.last_name %> </td>
+          <td> <%= order.customer.full_name %> </td>
           <td> <%= order.customer.email %> </td>
         <% end %>
         <td> <%= number_to_currency(order.total_price_in_dollars) %> </td>

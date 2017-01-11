@@ -26,7 +26,7 @@ feature "the admin can update their own data" do
     admin.reload
     expect(page).to have_content("Arnold Boss")
     expect(page).to have_content("jane@admin.com")
-    expect(admin.first_name).to eq("Arnold")
+    expect(admin.full_name).to eq("Arnold Boss")
   end
 
   scenario "the admin can update last name" do

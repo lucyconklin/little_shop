@@ -9,6 +9,7 @@ class Admins::SessionsController < Admins::BaseController
     admin = Admin.find_by(email: params[:email])
     if admin && admin.authenticate(params[:password])
       session[:admin_id] = admin.id
+      session[:customer_id] = nil
       flash_message_successful_login
       redirect_to admin_dashboard_path
     else
@@ -19,6 +20,7 @@ class Admins::SessionsController < Admins::BaseController
 
   def destroy
     reset_session
+    flash_message_successful_logout
     redirect_to admin_login_path
   end
 

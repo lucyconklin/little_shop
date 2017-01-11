@@ -1,25 +1,27 @@
 class Customers::SessionsController < Customers::BaseController
-  skip_before_action :require_customer, only: [:attempt_login, :login]
+  include MessageHelper
+  skip_before_action :require_customer, only: [:new, :create]
 
-  def attempt_login
+  def new
   end
 
-  def login
+  def create
     @customer = Customer.find_by(email: params[:email])
     if @customer && @customer.authenticate(params[:password])
+      session[:admin_id] = nil
       session[:customer_id] = @customer.id
-      flash[:success] = "Successfully logged in"
+      flash_message_successful_login
       redirect_to dashboard_path
     else
-      flash[:danger] = "Email and password combination do not exist"
-      render :attempt_login
+      flash_message_failed_login
+      render :new
     end
   end
 
-  def logout
+  def destroy
     session[:customer_id] = nil
-    session[:cart] = nil
-    flash[:success] = "Successfully logged out"
+    clear_cart
+    flash_message_successful_logout
     redirect_to(login_path)
   end
 end
