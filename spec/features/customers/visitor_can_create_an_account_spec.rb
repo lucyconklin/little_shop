@@ -36,8 +36,7 @@ feature 'A visitor can create an account' do
     expect(page).to have_css(".navbar", text: "Logged in as John Smith")
     expect(page).to have_content("Successfully logged in")
     expect(page).to have_content("Account Information")
-    expect(page).to have_content("First name: John")
-    expect(page).to have_content("Last name: Smith")
+    expect(page).to have_content("Name: John Smith")
     expect(page).to have_content("Email: john@john.com")
   end
 
