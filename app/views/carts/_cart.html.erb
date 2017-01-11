@@ -23,7 +23,7 @@
     <h3 class="text-right"><%= number_to_currency(@cart.total_price_in_dollars) %></h3>
     <% if current_customer? %>
       <h3 class="text-right">
-        <%= link_to "Checkout", checkout_path, class: "button" %>
+        <%= link_to "Checkout", new_checkout_path, class: "button" %>
       </h3>
     <% else %>
       <p class="text-right"><%= link_to "Login", login_path, class: "button-login" %></p>

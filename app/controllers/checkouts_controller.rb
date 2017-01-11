@@ -1,11 +1,19 @@
-class CheckoutController < ApplicationController
+class CheckoutsController < ApplicationController
   include MessageHelper
+  before_action :checkout, only: [:new]
+
+  def new
+
+  end
 
   def checkout
     OrderProcessor.new.process(current_customer, @cart.items)
+  end
+
+  private
+
+  def after
     clear_cart
     flash_message_successful_order
-
-    redirect_to customer_orders_path
   end
 end
