@@ -142,4 +142,22 @@ describe Order do
       expect(order.display_updated_at).to eq "24 Feb 2017 at  8:24 AM"
     end
   end
+
+  it "most_recent returns an array of orders sorted by most_recent updated_at time" do
+    create(:customer)
+    ordered = create(:status, name: "ordered")
+    completed = create(:status, name: "completed")
+    order_1 = create(:order, status: ordered)
+    order_2 = create(:order, status: ordered)
+    order_3 = create(:order, status: ordered)
+    order_4 = create(:order, status: ordered)
+    order_1.update(status: completed)
+    order_3.update(status: completed)
+
+    orders = Order.all.most_recent
+    expect(orders[0]).to eql(order_3)
+    expect(orders[1]).to eql(order_1)
+    expect(orders[2]).to eql(order_4)
+    expect(orders[3]).to eql(order_2)
+  end
 end
