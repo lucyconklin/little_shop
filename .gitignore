@@ -15,9 +15,3 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
-# Ignore secrets
-config/secrets.yml
-
-# Ignore application configuration
-/config/application.yml
