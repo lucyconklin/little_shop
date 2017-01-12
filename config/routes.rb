@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post '/login' => "customers/sessions#create"
   get '/dashboard' => "customers#dashboard"
   delete '/logout' => "customers/sessions#destroy", as: 'logout'
-  get '/checkout' => "checkout#checkout"
+  # get '/checkout' => "checkout#checkout"
 
   scope '/admin' do
     root to: 'admins#show'
@@ -31,7 +31,11 @@ Rails.application.routes.draw do
   get '/orders' => "customers/orders#index", as: 'customer_orders'
   get '/order' => "customers/orders#show"
 
+  resources :checkouts do
+    root to: 'checkouts#checkout'
+  end
   resources :categories, :path => '', only: [:show]
 
   resources :carts, only: [:create]
+
 end
