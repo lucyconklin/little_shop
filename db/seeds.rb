@@ -30,7 +30,7 @@ unless customer
                          password: "boom")
   customer.save!
 end
-FactoryGirl.create_list(:customer, 111)
+FactoryGirl.create_list(:customer, 11)
 customers = Customer.all
 
 all_items = Item.all
