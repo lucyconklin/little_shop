@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Name: <%= current_admin.full_name %></p>
+    <p>Email: <%= current_admin.email %></p>
+    <p><%= link_to "Edit Profile", edit_admin_path(current_admin) %></p>
+  </div>
+
+  <h2>Order History for all Customers</h2>
+
+  <h3>Order summary</h3>
+  <ul>
+  <% @statuses.each do |status| %>
+    <li class="status_<%= status.name.downcase %>">
+      <%= status.name.capitalize %> - <%= status.count_of_orders %>
+    </li>
+  <% end %>
+  </ul>
+
+  <% if @orders.any? %>
+    <%= render partial: 'shared/orders' %>
+  <% else %>
+    <p>There have been no orders placed at this time.</p>
+  <% end %>
+</div>

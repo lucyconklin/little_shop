@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src=<%= @item.image_url %> alt=<%= @item.title %>>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-8">
+      <p><%= link_to @item.category_name, category_path(@item.category) %></p>
+      <h2><%= @item.title %></h2>
+      <p><%= @item.description %></p>
+      <div>
+        <h4><%= number_to_currency(@item.price_in_dollars) %></h4>
+        <% if @item.retired == false %>
+          <%= button_to "Add to cart", carts_path(item_id: @item.id), class:"btn btn-info add_to_cart" %>
+        <% else %>
+          <div class="button-disabled">
+            Item not available
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

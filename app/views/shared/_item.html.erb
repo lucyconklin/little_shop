@@ -1,0 +1,19 @@
+<div id="item_<%= item.id %>" class="thumbnail">
+  <%= link_to item_path(item) do %>
+    <img src=<%= item.image_url %> alt=<%= item.title %>/>
+    <div class="caption">
+      <h3><%= item.title %></h3>
+    </div>
+  <% end %>
+  <p><%= number_to_currency(item.price_in_dollars) %></p>
+  <% if item.retired == false %>
+    <%= button_to "Add to cart", carts_path(item_id: item.id), class:"btn btn-info add_to_cart" %>
+  <% else %>
+    <div class="button-disabled">
+      Item not available
+    </div>
+  <% end %>
+  <% if current_admin?  %>
+    <%= link_to "Edit item", edit_admin_item_path(id: item.id), class: "btn btn-info" %>
+  <% end %>
+</div>

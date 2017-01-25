@@ -1,0 +1,55 @@
+.add_to_cart
+  width: 100%
+
+.button
+  border: 2px solid
+  border-color: $gray-blue
+  padding: 4px 6px
+
+a.button
+  text-decoration: none
+
+.button-delete
+  @extend .button
+  border-color: $light-red
+  background-color: $light-red
+
+
+.button-disabled
+  @extend .button
+  background-color: #eee
+  color: #888
+  text-align: center
+  width: 200px
+  
+.button-delete:hover, .button-delete:focus
+  border-color: $red
+
+a.button-delete
+  text-decoration: none
+  color: black
+
+.minus, .plus
+  font-size: 26px
+  font-weight: bold
+  color: $dark-brown-gray
+
+a.minus, a.plus
+  text-decoration: none
+
+.minus:hover, .minus:focus
+  color: $red
+
+.plus:hover, .plus:focus
+  color: green
+
+.button-login
+  @extend .button
+  border-color: $gray-blue
+  background-color: $gray-blue
+  color: black
+
+.button-login:hover, .button-delete:focus
+  border-color: green
+  background-color: green
+  color: black

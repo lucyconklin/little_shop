@@ -1,0 +1,6 @@
+<div class="wrapper">
+  <h1>Account Information</h1>
+  <p>Name: <%= current_customer.full_name %></p>
+  <p>Email: <%= current_customer.email %></p>
+  <p><%= link_to "Order History", customer_orders_path %></p>
+</div>

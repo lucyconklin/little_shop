@@ -1,0 +1,7 @@
+<% flash.each do |name, message| %>
+  <div class="alert alert-<%= name %>">
+    <div class="container">
+      <%= content_tag :div, sanitize(message) %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="wrapper">
+  <% if @cart.empty? %>
+    <%= render partial: "empty_cart" %>
+  <% else %>
+    <%= render partial: "cart" %>
+  <% end %>
+</div>
